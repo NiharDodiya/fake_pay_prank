@@ -15,7 +15,15 @@ class AssetRes{
   static const share = '${icons}share.png';
   static const logo_text = '${icons}logo_text.png';
 
+//   static const menu = '${icons}menu.png';
+  static const upiIcon = '${icons}upi_icon.png';
 
 ///---------------------------------------- IMAGES ----------------------------------------///
+
+
+///---------------------------------------- IMAGES ----------------------------------------///
+static const fontFamilyBold = 'SairaCondensed-Bold';
+static const fontFamilyMedium = 'SairaCondensed-Medium';
+
   static const money_transfer = '${images}money_transfer.png';
 }
