@@ -82,38 +82,46 @@ class OnBoardingFirstScreen extends StatelessWidget {
             // ),
           ),
           Positioned(
-              top: 0,
-              child: Stack(
-                children: [
-                  Container(
-                    height: 90,
-                    padding: EdgeInsets.only(top: 45, bottom: 15),
-                    width: Get.width,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [ColorRes.gradiant1, ColorRes.gradiant2],
-                      ),
-                    ),
-                    child: Container(
-                      child: Image.asset(AssetRes.logo),
+            top: 0,
+            child: Stack(
+              children: [
+                Container(
+                  height: 90,
+                  padding: EdgeInsets.only(top: 45, bottom: 15),
+                  width: Get.width,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [ColorRes.gradiant1, ColorRes.gradiant2],
                     ),
                   ),
-                  Positioned(
-                      top: 45,
-                      left: 15,
-                      child: GetBuilder<OnBoardingFirstController>(
-                        id:"drawer",
-                          builder: (con) => GestureDetector(
-                                onTap: con.onMenuBtnTap,
-                                child: Image.asset(
-                                  AssetRes.menu,
-                                  height: 19,
-                                ),
-                              ))),
-                ],
-              )),
+                  child: Container(
+                    child: Image.asset(AssetRes.logo),
+                  ),
+                ),
+                Positioned(
+                  top: 45,
+                  left: 15,
+                  child: GetBuilder<OnBoardingFirstController>(
+                    id: "drawer",
+                    builder: (con) => GestureDetector(
+                      onTap: con.onMenuBtnTap,
+                      child: SizedBox(
+                        height: 30,
+                        width: 30,
+                        child: Image.asset(
+                          AssetRes.menu,
+                          height: 19,
+                          width: 19,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
           Positioned(
             top: 90,
             child: Container(
@@ -134,7 +142,7 @@ class OnBoardingFirstScreen extends StatelessWidget {
                   Text(Strings.fakeMoneyUpi),
                   Spacer(),
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       Get.to(OnBoardingSecondScreen());
                     },
                     child: Container(

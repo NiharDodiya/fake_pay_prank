@@ -113,7 +113,7 @@ class OnBoardingSecondScreen extends StatelessWidget {
                     // height: 50,
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                     decoration: BoxDecoration(
-                        color: ColorRes.skyBlue,
+                        color: ColorRes.blue,
                         borderRadius: BorderRadius.all(Radius.circular(20))),
                     child: Text(
                       Strings.sendMoney,
