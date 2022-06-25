@@ -21,6 +21,7 @@ class Strings {
   static const String accountHolderDetails = "Account holder detail:";
   static const String submit = "Submit";
   static const String fakePayGuide = "Fake Pay Guide:";
+  static const String version = "V 10.7.0(720913)";
 
 
 }

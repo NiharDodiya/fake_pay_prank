@@ -1,6 +1,7 @@
 import 'package:fake_pay_prank/screens/onbording/onbording_first/onboarding_first_controller.dart';
 import 'package:fake_pay_prank/utils/asset_res.dart';
 import 'package:fake_pay_prank/utils/color_res.dart';
+import 'package:fake_pay_prank/utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,51 +14,61 @@ class OnBoardingDrawer extends StatelessWidget {
       borderRadius: BorderRadius.only(
           topRight: Radius.circular(35), bottomRight: Radius.circular(35)),
       child: Drawer(
-        child: Column(
-          children: [
-            Container(
-              height: 100,
-              padding: EdgeInsets.only(top: 50, bottom: 10),
-              // width: Get.width - 100,
-              // decoration: BoxDecoration(
-              //     borderRadius: BorderRadius.only(
-              //         topRight: Radius.circular(15),
-              //         bottomRight: Radius.circular(15))),
-              child: Image.asset(
-                AssetRes.logo,
-                height: 100,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                height: 90,
+                padding: EdgeInsets.only(top: 40, bottom: 10),
+                child: Image.asset(
+                  AssetRes.logo,
+                  height: 100,
+                ),
               ),
-            ),
-            Divider(color: ColorRes.nBlue),
-            GetBuilder<OnBoardingFirstController>(builder: (con) {
-              return MediaQuery.removePadding(
-                removeTop: true,
-                context: context,
-                child: ListView.builder(
-                    itemCount: con.icons.length,
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      return Container(
-                        height: 60,
-                        margin: EdgeInsets.symmetric(horizontal: 20),
-                        padding: EdgeInsets.only(
-                            top: 15, bottom: 10,),
-                        decoration: BoxDecoration(
-                            border: Border(
-                                bottom: BorderSide(color: ColorRes.black))),
-                        child: Row(
-                          children: [
-                            Image.asset(con.icons[index]),
-                            SizedBox(width: 10),
-                            Text(con.title[index])
-                          ],
-                        ),
-                      );
-                    }),
-              );
-            })
-          ],
+              Divider(color: ColorRes.nBlue),
+              GetBuilder<OnBoardingFirstController>(builder: (con) {
+                return MediaQuery.removePadding(
+                  removeTop: true,
+                  context: context,
+                  child: ListView.builder(
+                      itemCount: con.icons.length,
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return Container(
+                          height: 50,
+                          margin: EdgeInsets.symmetric(horizontal: 20),
+                          padding: EdgeInsets.only(
+                            top: 10,
+                            bottom: 10,
+                          ),
+                          decoration: index == con.icons.length - 1
+                              ? BoxDecoration()
+                              : BoxDecoration(
+                                  border: Border(
+                                      bottom:
+                                          BorderSide(color: ColorRes.black))),
+                          child: Row(
+                            children: [
+                              Image.asset(con.icons[index]),
+                              SizedBox(width: 10),
+                              Text(con.title[index])
+                            ],
+                          ),
+                        );
+                      }),
+                );
+              }),
+              SizedBox(height: Get.height * 0.09),
+              Text(
+                Strings.version,
+                style: TextStyle(color: Colors.grey),
+              ),
+              SizedBox(height: 15),
+              Divider(color: ColorRes.blue,thickness: 3,height: 0,),
+              Divider(color: ColorRes.nBlue,thickness: 3,height: 3,)
+            ],
+          ),
         ),
       ),
     );

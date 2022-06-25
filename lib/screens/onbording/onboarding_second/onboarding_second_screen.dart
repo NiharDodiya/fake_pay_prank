@@ -1,5 +1,6 @@
 import 'package:fake_pay_prank/common/common_screen_background.dart';
 import 'package:fake_pay_prank/screens/go_to_fake_pay/agreement/agreement_screen.dart';
+import 'package:fake_pay_prank/screens/guide/guide_screen.dart';
 import 'package:fake_pay_prank/screens/onbording/onboarding_second/onboarding_second_controller.dart';
 import 'package:fake_pay_prank/utils/asset_res.dart';
 import 'package:fake_pay_prank/utils/color_res.dart';
@@ -55,71 +56,91 @@ class OnBoardingSecondScreen extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16)),
               SizedBox(height: 10),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  SizedBox(width: 0),
                   GestureDetector(
                     onTap: () {
                       Get.to(AgreementScreen());
                     },
                     child: Container(
-                      width: 45,
+                      width: 50,
                       margin: EdgeInsets.only(left: 15),
                       // decoration: BoxDecoration(border: Border.all()),
                       child: Column(
                         children: [
                           Image.asset(AssetRes.go_to_fake_pay, height: 30),
+                          SizedBox(height: 3),
                           Text(
                             Strings.go_to_fake_pay,
                             style: TextStyle(fontSize: 10),
+                            textAlign: TextAlign.center,
                           )
                         ],
                       ),
                     ),
                   ),
-                  SizedBox(width: Get.width * 0.03),
-                  Container(
-                    width: 45,
-                    margin: EdgeInsets.only(left: 30),
-                    // decoration: BoxDecoration(border: Border.all()),
-                    child: Column(
-                      children: [
-                        Image.asset(AssetRes.how_to_use, height: 30),
-                        Text(
-                          Strings.how_to_use,
-                          style: TextStyle(fontSize: 10),
-                        )
-                      ],
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(GuideScreen());
+                    },
+                    child: Container(
+                      width: 50,
+                      margin: EdgeInsets.only(left: 15),
+                      // decoration: BoxDecoration(border: Border.all()),
+                      child: Column(
+                        children: [
+                          Image.asset(AssetRes.how_to_use, height: 30),
+                          SizedBox(height: 3),
+                          Text(
+                            Strings.how_to_use,
+                            style: TextStyle(fontSize: 10),
+                            textAlign: TextAlign.center,
+                          )
+                        ],
+                      ),
                     ),
                   ),
-                  SizedBox(width: Get.width * 0.03),
-                  Container(
-                    width: 50,
-                    margin: EdgeInsets.only(left: 30),
-                    // decoration: BoxDecoration(border: Border.all()),
-                    child: Column(
-                      children: [
-                        Image.asset(AssetRes.fake_statement, height: 30),
-                        Text(
-                          Strings.fake_statement,
-                          style: TextStyle(fontSize: 10),
-                        )
-                      ],
+                  GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      width: 50,
+                      margin: EdgeInsets.only(left: 15),
+                      // decoration: BoxDecoration(border: Border.all()),
+                      child: Column(
+                        children: [
+                          Image.asset(AssetRes.fake_statement, height: 30),
+                          SizedBox(height: 3),
+                          Text(
+                            Strings.fake_statement,
+                            style: TextStyle(fontSize: 10),
+                            textAlign: TextAlign.center,
+                          )
+                        ],
+                      ),
                     ),
                   ),
-                  SizedBox(width: Get.width * 0.03),
-                  Container(
-                    width: 45,
-                    margin: EdgeInsets.only(left: 30),
-                    // decoration: BoxDecoration(border: Border.all()),
-                    child: Column(
-                      children: [
-                        Image.asset(AssetRes.rate_us, height: 30),
-                        Text(
-                          Strings.rate_us,
-                          style: TextStyle(fontSize: 10),
-                        )
-                      ],
+                  GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      width: 50,
+                      margin: EdgeInsets.only(left: 15),
+                      // decoration: BoxDecoration(border: Border.all()),
+                      child: Column(
+                        children: [
+                          Image.asset(AssetRes.rate_us, height: 30),
+                          SizedBox(height: 5),
+                          Text(
+                            Strings.rate_us,
+                            style: TextStyle(fontSize: 10),
+                            textAlign: TextAlign.center,
+                          )
+                        ],
+                      ),
                     ),
                   ),
+                  SizedBox(width: 0),
                 ],
               )
             ],
@@ -128,4 +149,105 @@ class OnBoardingSecondScreen extends StatelessWidget {
       ],
     )));
   }
+}
+
+Widget iconsRow() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      GestureDetector(
+        onTap: () {
+          Get.to(AgreementScreen());
+        },
+        child: Container(
+          width: 45,
+          margin: EdgeInsets.only(left: 15),
+          // decoration: BoxDecoration(border: Border.all()),
+          child: Column(
+            children: [
+              Image.asset(AssetRes.go_to_fake_pay, height: 30),
+              Text(
+                Strings.go_to_fake_pay,
+                style: TextStyle(fontSize: 10),
+              )
+            ],
+          ),
+        ),
+      ),
+      // SizedBox(width: Get.width * 0.03),
+      Container(
+        width: 45,
+        margin: EdgeInsets.only(left: 30),
+        // decoration: BoxDecoration(border: Border.all()),
+        child: Column(
+          children: [
+            Image.asset(AssetRes.how_to_use, height: 30),
+            Text(
+              Strings.how_to_use,
+              style: TextStyle(fontSize: 10),
+            )
+          ],
+        ),
+      ),
+      // SizedBox(width: Get.width * 0.03),
+      Container(
+        width: 50,
+        margin: EdgeInsets.only(left: 30),
+        // decoration: BoxDecoration(border: Border.all()),
+        child: Column(
+          children: [
+            Image.asset(AssetRes.fake_statement, height: 30),
+            Text(
+              Strings.fake_statement,
+              style: TextStyle(fontSize: 10),
+            )
+          ],
+        ),
+      ),
+      // SizedBox(width: Get.width * 0.03),
+      Container(
+        width: 45,
+        margin: EdgeInsets.only(left: 30),
+        // decoration: BoxDecoration(border: Border.all()),
+        child: Column(
+          children: [
+            Image.asset(AssetRes.rate_us, height: 30),
+            Text(
+              Strings.rate_us,
+              style: TextStyle(fontSize: 10),
+            )
+          ],
+        ),
+      ),
+    ],
+  );
+}
+
+Widget listType() {
+  return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      itemCount: 4,
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      itemBuilder: (context, index) {
+        return GestureDetector(
+          onTap: () {
+            Get.to(AgreementScreen());
+          },
+          child: Container(
+            width: 45,
+            margin: EdgeInsets.only(left: 15),
+            // decoration: BoxDecoration(border: Border.all()),
+            child: Column(
+              children: [
+                Image.asset(AssetRes.go_to_fake_pay, height: 30),
+                Text(
+                  Strings.go_to_fake_pay,
+                  style: TextStyle(fontSize: 10),
+                )
+              ],
+            ),
+          ),
+        );
+      });
 }

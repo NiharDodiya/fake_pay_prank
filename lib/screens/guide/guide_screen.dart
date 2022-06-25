@@ -1,5 +1,5 @@
 import 'package:fake_pay_prank/common/common_screen_background.dart';
-import 'package:fake_pay_prank/screens/go_to_fake_pay/guide/guide_controller.dart';
+import 'package:fake_pay_prank/screens/guide/guide_controller.dart';
 import 'package:fake_pay_prank/utils/color_res.dart';
 import 'package:fake_pay_prank/utils/strings.dart';
 import 'package:flutter/material.dart';
