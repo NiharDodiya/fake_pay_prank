@@ -2,6 +2,9 @@ class AssetRes{
   static const icons = 'assets/icons/';
   static const images = 'assets/images/';
 
+///---------------------------------------- GIFs -----------------------------------------///
+  static const completeGif = "${icons}complete_gif.gif";
+
 ///---------------------------------------- ICONS ----------------------------------------///
   static const logo = '${icons}logo.png';
   static const fake_statement = '${icons}fake_statement.png';
@@ -20,6 +23,11 @@ class AssetRes{
   static const clock_icon = '${icons}clock_icon.png';
   static const profile_icon = '${icons}profile_icon.png';
   static const wallet_icon = '${icons}wallet_icon.png';
+  static const homeIcon = '${icons}home.png';
+  static const qrIcon = '${icons}qr.png';
+  static const passbookIcon = '${icons}passbook.png';
+  static const cashbackIcon = '${icons}cashback.png';
+  static const flashIcon = '${icons}flash.png';
 
 
   static const upiIcon = '${icons}upi_icon.png';

@@ -1,6 +1,6 @@
 import 'package:fake_pay_prank/common/common_screen_background.dart';
 import 'package:fake_pay_prank/screens/go_to_fake_pay/account_holder_detail/account_holder_detail_controller.dart';
-import 'package:fake_pay_prank/screens/go_to_fake_pay/guide/guide_screen.dart';
+import 'package:fake_pay_prank/screens/paytm/paytm_screen.dart';
 import 'package:fake_pay_prank/utils/asset_res.dart';
 import 'package:fake_pay_prank/utils/color_res.dart';
 import 'package:fake_pay_prank/utils/strings.dart';
@@ -185,7 +185,7 @@ class AccountHolderDetailScreen extends StatelessWidget {
           InkWell(
             onTap: () {
               print("Change ");
-              Get.to(() => GuideScreen());
+              Get.to(() => PaytmScreen());
             },
             child: Container(
               height: 50,
