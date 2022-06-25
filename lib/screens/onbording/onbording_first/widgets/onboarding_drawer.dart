@@ -35,25 +35,30 @@ class OnBoardingDrawer extends StatelessWidget {
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
-                        return Container(
-                          height: 50,
-                          margin: EdgeInsets.symmetric(horizontal: 20),
-                          padding: EdgeInsets.only(
-                            top: 10,
-                            bottom: 10,
-                          ),
-                          decoration: index == con.icons.length - 1
-                              ? BoxDecoration()
-                              : BoxDecoration(
-                                  border: Border(
-                                      bottom:
-                                          BorderSide(color: ColorRes.black))),
-                          child: Row(
-                            children: [
-                              Image.asset(con.icons[index]),
-                              SizedBox(width: 10),
-                              Text(con.title[index])
-                            ],
+                        return GestureDetector(
+                          onTap: (){
+
+                          },
+                          child: Container(
+                            height: 50,
+                            margin: EdgeInsets.symmetric(horizontal: 20),
+                            padding: EdgeInsets.only(
+                              top: 10,
+                              bottom: 10,
+                            ),
+                            decoration: index == con.icons.length - 1
+                                ? BoxDecoration()
+                                : BoxDecoration(
+                                    border: Border(
+                                        bottom:
+                                            BorderSide(color: ColorRes.black))),
+                            child: Row(
+                              children: [
+                                Image.asset(con.icons[index]),
+                                SizedBox(width: 10),
+                                Text(con.title[index])
+                              ],
+                            ),
                           ),
                         );
                       }),

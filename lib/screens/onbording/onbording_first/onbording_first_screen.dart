@@ -15,22 +15,6 @@ class OnBoardingFirstScreen extends StatelessWidget {
     final con = Get.put(OnBoardingFirstController());
     return Scaffold(
       key: con.scaffoldKey,
-      // appBar: AppBar(
-      //   // backgroundColor: ColorRes.gradiant2,
-      //   flexibleSpace: Container(
-      //     decoration: BoxDecoration(
-      //       gradient: LinearGradient(
-      //         colors: [ColorRes. gradiant1, ColorRes.gradiant2], stops: [0.5, 1.0],
-      //       ),
-      //     ),
-      //   ),
-      //   title: Container(
-      //     padding: EdgeInsets.symmetric(vertical: 30),
-      //     child: Image.asset(AssetRes.logo),
-      //   ),
-      //   centerTitle: true,
-      // ),
-
       drawer: OnBoardingDrawer(),
       body: Stack(
         children: [
@@ -108,8 +92,8 @@ class OnBoardingFirstScreen extends StatelessWidget {
                     builder: (con) => GestureDetector(
                       onTap: con.onMenuBtnTap,
                       child: SizedBox(
-                        height: 30,
-                        width: 30,
+                        height: 25,
+                        width: 25,
                         child: Image.asset(
                           AssetRes.menu,
                           height: 19,

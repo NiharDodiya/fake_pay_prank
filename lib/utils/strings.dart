@@ -23,5 +23,10 @@ class Strings {
   static const String fakePayGuide = "Fake Pay Guide:";
   static const String version = "V 10.7.0(720913)";
 
+  static const String gPay_logo = "(Google Pay)";
+  static const String paypal_logo = "(Pay Pal)";
+  static const String phone_pay = "(PhonePe)";
+  static const String paytm_logo = "(Paytm)";
+
 
 }

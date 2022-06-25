@@ -28,6 +28,10 @@ class AssetRes{
   static const passbookIcon = '${icons}passbook.png';
   static const cashbackIcon = '${icons}cashback.png';
   static const flashIcon = '${icons}flash.png';
+  static const gPay_logo = '${icons}gpay_logo.png';
+  static const paypal_logo = '${icons}paypal_logo.png';
+  static const paytm_logo = '${icons}paytm_logo.png';
+  static const phone_pay = '${icons}phonepe_icon.png';
 
 
   static const upiIcon = '${icons}upi_icon.png';
