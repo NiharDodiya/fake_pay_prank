@@ -26,7 +26,9 @@ class OnBoardingDrawer extends StatelessWidget {
                 ),
               ),
               Divider(color: ColorRes.nBlue),
-              GetBuilder<OnBoardingFirstController>(builder: (con) {
+              GetBuilder<OnBoardingFirstController>(
+                  id: "drawers",
+                  builder: (con) {
                 return MediaQuery.removePadding(
                   removeTop: true,
                   context: context,
@@ -37,7 +39,7 @@ class OnBoardingDrawer extends StatelessWidget {
                       itemBuilder: (context, index) {
                         return GestureDetector(
                           onTap: (){
-
+                          con.onTapDrawerItem(index);
                           },
                           child: Container(
                             height: 50,

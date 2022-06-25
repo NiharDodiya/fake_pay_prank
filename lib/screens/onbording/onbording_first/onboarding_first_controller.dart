@@ -1,6 +1,8 @@
+import 'package:fake_pay_prank/screens/privacy/privacy_screen.dart';
 import 'package:fake_pay_prank/utils/asset_res.dart';
 import 'package:fake_pay_prank/utils/strings.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
 class OnBoardingFirstController extends GetxController {
@@ -10,6 +12,26 @@ class OnBoardingFirstController extends GetxController {
     print("OPEN DRAWER");
     scaffoldKey.currentState?.openDrawer();
     update(["drawer"]);
+  }
+
+  onTapDrawerItem(index) {
+    if (index == 0) {
+      //go to fake pay
+    } else if (index == 1) {
+      //fake payment
+    } else if (index == 2) {
+      //privacy
+      Get.to(PrivacyScreen());
+    } else if (index == 3) {
+      //how to use
+    }else if(index == 4){
+      //more
+    }else if(index == 5){
+      //rate us
+    }else if(index == 6){
+      //share
+    }
+    update(["drawers"]);
   }
 
   List<String> icons = [

@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.fake_pay_prank">
+    <uses-permission android:name="android.permission.INTERNET" />
    <application
         android:label="fake_pay_prank"
         android:name="${applicationName}"
