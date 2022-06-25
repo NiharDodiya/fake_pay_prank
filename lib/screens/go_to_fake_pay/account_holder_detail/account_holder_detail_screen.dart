@@ -1,3 +1,4 @@
+import 'package:fake_pay_prank/common/common_screen_background.dart';
 import 'package:fake_pay_prank/screens/go_to_fake_pay/account_holder_detail/account_holder_detail_controller.dart';
 import 'package:fake_pay_prank/screens/go_to_fake_pay/guide/guide_screen.dart';
 import 'package:fake_pay_prank/utils/asset_res.dart';
@@ -13,265 +14,195 @@ class AccountHolderDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(AccountHolderDetailController());
     return Scaffold(
-      body: Stack(
+      body: screenDesign(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            height: Get.height,
-            width: Get.width,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [ColorRes.gradiant2, ColorRes.gradiant2],
-              ),
-            ),
+          SizedBox(height: 10),
+          Text(
+            Strings.accountHolderDetails,
+            style: TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
           ),
-          Positioned(
-            top: 0,
-            child: Stack(
+          SizedBox(height: 15),
+          GetBuilder<AccountHolderDetailController>(builder: (con) {
+            return Column(
               children: [
                 Container(
-                  height: 90,
-                  padding: EdgeInsets.only(top: 45, bottom: 15),
+                  height: 45,
                   width: Get.width,
+                  alignment: Alignment.center,
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 1),
+                  margin: const EdgeInsets.only(bottom: 15),
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [ColorRes.gradiant1, ColorRes.gradiant2],
-                    ),
-                  ),
-                  child: Container(
-                    child: Image.asset(AssetRes.logo),
+                      // color: ColorRes.offWhite,
+                      border: Border.all(color: ColorRes.blue),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(10))),
+                  child: TextField(
+                    controller: con.nameController,
+                    focusNode: con.nameFn,
+                    decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: "Enter Name",
+                        prefixIcon: Container(
+                            height: 15,
+                            width: 15,
+                            padding: EdgeInsets.all(5),
+                            child: Image.asset(AssetRes.profile_icon,
+                                height: 5, width: 5)),
+                        contentPadding: EdgeInsets.only(top: 0)),
                   ),
                 ),
-                Positioned(
-                  top: 50,
-                  left: 15,
-                  child: GetBuilder<AccountHolderDetailController>(
-                    builder: (con) => GestureDetector(
-                      // onTap: con.onMenuBtnTap,
-                      child: SizedBox(
-                        height: 16,
-                        width: 16,
-                        child: Image.asset(
-                          AssetRes.back_arrow,
-                          // height: 19,
-                          // width: 19,
-                        ),
+                Container(
+                  height: 45,
+                  width: Get.width,
+                  alignment: Alignment.center,
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 1),
+                  margin: const EdgeInsets.only(bottom: 15),
+                  decoration: BoxDecoration(
+                      // color: ColorRes.offWhite,
+                      border: Border.all(color: ColorRes.blue),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(10))),
+                  child: TextField(
+                    controller: con.phoneController,
+                    focusNode: con.phoneFn,
+                    decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: "Phone No",
+                        prefixIcon: Container(
+                            height: 15,
+                            width: 15,
+                            padding: EdgeInsets.all(5),
+                            child: Image.asset(AssetRes.call_icon,
+                                height: 5, width: 5)),
+                        contentPadding: EdgeInsets.only(top: 0)),
+                    keyboardType: TextInputType.number,
+                  ),
+                ),
+                // const SizedBox(height: 10),
+                Row(
+                  children: [
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          con.selectTime(context);
+                        },
+                        child: Container(
+                            height: 45,
+                            // width: Get.width * 0.4,
+                            padding: EdgeInsets.only(left: 10),
+                            margin: EdgeInsets.only(bottom: 15),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: ColorRes.blue),
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(10)),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Image.asset(
+                                  AssetRes.clock_icon,
+                                  height: 25,
+                                ),
+                                SizedBox(width: 5),
+                                Text(con.formatTime(con.selectedTime1, context),
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.w500))
+                              ],
+                            )),
                       ),
                     ),
+                    // const Spacer(),
+                    SizedBox(width: 10),
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          con.selectDate(context);
+                        },
+                        child: Container(
+                            height: 45,
+                            // width: Get.width * 0.4,
+                            padding: EdgeInsets.only(left: 10),
+                            margin: EdgeInsets.only(bottom: 15),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: ColorRes.blue),
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(10)),
+                            ),
+                            child: Row(
+                              children: [
+                                Image.asset(
+                                  AssetRes.calender_icon,
+                                  height: 25,
+                                ),
+                                SizedBox(width: 5),
+                                Text(
+                                  con.formatter.format(con.selectedDate),
+                                  style: TextStyle(fontWeight: FontWeight.w500),
+                                )
+                              ],
+                            )),
+                      ),
+                    ),
+                  ],
+                ),
+                Container(
+                  height: 45,
+                  width: Get.width,
+                  alignment: Alignment.center,
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 1),
+                  margin: const EdgeInsets.only(bottom: 15),
+                  decoration: BoxDecoration(
+                      // color: ColorRes.offWhite,
+                      border: Border.all(color: ColorRes.blue),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(10))),
+                  child: TextField(
+                    controller: con.amountController,
+                    focusNode: con.amountFn,
+                    decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: "Your Wallet Balance",
+                        prefixIcon: Container(
+                            height: 15,
+                            width: 15,
+                            padding: EdgeInsets.all(5),
+                            child: Image.asset(AssetRes.wallet_icon,
+                                height: 5, width: 5)),
+                        contentPadding: EdgeInsets.only(top: 0)),
+                    keyboardType: TextInputType.number,
                   ),
                 ),
               ],
-            ),
-          ),
-          Positioned(
-            top: 90,
+            );
+          }),
+          Spacer(),
+          InkWell(
+            onTap: () {
+              print("Change ");
+              Get.to(() => GuideScreen());
+            },
             child: Container(
-              height: Get.height - 90,
-              width: Get.width,
+              height: 50,
+              // width: Get.width * 0.5,
+              margin: EdgeInsets.only(bottom: 25, left: 15, right: 15),
+              alignment: Alignment.center,
               decoration: BoxDecoration(
-                  color: ColorRes.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20))),
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 10),
-                  Text(
-                    Strings.accountHolderDetails,
-                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
-                  ),
-                  SizedBox(height: 15),
-                  GetBuilder<AccountHolderDetailController>(builder: (con) {
-                    return Column(
-                      children: [
-                        Container(
-                          height: 45,
-                          width: Get.width,
-                          alignment: Alignment.center,
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 5, horizontal: 1),
-                          margin: const EdgeInsets.only(bottom: 15),
-                          decoration: BoxDecoration(
-                              // color: ColorRes.offWhite,
-                              border: Border.all(color: ColorRes.blue),
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(10))),
-                          child: TextField(
-                            controller: con.nameController,
-                            focusNode: con.nameFn,
-                            decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: "Enter Name",
-                                prefixIcon: Container(
-                                    height: 15,
-                                    width: 15,
-                                    padding: EdgeInsets.all(5),
-                                    child: Image.asset(AssetRes.profile_icon,
-                                        height: 5, width: 5)),
-                                contentPadding: EdgeInsets.only(top: 0)),
-                          ),
-                        ),
-                        Container(
-                          height: 45,
-                          width: Get.width,
-                          alignment: Alignment.center,
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 5, horizontal: 1),
-                          margin: const EdgeInsets.only(bottom: 15),
-                          decoration: BoxDecoration(
-                              // color: ColorRes.offWhite,
-                              border: Border.all(color: ColorRes.blue),
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(10))),
-                          child: TextField(
-                            controller: con.phoneController,
-                            focusNode: con.phoneFn,
-                            decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: "Phone No",
-                                prefixIcon: Container(
-                                    height: 15,
-                                    width: 15,
-                                    padding: EdgeInsets.all(5),
-                                    child: Image.asset(AssetRes.call_icon,
-                                        height: 5, width: 5)),
-                                contentPadding: EdgeInsets.only(top: 0)),
-                            keyboardType: TextInputType.number,
-                          ),
-                        ),
-                        // const SizedBox(height: 10),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: GestureDetector(
-                                onTap: () {
-                                  con.selectTime(context);
-                                },
-                                child: Container(
-                                    height: 45,
-                                    // width: Get.width * 0.4,
-                                    padding: EdgeInsets.only(left: 10),
-                                    margin: EdgeInsets.only(bottom: 15),
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: ColorRes.blue),
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(10)),
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Image.asset(
-                                          AssetRes.clock_icon,
-                                          height: 25,
-                                        ),
-                                        SizedBox(width: 5),
-                                        Text("2:00",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w500))
-                                      ],
-                                    )),
-                              ),
-                            ),
-                            // const Spacer(),
-                            SizedBox(width: 10),
-                            Expanded(
-                              child: GestureDetector(
-                                onTap: () {
-                                  con.selectDate(context);
-                                },
-                                child: Container(
-                                    height: 45,
-                                    // width: Get.width * 0.4,
-                                    padding: EdgeInsets.only(left: 10),
-                                    margin: EdgeInsets.only(bottom: 15),
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: ColorRes.blue),
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(10)),
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        Image.asset(
-                                          AssetRes.calender_icon,
-                                          height: 25,
-                                        ),
-                                        SizedBox(width: 5),
-                                        Text(
-                                          con.formatter
-                                              .format(con.selectedDate),
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w500),
-                                        )
-                                      ],
-                                    )),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          height: 45,
-                          width: Get.width,
-                          alignment: Alignment.center,
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 5, horizontal: 1),
-                          margin: const EdgeInsets.only(bottom: 15),
-                          decoration: BoxDecoration(
-                              // color: ColorRes.offWhite,
-                              border: Border.all(color: ColorRes.blue),
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(10))),
-                          child: TextField(
-                            controller: con.amountController,
-                            focusNode: con.amountFn,
-                            decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: "Your Wallet Balance",
-                                prefixIcon: Container(
-                                    height: 15,
-                                    width: 15,
-                                    padding: EdgeInsets.all(5),
-                                    child: Image.asset(AssetRes.wallet_icon,
-                                        height: 5, width: 5)),
-                                contentPadding: EdgeInsets.only(top: 0)),
-                            keyboardType: TextInputType.number,
-                          ),
-                        ),
-                      ],
-                    );
-                  }),
-                  Spacer(),
-                  InkWell(
-                    onTap: () {
-                      print("Change ");
-                      Get.to(() => GuideScreen());
-                    },
-                    child: Container(
-                      height: 50,
-                      // width: Get.width * 0.5,
-                      margin: EdgeInsets.only(bottom: 25, left: 15, right: 15),
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          color: ColorRes.nBlue,
-                          borderRadius: BorderRadius.all(Radius.circular(30))),
-                      child: Text(
-                        Strings.submit,
-                        style: TextStyle(color: ColorRes.white),
-                      ),
-                    ),
-                  )
-                ],
+                  color: ColorRes.nBlue,
+                  borderRadius: BorderRadius.all(Radius.circular(30))),
+              child: Text(
+                Strings.submit,
+                style: TextStyle(color: ColorRes.white),
               ),
             ),
           )
         ],
-      ),
+      )),
     );
   }
 }

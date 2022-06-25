@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:intl/intl.dart';
 
-
 class AccountHolderDetailController extends GetxController {
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
@@ -33,9 +32,9 @@ class AccountHolderDetailController extends GetxController {
     if (picked != null) {
       print(formatter.format(selectedDate));
       selectedDate = picked;
+      update();
     }
   }
-
 
   TimeOfDay selectedTime1 = const TimeOfDay(hour: 00, minute: 00);
 
@@ -48,17 +47,22 @@ class AccountHolderDetailController extends GetxController {
       selectedTime1 = pickedTime;
       print(pickedTime);
     }
-    var displayTime = pickedTime?.format(context).toString();
+    update();
+    // var displayTime = pickedTime?.format(context).toString();
+    // if (kDebugMode) {
+    //   print(pickedTime?.format(context).toString());
+    // } //output 10:51 PM
+    // var removeAM = displayTime?.split(" ");
+    // print("Display Time $displayTime ${removeAM?.first}");
+  }
+
+  formatTime(selectedTime1, context) {
+    var displayTime = selectedTime1?.format(context).toString();
     if (kDebugMode) {
-      print(pickedTime?.format(context).toString());
+      print(selectedTime1?.format(context).toString());
     } //output 10:51 PM
     var removeAM = displayTime?.split(" ");
     print("Display Time $displayTime ${removeAM?.first}");
-    // selectT1.text = displayTime!;
+    return removeAM?.first.toString();
   }
-
-  formatTime(pickedTime){
-    
-  }
-
 }

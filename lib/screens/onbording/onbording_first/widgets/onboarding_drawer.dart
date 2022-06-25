@@ -30,28 +30,32 @@ class OnBoardingDrawer extends StatelessWidget {
             ),
             Divider(color: ColorRes.nBlue),
             GetBuilder<OnBoardingFirstController>(builder: (con) {
-              return ListView.builder(
-                  itemCount: con.icons.length,
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return Container(
-                      height: 60,
-                      margin: EdgeInsets.symmetric(horizontal: 20),
-                      padding: EdgeInsets.only(
-                          top: 15, bottom: 10,),
-                      decoration: BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(color: ColorRes.black))),
-                      child: Row(
-                        children: [
-                          Image.asset(con.icons[index]),
-                          SizedBox(width: 10),
-                          Text(con.title[index])
-                        ],
-                      ),
-                    );
-                  });
+              return MediaQuery.removePadding(
+                removeTop: true,
+                context: context,
+                child: ListView.builder(
+                    itemCount: con.icons.length,
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return Container(
+                        height: 60,
+                        margin: EdgeInsets.symmetric(horizontal: 20),
+                        padding: EdgeInsets.only(
+                            top: 15, bottom: 10,),
+                        decoration: BoxDecoration(
+                            border: Border(
+                                bottom: BorderSide(color: ColorRes.black))),
+                        child: Row(
+                          children: [
+                            Image.asset(con.icons[index]),
+                            SizedBox(width: 10),
+                            Text(con.title[index])
+                          ],
+                        ),
+                      );
+                    }),
+              );
             })
           ],
         ),
