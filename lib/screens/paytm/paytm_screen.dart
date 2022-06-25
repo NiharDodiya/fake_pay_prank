@@ -24,7 +24,7 @@ class PaytmScreen extends StatelessWidget {
           ),
         ),
         backgroundColor: ColorRes.white,
-        title: SizedBox(child: Image.asset(AssetRes.paytmLogo),),
+        title: SizedBox(child: SizedBox(height:22,child: Image.asset(AssetRes.paytmLogo)),),
         centerTitle: true,
         elevation: 0,
       ),
@@ -49,7 +49,7 @@ class PaytmScreen extends StatelessWidget {
                           ),
                         ),
                         child: Container(
-                          height: deviceHeight / 2,
+                          height: 350,
                           decoration: const BoxDecoration(
                             border: Border(
                               bottom: BorderSide(
@@ -59,9 +59,9 @@ class PaytmScreen extends StatelessWidget {
                             ),
                           ),
                           child: Container(
-                            height: (deviceHeight / 2) - 20,
+                            height: 380,
                             padding:
-                                const EdgeInsets.only(left: 20, right: 20, top: 30),
+                                const EdgeInsets.only(left: 20, right: 10, top: 30),
                             decoration: BoxDecoration(
                               color: ColorRes.blue.withOpacity(0.1),
                               border: const Border(
@@ -76,16 +76,20 @@ class PaytmScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 SizedBox(
-                                  height: deviceWidth/9,
-                                  width: deviceWidth/9,
+                                  height: deviceWidth/7,
+                                  width: deviceWidth/7,
                                   child: CircleAvatar(
                                     backgroundColor: ColorRes.nBlue,
-                                    child: Text(
-                                      "PU",
-                                      style: TextStyle(
-                                        color: ColorRes.blue,
-                                        fontSize: deviceWidth / 20,
-                                        height: 1,
+                                    child: Padding(
+                                      padding: EdgeInsets.only(top: 5),
+                                      child: Text(
+                                        "PU",
+                                        style: TextStyle(
+                                          color: ColorRes.blue,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: deviceWidth / 20,
+                                          height: 1,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -94,11 +98,13 @@ class PaytmScreen extends StatelessWidget {
                                   width: 10,
                                 ),
                                 Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     SizedBox(
                                       width: deviceWidth / 1.55,
                                       child: Text(
-                                        "Paytm User Name",
+                                        "Jaydeep Ishwerbhai maniya",
                                         maxLines: 2,
                                         style: TextStyle(
                                           color: ColorRes.black,
@@ -118,7 +124,7 @@ class PaytmScreen extends StatelessWidget {
                                           "UPI ID: 7435970660@paytm",
                                           style: TextStyle(
                                             color: ColorRes.black,
-                                            fontSize: deviceWidth / 22,
+                                            fontSize: deviceWidth / 25,
                                           ),
                                         ),
                                         const SizedBox(
@@ -126,24 +132,24 @@ class PaytmScreen extends StatelessWidget {
                                         ),
                                         Image.asset(
                                           AssetRes.upiIcon,
-                                          height: 20,
-                                          width: 20,
+                                          height: 15,
+                                          width: 15,
                                         ),
                                       ],
                                     ),
                                     const SizedBox(
-                                      height: 10,
+                                      height: 8,
                                     ),
                                     Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
-                                        const SizedBox(
-                                          width: 5,
-                                        ),
                                         Container(
                                           height: 70,
                                           alignment: Alignment.center,
                                           child: Text(
-                                            "₹ 1000",
+                                            "₹ 100",
                                             style: TextStyle(
                                               color: ColorRes.black,
                                               fontSize: deviceWidth / 12,
@@ -162,7 +168,7 @@ class PaytmScreen extends StatelessWidget {
                                       "24 Jun, 03:21 PM",
                                       style: TextStyle(
                                         color: ColorRes.black,
-                                        fontSize: deviceWidth / 22,
+                                        fontSize: deviceWidth / 25,
                                       ),
                                     ),
                                     const SizedBox(
@@ -176,7 +182,7 @@ class PaytmScreen extends StatelessWidget {
                                           "UPI Ref. No: XX 2006",
                                           style: TextStyle(
                                             color: ColorRes.blue,
-                                            fontSize: deviceWidth / 22,
+                                            fontSize: deviceWidth / 23,
                                           ),
                                         ),
                                         const SizedBox(
@@ -205,7 +211,7 @@ class PaytmScreen extends StatelessWidget {
                                               color: ColorRes.white,
                                               border: Border.all(
                                                 color:
-                                                    ColorRes.black.withOpacity(0.3),
+                                                    ColorRes.black.withOpacity(0.1),
                                               ),
                                               borderRadius: const BorderRadius.all(
                                                 Radius.circular(25),
@@ -215,12 +221,12 @@ class PaytmScreen extends StatelessWidget {
                                               "Share",
                                               style: TextStyle(
                                                   color: ColorRes.black,
-                                                  fontWeight: FontWeight.w500,
+                                                  fontWeight: FontWeight.w600,
                                                   fontSize: deviceWidth / 23),
                                             ),
                                           ),
                                           const SizedBox(
-                                            width: 10,
+                                            width: 15,
                                           ),
                                           Container(
                                             height: 45,
@@ -230,7 +236,7 @@ class PaytmScreen extends StatelessWidget {
                                               color: ColorRes.white,
                                               border: Border.all(
                                                 color:
-                                                    ColorRes.black.withOpacity(0.3),
+                                                    ColorRes.black.withOpacity(0.1),
                                               ),
                                               borderRadius: const BorderRadius.all(
                                                 Radius.circular(25),
@@ -240,7 +246,7 @@ class PaytmScreen extends StatelessWidget {
                                               "Pay Again",
                                               style: TextStyle(
                                                   color: ColorRes.black,
-                                                  fontWeight: FontWeight.w500,
+                                                  fontWeight: FontWeight.w600,
                                                   fontSize: deviceWidth / 23),
                                             ),
                                           ),
@@ -284,7 +290,7 @@ class PaytmScreen extends StatelessWidget {
                                   "Your Payment took just 2.74 seconds!",
                                   style: TextStyle(
                                       color: ColorRes.black,
-                                      fontWeight: FontWeight.w600,
+                                      fontWeight: FontWeight.bold,
                                       fontSize: deviceWidth / 24),
                                 ),
                               ],
@@ -373,8 +379,8 @@ Widget bottomNavigationMenu(String image, String title) {
   return Column(
     children: [
       SizedBox(
-        height: deviceWidth/15,
-        width: deviceWidth/15,
+        height: deviceWidth/18,
+        width: deviceWidth/18,
         child: Image.asset(
           image,
         ),
