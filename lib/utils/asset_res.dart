@@ -14,8 +14,14 @@ class AssetRes{
   static const send_money = '${icons}send_money.png';
   static const share = '${icons}share.png';
   static const logo_text = '${icons}logo_text.png';
+  static const back_arrow = '${icons}back_arraw.png';
+  static const calender_icon = '${icons}calender_icon.png';
+  static const call_icon = '${icons}call_icon.png';
+  static const clock_icon = '${icons}clock_icon.png';
+  static const profile_icon = '${icons}profile_icon.png';
+  static const wallet_icon = '${icons}wallet_icon.png';
 
-//   static const menu = '${icons}menu.png';
+
   static const upiIcon = '${icons}upi_icon.png';
 
 ///---------------------------------------- IMAGES ----------------------------------------///

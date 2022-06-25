@@ -1,5 +1,4 @@
 class Strings {
-  static const String fakePayGuide = "Fake Pay Guide";
   static const String fakeMoneyUpi = "Fake Money - UPI Bank Balance Prank allows you to share fake money transfer screenshot to friends, family. You can pretend to be rich by showing people how much fake money you have.";
   static const String getStarted = "Get Start";
 
@@ -19,7 +18,9 @@ class Strings {
   static const String agreeAndContinue = "Agree and Continue";
   static const String thisApp = "This app is intended for entertainmenrt purpose only and is not affiliated with any other app in any way.This app doesnot try to complete with or replace theorigional.By using thisapplication,youmust agree to Fake Pay's.";
 
-
+  static const String accountHolderDetails = "Account holder detail:";
+  static const String submit = "Submit";
+  static const String fakePayGuide = "Fake Pay Guide:";
 
 
 }

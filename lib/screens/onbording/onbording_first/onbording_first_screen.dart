@@ -151,7 +151,7 @@ class OnBoardingFirstScreen extends StatelessWidget {
                       margin: EdgeInsets.only(bottom: 25, left: 15, right: 15),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          color: ColorRes.blue,
+                          color: ColorRes.nBlue,
                           borderRadius: BorderRadius.all(Radius.circular(30))),
                       child: Text(
                         Strings.getStarted,

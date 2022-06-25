@@ -17,7 +17,7 @@ class SplashScreen extends StatelessWidget {
         alignment: Alignment.center,
         child: Text(
           "FAKE PAY",
-          style: TextStyle(color: ColorRes.blue,fontSize: 30,wordSpacing: 2),
+          style: TextStyle(color: ColorRes.nBlue,fontSize: 30,wordSpacing: 2),
         ),
       ),
     );

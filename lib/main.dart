@@ -1,9 +1,7 @@
-import 'package:fake_pay_prank/common/helper.dart';
-import 'package:fake_pay_prank/screens/fake_pay_guide/fake_pay_guide_screen.dart';
-import 'package:fake_pay_prank/screens/paytm/paytm_screen.dart';
 import 'package:fake_pay_prank/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,6 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
+          textTheme: GoogleFonts.robotoTextTheme(Theme.of(context).textTheme)
       ),
       home: SplashScreen()
     );

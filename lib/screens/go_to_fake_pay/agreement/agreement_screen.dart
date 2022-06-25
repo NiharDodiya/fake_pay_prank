@@ -1,4 +1,5 @@
-import 'package:fake_pay_prank/screens/paytm/paytm_screen.dart';
+
+import 'package:fake_pay_prank/screens/go_to_fake_pay/account_holder_detail/account_holder_detail_screen.dart';
 import 'package:fake_pay_prank/utils/asset_res.dart';
 import 'package:fake_pay_prank/utils/color_res.dart';
 import 'package:fake_pay_prank/utils/strings.dart';
@@ -84,7 +85,7 @@ class AgreementScreen extends StatelessWidget {
                 Spacer(),
                 GestureDetector(
                   onTap: () {
-                    Get.to(()=>PaytmScreen());
+                    Get.to(() => AccountHolderDetailScreen());
                   },
                   child: Container(
                     height: 50,
@@ -92,7 +93,7 @@ class AgreementScreen extends StatelessWidget {
                     margin: EdgeInsets.only(bottom: 25, left: 15, right: 15),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                        color: ColorRes.blue,
+                        color: ColorRes.nBlue,
                         borderRadius: BorderRadius.all(Radius.circular(30))),
                     child: Text(
                       Strings.agreeAndContinue,

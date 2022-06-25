@@ -28,7 +28,7 @@ class OnBoardingDrawer extends StatelessWidget {
                 height: 100,
               ),
             ),
-            Divider(color: ColorRes.blue),
+            Divider(color: ColorRes.nBlue),
             GetBuilder<OnBoardingFirstController>(builder: (con) {
               return ListView.builder(
                   itemCount: con.icons.length,
