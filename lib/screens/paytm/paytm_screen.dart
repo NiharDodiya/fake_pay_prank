@@ -24,7 +24,7 @@ class PaytmScreen extends StatelessWidget {
           ),
         ),
         backgroundColor: ColorRes.white,
-        title: SizedBox(child: Image.asset(AssetRes.paytmLogo),),
+        title: SizedBox(child: SizedBox(height:22,child: Image.asset(AssetRes.paytmLogo)),),
         centerTitle: true,
         elevation: 0,
       ),
@@ -49,7 +49,7 @@ class PaytmScreen extends StatelessWidget {
                           ),
                         ),
                         child: Container(
-                          height: deviceHeight / 2,
+                          height: 380,
                           decoration: const BoxDecoration(
                             border: Border(
                               bottom: BorderSide(
@@ -59,9 +59,9 @@ class PaytmScreen extends StatelessWidget {
                             ),
                           ),
                           child: Container(
-                            height: (deviceHeight / 2) - 20,
+                            height: 380,
                             padding:
-                                const EdgeInsets.only(left: 20, right: 20, top: 30),
+                                const EdgeInsets.only(left: 20, right: 10, top: 30),
                             decoration: BoxDecoration(
                               color: ColorRes.blue.withOpacity(0.1),
                               border: const Border(
@@ -71,185 +71,208 @@ class PaytmScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                            child: Column(
                               children: [
-                                SizedBox(
-                                  height: deviceWidth/9,
-                                  width: deviceWidth/9,
-                                  child: CircleAvatar(
-                                    backgroundColor: ColorRes.nBlue,
-                                    child: Text(
-                                      "PU",
-                                      style: TextStyle(
-                                        color: ColorRes.blue,
-                                        fontSize: deviceWidth / 20,
-                                        height: 1,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                Column(
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     SizedBox(
-                                      width: deviceWidth / 1.55,
-                                      child: Text(
-                                        "Paytm User Name",
-                                        maxLines: 2,
-                                        style: TextStyle(
-                                          color: ColorRes.black,
-                                          fontSize: deviceWidth / 16,
-                                          fontWeight: FontWeight.w600,
+                                      height: deviceWidth/7,
+                                      width: deviceWidth/7,
+                                      child: CircleAvatar(
+                                        backgroundColor: ColorRes.nBlue,
+                                        child: Padding(
+                                          padding: EdgeInsets.only(top: 5),
+                                          child: Text(
+                                            "PU",
+                                            style: TextStyle(
+                                              color: ColorRes.blue,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: deviceWidth / 20,
+                                              height: 1,
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
                                     const SizedBox(
-                                      height: 8,
+                                      width: 10,
                                     ),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
-                                        Text(
-                                          "UPI ID: 7435970660@paytm",
-                                          style: TextStyle(
-                                            color: ColorRes.black,
-                                            fontSize: deviceWidth / 22,
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          width: 5,
-                                        ),
-                                        Image.asset(
-                                          AssetRes.upiIcon,
-                                          height: 20,
-                                          width: 20,
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: [
-                                        const SizedBox(
-                                          width: 5,
-                                        ),
-                                        Container(
-                                          height: 70,
-                                          alignment: Alignment.center,
+                                        SizedBox(
+                                          width: deviceWidth / 1.55,
                                           child: Text(
-                                            "₹ 1000",
+                                            "Jaydeep Ishwerbhai Maniya",
+                                            maxLines: 2,
                                             style: TextStyle(
                                               color: ColorRes.black,
-                                              fontSize: deviceWidth / 12,
+                                              fontSize: deviceWidth / 16,
                                               fontWeight: FontWeight.w600,
                                             ),
                                           ),
                                         ),
-                                        Image.asset(
-                                          AssetRes.completeGif,
-                                          height: 60,
-                                          width: 60,
+                                        const SizedBox(
+                                          height: 8,
+                                        ),
+                                        Container(
+                                          width: deviceWidth / 1.55,
+                                          child: Row(
+                                            mainAxisSize:MainAxisSize.max,
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "UPI ID: 7435970660@paytm",
+                                                style: TextStyle(
+                                                  color: ColorRes.black,
+                                                  fontSize: deviceWidth / 25,
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                width: 5,
+                                              ),
+                                              Image.asset(
+                                                AssetRes.upiIcon,
+                                                height: 20,
+                                                width: 20,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 8,
                                         ),
                                       ],
                                     ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      height: 100,
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        "₹ 1",
+                                        style: TextStyle(
+                                          color: ColorRes.black,
+                                          fontSize: deviceWidth / 8,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ),
+                                    Image.asset(
+                                      AssetRes.completeGif,
+                                      height: 60,
+                                      width: 60,
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
                                     Text(
                                       "24 Jun, 03:21 PM",
                                       style: TextStyle(
                                         color: ColorRes.black,
-                                        fontSize: deviceWidth / 22,
+                                        fontSize: deviceWidth / 24,
                                       ),
                                     ),
                                     const SizedBox(
-                                      height: 5,
+                                      width: 15,
                                     ),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          "UPI Ref. No: XX 2006",
-                                          style: TextStyle(
-                                            color: ColorRes.blue,
-                                            fontSize: deviceWidth / 22,
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          width: 5,
-                                        ),
-                                        Icon(
-                                          Icons.keyboard_arrow_down_outlined,
-                                          size: deviceWidth / 12,
-                                          color: ColorRes.blue,
-                                        )
-                                      ],
-                                    ),
-                                    const Spacer(),
-                                    SizedBox(
-                                      height: 60,
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Container(
-                                            height: 45,
-                                            width: deviceWidth / 5,
-                                            alignment: Alignment.center,
-                                            decoration: BoxDecoration(
-                                              color: ColorRes.white,
-                                              border: Border.all(
-                                                color:
-                                                    ColorRes.black.withOpacity(0.3),
-                                              ),
-                                              borderRadius: const BorderRadius.all(
-                                                Radius.circular(25),
-                                              ),
-                                            ),
-                                            child: Text(
-                                              "Share",
-                                              style: TextStyle(
-                                                  color: ColorRes.black,
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: deviceWidth / 23),
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            width: 10,
-                                          ),
-                                          Container(
-                                            height: 45,
-                                            width: deviceWidth / 3,
-                                            alignment: Alignment.center,
-                                            decoration: BoxDecoration(
-                                              color: ColorRes.white,
-                                              border: Border.all(
-                                                color:
-                                                    ColorRes.black.withOpacity(0.3),
-                                              ),
-                                              borderRadius: const BorderRadius.all(
-                                                Radius.circular(25),
-                                              ),
-                                            ),
-                                            child: Text(
-                                              "Pay Again",
-                                              style: TextStyle(
-                                                  color: ColorRes.black,
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: deviceWidth / 23),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    const Spacer(),
                                   ],
                                 ),
+                                const SizedBox(
+                                  height: 5,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "UPI Ref. No: XX 2006",
+                                      style: TextStyle(
+                                        color: ColorRes.blue,
+                                        fontSize: deviceWidth / 23,
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    Icon(
+                                      Icons.keyboard_arrow_down_outlined,
+                                      size: deviceWidth / 12,
+                                      color: ColorRes.blue,
+                                    )
+                                  ],
+                                ),
+                                const Spacer(),
+                                SizedBox(
+                                  height: 60,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                    CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        height: 45,
+                                        width: deviceWidth / 5,
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
+                                          color: ColorRes.white,
+                                          border: Border.all(
+                                            color:
+                                            ColorRes.black.withOpacity(0.1),
+                                          ),
+                                          borderRadius: const BorderRadius.all(
+                                            Radius.circular(25),
+                                          ),
+                                        ),
+                                        child: Text(
+                                          "Share",
+                                          style: TextStyle(
+                                              color: ColorRes.black,
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: deviceWidth / 23),
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 15,
+                                      ),
+                                      Container(
+                                        height: 45,
+                                        width: deviceWidth / 3,
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
+                                          color: ColorRes.white,
+                                          border: Border.all(
+                                            color:
+                                            ColorRes.black.withOpacity(0.1),
+                                          ),
+                                          borderRadius: const BorderRadius.all(
+                                            Radius.circular(25),
+                                          ),
+                                        ),
+                                        child: Text(
+                                          "Pay Again",
+                                          style: TextStyle(
+                                              color: ColorRes.black,
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: deviceWidth / 23),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const Spacer(),
                               ],
                             ),
                           ),
@@ -284,7 +307,7 @@ class PaytmScreen extends StatelessWidget {
                                   "Your Payment took just 2.74 seconds!",
                                   style: TextStyle(
                                       color: ColorRes.black,
-                                      fontWeight: FontWeight.w600,
+                                      fontWeight: FontWeight.bold,
                                       fontSize: deviceWidth / 24),
                                 ),
                               ],
@@ -373,8 +396,8 @@ Widget bottomNavigationMenu(String image, String title) {
   return Column(
     children: [
       SizedBox(
-        height: deviceWidth/15,
-        width: deviceWidth/15,
+        height: deviceWidth/18,
+        width: deviceWidth/18,
         child: Image.asset(
           image,
         ),
