@@ -1,11 +1,11 @@
-class AssetRes{
+class AssetRes {
   static const icons = 'assets/icons/';
   static const images = 'assets/images/';
 
-///---------------------------------------- GIFs -----------------------------------------///
+  ///---------------------------------------- GIFs -----------------------------------------///
   static const completeGif = "${icons}complete_gif.gif";
 
-///---------------------------------------- ICONS ----------------------------------------///
+  ///---------------------------------------- ICONS ----------------------------------------///
   static const logo = '${icons}logo.png';
   static const fake_statement = '${icons}fake_statement.png';
   static const go_to_fake_pay = '${icons}go_to_fake_pay.png';
@@ -36,15 +36,33 @@ class AssetRes{
   static const bank = '${icons}bank.png';
   static const drop_down_arrow = '${icons}drop_down_arrow.png';
 
+  static const completeIcon = '${icons}complete_icon.png';
+  static const bobIcon = '${icons}bob_icon.png';
+  static const downAro = '${icons}doun_arow.png';
+  static const upiIcon2 = '${icons}upi_icon_2.png';
 
   static const upiIcon = '${icons}upi_icon.png';
 
-///---------------------------------------- IMAGES ----------------------------------------///
-
-
-///---------------------------------------- IMAGES ----------------------------------------///
-static const fontFamilyBold = 'SairaCondensed-Bold';
-static const fontFamilyMedium = 'SairaCondensed-Medium';
-
+  ///---------------------------------------- IMAGES ----------------------------------------///
   static const money_transfer = '${images}money_transfer.png';
+
+  ///_________________________ fonts _________________________///
+//Bold Font
+  static const fontRobotoBold = 'Roboto-Bold';
+  static const SFProTextBold = 'SF-Pro-Text-Bold';
+
+//Medium Font
+  static const fontRobotoMedium = 'Roboto-Medium';
+  static const SFProTextMedium = 'SF-Pro-Text-Medium';
+
+//Regular Font
+  static const fontRobotoRegular = 'Roboto-Regular';
+  static const SFProTextRegular = 'SF-Pro-Text-Regular';
+  static const OxygenRegular = 'Oxygen-Regular';
+
+//SemiBold Font
+  static const fontInterExtraBold = 'Inter-ExtraBold';
+
+  static const fontFamilyBold = 'SairaCondensed-Bold';
+  static const fontFamilyMedium = 'SairaCondensed-Medium';
 }

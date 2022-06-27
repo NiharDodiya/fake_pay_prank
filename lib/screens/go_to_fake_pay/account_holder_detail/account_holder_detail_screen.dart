@@ -1,4 +1,3 @@
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:fake_pay_prank/common/common_screen_background.dart';
 import 'package:fake_pay_prank/common/text_field.dart';
 import 'package:fake_pay_prank/screens/g_pay/googlepay_screen.dart';

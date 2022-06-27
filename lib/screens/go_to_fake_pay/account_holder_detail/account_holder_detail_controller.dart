@@ -1,10 +1,10 @@
+import 'package:fake_pay_prank/screens/g_pay/googlepay_screen.dart';
 import 'package:fake_pay_prank/screens/paytm/paytm_screen.dart';
 import 'package:fake_pay_prank/utils/asset_res.dart';
 import 'package:fake_pay_prank/utils/strings.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:intl/intl.dart';
 
 class AccountHolderDetailController extends GetxController {
@@ -156,9 +156,12 @@ class AccountHolderDetailController extends GetxController {
   onSubmitTap() {
     print("SELECTED METHOD $selectMethod");
     if (selectMethod[0] == true) {
-      Get.to(PaytmScreen());
+      Get.to(()=>PaytmScreen());
     } else if (selectMethod[1] == true) {
-    } else if (selectMethod[2] == true) {}
+
+    } else if (selectMethod[2] == true) {
+      Get.to(()=>GooglePayScreen());
+    }
   }
 
   List<String> bank = ["HDFC","BOB","AXIS"];

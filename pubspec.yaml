@@ -103,6 +103,30 @@ flutter:
     - family: SairaCondensed-Medium
       fonts:
         - asset: assets/fonts/SairaCondensed-Medium.ttf
+    - family: Roboto-Bold
+      fonts:
+        - asset: assets/fonts/Roboto-Bold.ttf
+    - family: Roboto-Regular
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
+    - family: Roboto-Medium
+      fonts:
+        - asset: assets/fonts/Roboto-Medium.ttf
+    - family: SF-Pro-Text-Bold
+      fonts:
+        - asset: assets/fonts/SF-Pro-Text-Bold.otf
+    - family: SF-Pro-Text-Regular
+      fonts:
+        - asset: assets/fonts/SF-Pro-Text-Regular.otf
+    - family: SF-Pro-Text-Medium
+      fonts:
+        - asset: assets/fonts/SF-Pro-Text-Medium.otf
+    - family: Inter-ExtraBold
+      fonts:
+        - asset: assets/fonts/Inter-ExtraBold.ttf
+    - family: Oxygen-Regular
+      fonts:
+        - asset: assets/fonts/Oxygen-Regular.ttf
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
