@@ -1,5 +1,4 @@
 import 'package:fake_pay_prank/common/common_screen_background.dart';
-import 'package:fake_pay_prank/screens/g_pay/googlepay_screen.dart';
 import 'package:fake_pay_prank/screens/go_to_fake_pay/account_holder_detail/account_holder_detail_controller.dart';
 import 'package:fake_pay_prank/screens/go_to_fake_pay/account_holder_detail/widgets/ac_holder_detail_form.dart';
 import 'package:fake_pay_prank/screens/go_to_fake_pay/account_holder_detail/widgets/payment_method.dart';
@@ -23,7 +22,10 @@ class AccountHolderDetailScreen extends StatelessWidget {
           SizedBox(height: 10),
           Text(
             Strings.accountHolderDetails,
-            style: TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
+            style: TextStyle(
+              fontWeight: FontWeight.w500,
+              fontSize: 15,
+            ),
           ),
           SizedBox(height: 15),
           accountHolderDetails(context),

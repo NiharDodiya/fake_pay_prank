@@ -286,7 +286,7 @@ class PaytmScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: ColorRes.white,
                           border: Border.all(
-                            color: ColorRes.black.withOpacity(0.3),
+                            color: ColorRes.black.withOpacity(0.1),
                           ),
                           borderRadius: const BorderRadius.all(
                             Radius.circular(12),
