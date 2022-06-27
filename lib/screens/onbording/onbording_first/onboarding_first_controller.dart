@@ -32,7 +32,6 @@ class OnBoardingFirstController extends GetxController {
       Get.to(AccountHolderDetailScreen());
     } else if (index == 1) {
       //fake statement
-      Get.to(SplashScreen());
     } else if (index == 2) {
       //privacy
       Get.to(PrivacyScreen());

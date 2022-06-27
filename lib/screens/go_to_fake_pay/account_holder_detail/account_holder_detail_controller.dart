@@ -1,3 +1,5 @@
+import 'package:fake_pay_prank/Services/get_bank_api.dart';
+import 'package:fake_pay_prank/model/bank_model.dart';
 import 'package:fake_pay_prank/screens/g_pay/googlepay_screen.dart';
 import 'package:fake_pay_prank/screens/paytm/paytm_screen.dart';
 import 'package:fake_pay_prank/utils/asset_res.dart';
@@ -12,7 +14,6 @@ class AccountHolderDetailController extends GetxController {
   TextEditingController phoneController = TextEditingController();
   TextEditingController amountController = TextEditingController();
   TextEditingController bankController = TextEditingController();
-
 
   FocusNode nameFn = FocusNode();
   FocusNode phoneFn = FocusNode();
@@ -98,7 +99,24 @@ class AccountHolderDetailController extends GetxController {
     }
   }
 
-  TimeOfDay selectedTime1 = const TimeOfDay(hour: 12, minute: 00);
+  DateTime now = DateTime.now();
+  TimeOfDay selectedTime1 = TimeOfDay(
+      hour: DateTime(
+              DateTime.now().year,
+              DateTime.now().month,
+              DateTime.now().day,
+              DateTime.now().hour,
+              DateTime.now().minute,
+              DateTime.now().second)
+          .hour,
+      minute: DateTime(
+          DateTime.now().year,
+          DateTime.now().month,
+          DateTime.now().day,
+          DateTime.now().hour,
+          DateTime.now().minute,
+          DateTime.now().second)
+          .minute);
 
   selectTime(BuildContext context) async {
     final TimeOfDay? pickedTime = await showTimePicker(
@@ -156,13 +174,40 @@ class AccountHolderDetailController extends GetxController {
   onSubmitTap() {
     print("SELECTED METHOD $selectMethod");
     if (selectMethod[0] == true) {
-      Get.to(()=>PaytmScreen());
+      Get.to(() => PaytmScreen());
     } else if (selectMethod[1] == true) {
-
     } else if (selectMethod[2] == true) {
-      Get.to(()=>GooglePayScreen());
+      Get.to(() => GooglePayScreen());
     }
   }
 
-  List<String> bank = ["HDFC","BOB","AXIS"];
+  bool showDropDown = false;
+  List<String> bank = ["HDFC", "BOB", "AXIS"];
+
+  onTapDropDown() {
+    showDropDown = !showDropDown;
+    update(["dropDown"]);
+  }
+
+  onSelectDropDownItem(String bank) {
+    print("SHOW DROP DOWN = $showDropDown");
+    onTapDropDown();
+    bankController.text = bank;
+    update(["dropDown"]);
+  }
+
+  BankModel bankModel = BankModel();
+  bool showLoader = false;
+
+  @override
+  void onInit() {
+    showLoader = true;
+    update(["loader"]);
+    GetBankItem.getBankDropDown().then((value) {
+      bankModel = value!;
+      showLoader = false;
+      update(["loader"]);
+    });
+    super.onInit();
+  }
 }

@@ -1,11 +1,10 @@
-import 'dart:convert';
-
-import 'package:fake_pay_prank/model/about_view_model.dart';
-import 'package:flutter/foundation.dart';
+import 'package:fake_pay_prank/model/bank_model.dart';
 import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:flutter/foundation.dart';
 
-class AboutViewApi{
-  static Future<AboutViewModel?> aboutView() async {
+class GetBankItem{
+  static Future<BankModel?> getBankDropDown() async {
     try {
       String url = "https://prank-pay.herokuapp.com/api/About-view";
       http.Response response =
@@ -14,15 +13,13 @@ class AboutViewApi{
       print(response.statusCode);
       print(response.body);
       if (jsonDecode(response.body)["data"] != null || jsonDecode(response.body)["data"].length != 0) {
-        return aboutViewModelFromJson(response.body);
+        return bankModelFromJson(response.body);
       }
-      return AboutViewModel();
+      return BankModel();
     } catch (e) {
       if (kDebugMode) {
-        print("About View API ERROR : ${e.toString()}");
+        print("Bank Api ERROR : ${e.toString()}");
       }
     }
   }
-
-
 }

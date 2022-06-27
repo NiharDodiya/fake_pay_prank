@@ -118,29 +118,36 @@ Widget chiild() {
         },
         child: Container(
           // height: 50,
-          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          height: 34,
+          width: 100,
+          alignment: Alignment.center,
+          // padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           decoration: BoxDecoration(
               color: ColorRes.blue,
               borderRadius: BorderRadius.all(Radius.circular(20))),
           child: Text(
             Strings.sendMoney,
-            style: TextStyle(color: ColorRes.white, fontSize: 12),
+            style: TextStyle(color: ColorRes.white, fontSize: 12,fontWeight: FontWeight.w500),
           ),
         ),
       ),
       SizedBox(height: 15),
       Container(
-        height: 100,
+        height: 140,
         width: Get.width,
         decoration: BoxDecoration(
             border: Border.all(),
-            borderRadius: BorderRadius.all(Radius.circular(15))),
+            borderRadius: BorderRadius.all(Radius.circular(20))),
         child: Column(
           children: [
-            SizedBox(height: 5),
-            Text(Strings.fakePayMoneyTransfer,
-                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16)),
-            SizedBox(height: 10),
+            SizedBox(height: 16),
+            Container(
+              padding: EdgeInsets.only(left: 16),
+              alignment: Alignment.centerLeft,
+              child: Text(Strings.fakePayMoneyTransfer,
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16)),
+            ),
+            SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -167,10 +174,10 @@ Widget chiild() {
                     child: Column(
                       children: [
                         Image.asset(AssetRes.go_to_fake_pay, height: 30),
-                        SizedBox(height: 3),
+                        SizedBox(height: 10),
                         Text(
                           Strings.go_to_fake_pay,
-                          style: TextStyle(fontSize: 10),
+                          style: TextStyle(fontSize: 12,color: ColorRes.black,fontWeight: FontWeight.w500),
                           textAlign: TextAlign.center,
                         )
                       ],
@@ -188,10 +195,10 @@ Widget chiild() {
                     child: Column(
                       children: [
                         Image.asset(AssetRes.how_to_use, height: 30),
-                        SizedBox(height: 3),
+                        SizedBox(height: 10),
                         Text(
                           Strings.how_to_use,
-                          style: TextStyle(fontSize: 10),
+                          style: TextStyle(fontSize: 12,color: ColorRes.black,fontWeight: FontWeight.w500),
                           textAlign: TextAlign.center,
                         )
                       ],
@@ -207,10 +214,10 @@ Widget chiild() {
                     child: Column(
                       children: [
                         Image.asset(AssetRes.fake_statement, height: 30),
-                        SizedBox(height: 3),
+                        SizedBox(height: 10),
                         Text(
                           Strings.fake_statement,
-                          style: TextStyle(fontSize: 10),
+                          style: TextStyle(fontSize: 12,color: ColorRes.black,fontWeight: FontWeight.w500),
                           textAlign: TextAlign.center,
                         )
                       ],
@@ -225,15 +232,15 @@ Widget chiild() {
                     },
                     child: Container(
                       width: 50,
-                      margin: EdgeInsets.only(left: 15),
+                      margin: EdgeInsets.only(left: 15,bottom: 10),
                       // decoration: BoxDecoration(border: Border.all()),
                       child: Column(
                         children: [
                           Image.asset(AssetRes.rate_us, height: 30),
-                          SizedBox(height: 5),
+                          SizedBox(height: 20),
                           Text(
                             Strings.rate_us,
-                            style: TextStyle(fontSize: 10),
+                            style: TextStyle(fontSize: 12,color: ColorRes.black,fontWeight: FontWeight.w500),
                             textAlign: TextAlign.center,
                           )
                         ],

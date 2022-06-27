@@ -14,8 +14,10 @@ class CommonTextField extends StatelessWidget {
   bool? enable;
   String? suffixIcon;
   bool? showSuffixIcon;
+  bool? read;
 
   final Function(String? value)? onChange;
+  final Function()? onTap;
   final TextInputType? textInputType;
 
   CommonTextField({
@@ -27,10 +29,12 @@ class CommonTextField extends StatelessWidget {
     this.focusNode,
     Key? key,
     this.onChange,
+    this.onTap,
     this.textInputType,
     required this.prefixIcon,
     this.showSuffixIcon = false,
     this.suffixIcon,
+    this.read = false
   }) : super(key: key);
 
   @override
@@ -46,6 +50,9 @@ class CommonTextField extends StatelessWidget {
           border: Border.all(color: ColorRes.blue),
           borderRadius: const BorderRadius.all(Radius.circular(10))),
       child: TextField(
+        onTap: (){
+          onTap!();
+        },
         enabled: enable,
         style: const TextStyle(
           fontWeight: FontWeight.w600,
@@ -56,6 +63,7 @@ class CommonTextField extends StatelessWidget {
         onChanged: onChange,
         controller: controller,
         focusNode: focusNode,
+        readOnly: read!,
         obscureText: obscure ?? false,
         obscuringCharacter: "⬤",
         decoration: InputDecoration(

@@ -49,8 +49,8 @@ class OnBoardingFirstScreen extends StatelessWidget {
                     child: Image.asset(AssetRes.logo),
                   ),
                 ),
-                Positioned(
-                  top: 45,
+        /*        Positioned(
+                  top: 40,
                   left: 15,
                   child: GetBuilder<OnBoardingFirstController>(
                     id: "drawer",
@@ -67,7 +67,7 @@ class OnBoardingFirstScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                ),
+                ),*/
               ],
             ),
           ),
