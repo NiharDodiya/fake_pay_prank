@@ -1,6 +1,6 @@
 import 'package:fake_pay_prank/common/helper.dart';
 import 'package:fake_pay_prank/screens/splash/splash_controller.dart';
-import 'package:fake_pay_prank/utils/color_res.dart';
+import 'package:fake_pay_prank/utils/asset_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,11 +16,15 @@ class SplashScreen extends StatelessWidget {
       body: Container(
         height: Get.height,
         width: Get.width,
+        // decoration: BoxDecoration(
+        //   gradient: LinearGradient(
+        //     begin: Alignment.topCenter,
+        //     end: Alignment.bottomCenter,
+        //     colors: [ColorRes.gradiant2, ColorRes.gradiant2],
+        //   ),
+        // ),
         alignment: Alignment.center,
-        child: Text(
-          "FAKE PAY",
-          style: TextStyle(color: ColorRes.nBlue,fontSize: 30,wordSpacing: 2),
-        ),
+        child: Image.asset(AssetRes.logo,height: 50)
       ),
     );
   }

@@ -3,7 +3,7 @@ import 'package:fake_pay_prank/utils/color_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-Widget screenDesign({required Widget child}) {
+Widget screenDesign({required Widget child,Widget? positionedWidget}) {
   return Stack(
     children: [
       Container(
@@ -37,19 +37,25 @@ Widget screenDesign({required Widget child}) {
               ),
             ),
             Positioned(
-              top: 50,
+              top: 45,
               left: 15,
               child:InkWell(
                 onTap: (){
                   Get.back();
                 },
-                child: SizedBox(
-                  height: 16,
-                  width: 16,
-                  child: Image.asset(
-                    AssetRes.back_arrow,
-                    // height: 19,
-                    // width: 19,
+                child: Container(
+                  width:  50,
+                  height: 40,
+                  padding: EdgeInsets.only(top: 10,bottom: 10,right: 10),
+                  // decoration: BoxDecoration(border: Border.all()),
+                  child: SizedBox(
+                    height: 16,
+                    width: 16,
+                    child: Image.asset(
+                      AssetRes.back_arrow,
+                      // height: 19,
+                      // width: 19,
+                    ),
                   ),
                 ),
               )
@@ -69,7 +75,8 @@ Widget screenDesign({required Widget child}) {
                     topRight: Radius.circular(20))),
             padding: EdgeInsets.symmetric(horizontal: 10),
             child: child),
-      )
+      ),
+      positionedWidget ?? SizedBox(),
     ],
   );
 }

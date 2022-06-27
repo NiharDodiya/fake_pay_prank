@@ -11,9 +11,67 @@ class AccountHolderDetailController extends GetxController {
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController amountController = TextEditingController();
+  TextEditingController bankController = TextEditingController();
+
+
   FocusNode nameFn = FocusNode();
   FocusNode phoneFn = FocusNode();
   FocusNode amountFn = FocusNode();
+  FocusNode bankFn = FocusNode();
+
+  String nameError = "";
+  String phoneError = "";
+  String amountError = "";
+
+  bool validate() {
+    nameValidation();
+    phoneValidation();
+    walletValidation();
+    if (nameError == "" && phoneError == "" && amountError == "") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  nameValidation() {
+    if (nameController.text.trim() == "") {
+      nameError = "Enter the Name";
+    } else {
+      nameError = "";
+    }
+    update(["forms"]);
+    /*else {
+      //bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(email);
+      if (RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(emailController.text)*/ /*GetUtils.isEmail(emailController.text)*/ /*) {
+        emailErrorText = '';
+      } else {
+        emailErrorText = "Enter valid email";
+      }
+    }*/
+  }
+
+  phoneValidation() {
+    if (phoneController.text.trim() == "") {
+      phoneError = "Enter Phone No";
+    } else {
+      if (phoneController.text.length == 10) {
+        phoneError = "";
+      } else {
+        phoneError = "Enter Valid Number";
+      }
+    }
+    update(["forms"]);
+  }
+
+  walletValidation() {
+    if (amountController.text == "") {
+      amountError = "Enter Your Amount";
+    } else {
+      amountError = "";
+    }
+    update(["forms"]);
+  }
 
   DateTime selectedDate = DateTime.now();
   DateFormat formatter = DateFormat("dd MMMM yyyy");
@@ -22,7 +80,7 @@ class AccountHolderDetailController extends GetxController {
     DateTime? picked = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
-      firstDate: DateTime(2010),
+      firstDate: DateTime.now(),
       lastDate: DateTime(2050),
       builder: (context, child) {
         return Theme(
@@ -40,7 +98,7 @@ class AccountHolderDetailController extends GetxController {
     }
   }
 
-  TimeOfDay selectedTime1 = const TimeOfDay(hour: 00, minute: 00);
+  TimeOfDay selectedTime1 = const TimeOfDay(hour: 12, minute: 00);
 
   selectTime(BuildContext context) async {
     final TimeOfDay? pickedTime = await showTimePicker(
@@ -102,4 +160,6 @@ class AccountHolderDetailController extends GetxController {
     } else if (selectMethod[1] == true) {
     } else if (selectMethod[2] == true) {}
   }
+
+  List<String> bank = ["HDFC","BOB","AXIS"];
 }

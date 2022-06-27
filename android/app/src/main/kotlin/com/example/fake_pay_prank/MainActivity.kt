@@ -1,4 +1,4 @@
-package com.example.fake_pay_prank
+package com.indian.scam.fake.pay
 
 import io.flutter.embedding.android.FlutterActivity
 

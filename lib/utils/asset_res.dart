@@ -33,6 +33,8 @@ class AssetRes{
   static const paytm_logo = '${icons}paytm_logo.png';
   static const phone_pay = '${icons}phonepe_icon.png';
   static const paytmLogo = '${icons}paytm_logo.png';
+  static const bank = '${icons}bank.png';
+  static const drop_down_arrow = '${icons}drop_down_arrow.png';
 
 
   static const upiIcon = '${icons}upi_icon.png';

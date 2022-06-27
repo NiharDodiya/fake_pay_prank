@@ -1,3 +1,4 @@
+import 'package:fake_pay_prank/Services/prefs_services.dart';
 import 'package:fake_pay_prank/screens/onbording/onboarding_second/onboarding_second_screen.dart';
 import 'package:fake_pay_prank/screens/onbording/onbording_first/onboarding_first_controller.dart';
 import 'package:fake_pay_prank/screens/onbording/onbording_first/widgets/onboarding_drawer.dart';
@@ -28,42 +29,6 @@ class OnBoardingFirstScreen extends StatelessWidget {
                 colors: [ColorRes.gradiant2, ColorRes.gradiant2],
               ),
             ),
-            // child: Column(
-            //   mainAxisAlignment: MainAxisAlignment.start,
-            //   crossAxisAlignment: CrossAxisAlignment.start,
-            //   children: [
-            //     Stack(
-            //       children: [
-            //         Container(
-            //           height: 90,
-            //           padding: EdgeInsets.only(top: 45,bottom: 15),
-            //           width: Get.width,
-            //           decoration: BoxDecoration(
-            //             gradient: LinearGradient(
-            //               begin: Alignment.topCenter,
-            //               end: Alignment.bottomCenter,
-            //               colors: [
-            //                ColorRes.gradiant1,
-            //                 ColorRes.gradiant2
-            //               ],
-            //           ),
-            //         ),
-            //           child: Container(
-            //             child: Image.asset(AssetRes.logo),
-            //           ),
-            //
-            //         ),
-            //         Positioned(
-            //             top:45 ,
-            //             left: 15,
-            //             child: Image.asset(AssetRes.menu,height: 19,)),
-            //         Positioned(child: Container(
-            //
-            //         ))
-            //       ],
-            //     ),
-            //   ],
-            // ),
           ),
           Positioned(
             top: 0,
@@ -126,7 +91,8 @@ class OnBoardingFirstScreen extends StatelessWidget {
                   Text(Strings.fakeMoneyUpi),
                   Spacer(),
                   GestureDetector(
-                    onTap: () {
+                    onTap: ()  {
+                      SharePref.setBool(PrefKeys.open_first_getStarted, true);
                       Get.to(OnBoardingSecondScreen());
                     },
                     child: Container(

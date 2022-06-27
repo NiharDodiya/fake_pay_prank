@@ -4,18 +4,18 @@
 
 import 'dart:convert';
 
-PrivacyModel privacyModelFromJson(String str) => PrivacyModel.fromJson(json.decode(str));
+AboutViewModel aboutViewModelFromJson(String str) => AboutViewModel.fromJson(json.decode(str));
 
-String privacyModelToJson(PrivacyModel data) => json.encode(data.toJson());
+String aboutViewModelToJson(AboutViewModel data) => json.encode(data.toJson());
 
-class PrivacyModel {
-  PrivacyModel({
+class AboutViewModel {
+  AboutViewModel({
     this.data,
   });
 
   List<Datum>? data;
 
-  factory PrivacyModel.fromJson(Map<String, dynamic> json) => PrivacyModel(
+  factory AboutViewModel.fromJson(Map<String, dynamic> json) => AboutViewModel(
     data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
   );
 

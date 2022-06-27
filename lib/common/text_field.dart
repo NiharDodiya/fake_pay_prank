@@ -12,6 +12,8 @@ class CommonTextField extends StatelessWidget {
   bool? obscure;
   bool? error;
   bool? enable;
+  String? suffixIcon;
+  bool? showSuffixIcon;
 
   final Function(String? value)? onChange;
   final TextInputType? textInputType;
@@ -27,6 +29,8 @@ class CommonTextField extends StatelessWidget {
     this.onChange,
     this.textInputType,
     required this.prefixIcon,
+    this.showSuffixIcon = false,
+    this.suffixIcon,
   }) : super(key: key);
 
   @override
@@ -36,7 +40,7 @@ class CommonTextField extends StatelessWidget {
       width: Get.width,
       alignment: Alignment.center,
       padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 1),
-      margin: const EdgeInsets.only(bottom: 15),
+      // margin: const EdgeInsets.only(bottom: 15),
       decoration: BoxDecoration(
           // color: ColorRes.offWhite,
           border: Border.all(color: ColorRes.blue),
@@ -72,6 +76,11 @@ class CommonTextField extends StatelessWidget {
               width: 15,
               padding: EdgeInsets.all(5),
               child: Image.asset(prefixIcon, height: 5, width: 5)),
+          suffixIcon: showSuffixIcon == false ? SizedBox():Container(
+              height: 15,
+              width: 15,
+              padding: EdgeInsets.all(12),
+              child: Image.asset(suffixIcon!, height: 5, width: 5))
         ),
       ),
     );

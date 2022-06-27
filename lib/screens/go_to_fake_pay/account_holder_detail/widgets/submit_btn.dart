@@ -5,15 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 Widget submitBtn(){
-  return    GetBuilder<AccountHolderDetailController>(builder: (con) {
+  return GetBuilder<AccountHolderDetailController>(builder: (con) {
     return InkWell(
       onTap: () {
-        con.onSubmitTap();
+        if(con.validate()){
+          con.onSubmitTap();
+        }
       },
       child: Container(
         height: 50,
         // width: Get.width * 0.5,
-        margin: EdgeInsets.only(bottom: 25, left: 15, right: 15),
+        margin: EdgeInsets.only(bottom: 20, left: 15, right: 15),
         alignment: Alignment.center,
         decoration: BoxDecoration(
             color: ColorRes.nBlue,

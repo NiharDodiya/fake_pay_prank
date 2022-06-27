@@ -28,5 +28,7 @@ class Strings {
   static const String phone_pay = "(PhonePe)";
   static const String paytm_logo = "(Paytm)";
 
+  static const String fakePay = "Fake Pay";
+
 
 }

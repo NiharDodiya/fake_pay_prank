@@ -1,5 +1,6 @@
 import 'package:fake_pay_prank/common/common_screen_background.dart';
 import 'package:fake_pay_prank/screens/guide/guide_controller.dart';
+import 'package:fake_pay_prank/screens/guide/guide_line_answer_screen.dart';
 import 'package:fake_pay_prank/utils/color_res.dart';
 import 'package:fake_pay_prank/utils/strings.dart';
 import 'package:flutter/material.dart';
@@ -21,33 +22,50 @@ class GuideScreen extends StatelessWidget {
           Text(Strings.fakePayGuide,
               style: TextStyle(fontWeight: FontWeight.w500, fontSize: 15)),
           SizedBox(height: 10),
-          GetBuilder<GuideController>(builder: (con) {
-            return MediaQuery.removePadding(
-              removeTop: true,
-              context: context,
-              child: ListView.builder(
-                  itemCount: con.guides.length,
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return Container(
-                      height: 80,
-                      padding: EdgeInsets.only(left: 10),
-                      alignment: Alignment.centerLeft,
-                      margin: EdgeInsets.only(bottom: 10),
-                      width: Get.width,
-                      decoration: BoxDecoration(
-                          color: ColorRes.blue,
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
-                      child: Text(con.guides[index]),
-                    );
-                  }),
-            );
-          })
+          GetBuilder<GuideController>(
+              id: "fakeGuide",
+              builder: (con) {
+                return MediaQuery.removePadding(
+                  removeTop: true,
+                  context: context,
+                  child: con.showLoader == false
+                      ? ListView.builder(
+                          itemCount: con.guideLineModel.data?.length,
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                              onTap: () {
+                                Get.to(GuideLineAnswerScreen(
+                                    answer: con.guideLineModel.data?[index]
+                                            .answer ??
+                                        ""));
+                              },
+                              child: Container(
+                                height: 80,
+                                padding: EdgeInsets.only(left: 10),
+                                alignment: Alignment.centerLeft,
+                                margin: EdgeInsets.only(bottom: 10),
+                                width: Get.width,
+                                decoration: BoxDecoration(
+                                    color: ColorRes.blue,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10))),
+                                child: Text(
+                                    con.guideLineModel.data![index].question ??
+                                        ""),
+                              ),
+                            );
+                          })
+                      : Container(
+                          height: Get.height * 0.5,
+                          alignment: Alignment.center,
+                          child: CircularProgressIndicator(),
+                        ),
+                );
+              })
         ],
       )),
     );
   }
 }
-
-

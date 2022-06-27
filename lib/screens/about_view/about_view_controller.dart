@@ -5,20 +5,21 @@ import 'package:fake_pay_prank/model/about_view_model.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class PrivacyController extends GetxController {
+class AboutViewController extends GetxController {
   bool showLoader = false;
   AboutViewModel privacyModel = AboutViewModel();
 
   @override
   void onInit() {
-    // showLoader = true;
-    // update();
+    showLoader = true;
+    update(["about_api"]);
     if (Platform.isAndroid) WebView.platform = AndroidWebView();
-    // AboutViewApi.aboutView().then((value) {
-    //   privacyModel = value!;
-    //   showLoader = false;
-    // });
-    update();
+    AboutViewApi.aboutView().then((value) {
+      privacyModel = value!;
+      showLoader = false;
+     update(["about_api"]);
+    });
+
     super.onInit();
   }
 }

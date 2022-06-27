@@ -1,3 +1,4 @@
+import 'package:fake_pay_prank/Services/prefs_services.dart';
 import 'package:fake_pay_prank/common/common_screen_background.dart';
 import 'package:fake_pay_prank/screens/go_to_fake_pay/account_holder_detail/account_holder_detail_screen.dart';
 import 'package:fake_pay_prank/utils/asset_res.dart';
@@ -15,24 +16,16 @@ class AgreementScreen extends StatelessWidget {
         body: screenDesign(
             child: Column(
       children: [
-        SizedBox(
-          height: 20,
-        ),
-        Container(
+        SizedBox(height: 20),
+        Image.asset(
+          AssetRes.logo_text,
           height: 70,
-          width: 70,
-          padding: EdgeInsets.symmetric(horizontal: 10),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(15)),
-              color: Colors.grey.withOpacity(0.4)),
-          child: Image.asset(
-            AssetRes.logo_text,
-            height: 30,
-          ),
         ),
         SizedBox(
-          height: 20,
+          height: 5,
         ),
+        Text(Strings.fakePay),
+        SizedBox(height: 20),
         Text(
           Strings.thisApp,
           style: TextStyle(fontSize: 12),
@@ -40,6 +33,7 @@ class AgreementScreen extends StatelessWidget {
         Spacer(),
         GestureDetector(
           onTap: () {
+            SharePref.setBool(PrefKeys.open_first_agree, true);
             Get.to(() => AccountHolderDetailScreen());
           },
           child: Container(
