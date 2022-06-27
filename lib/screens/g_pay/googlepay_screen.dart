@@ -38,7 +38,7 @@ class GooglePayScreen extends StatelessWidget {
             alignment: Alignment.center,
             width: deviceWidth / 9,
             child: Icon(
-              Icons.more_horiz,
+              Icons.more_vert,
               color: ColorRes.black.withOpacity(0.5),
               size: deviceWidth / 18,
             ),
@@ -59,13 +59,13 @@ class GooglePayScreen extends StatelessWidget {
                   height: 20,
                 ),
                 CircleAvatar(
-                  radius: 23,
+                  radius: 28,
                   backgroundColor: ColorRes.nBlue,
                   child: Text(
-                    "JM",
+                    "J",
                     style: TextStyle(
                       color: ColorRes.blue,
-                      fontSize: deviceWidth / 16,
+                      fontSize: 34,
                       height: 1,
                     ),
                   ),
@@ -77,9 +77,12 @@ class GooglePayScreen extends StatelessWidget {
                   "To Jaydip Maniya (jd king)",
                   style: TextStyle(
                       color: ColorRes.black,
-                      fontFamily: AssetRes.SFProTextMedium,
-                      fontSize: deviceWidth / 30,
-                      fontWeight: FontWeight.w500),
+                      fontFamily: AssetRes.SFProTextRegular,
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 3,
                 ),
                 Text(
                   "+91 74359 70660",
@@ -122,14 +125,14 @@ class GooglePayScreen extends StatelessWidget {
                     children: [
                       Image.asset(
                         AssetRes.completeIcon,
-                        height: deviceWidth / 28,
-                        width: deviceWidth / 28,
+                        height: 15,
+                        width: 15,
                       ),
                       Text(
                         "  Completed • 25 June 2022 at 21:50",
                         style: TextStyle(
                           color: ColorRes.black,
-                          fontSize: deviceWidth / 31,
+                          fontSize: 11,
                         ),
                       ),
                     ],
@@ -180,10 +183,9 @@ class GooglePayScreen extends StatelessWidget {
                             Text(
                               "Bank of Baroda XXXXXX3032",
                               style: TextStyle(
-                                color: ColorRes.black,
+                                color: ColorRes.lightGray,
                                 fontFamily: AssetRes.fontRobotoMedium,
-                                fontWeight: FontWeight.w500,
-                                fontSize: deviceWidth / 28,
+                                fontSize: 14,
                               ),
                             ),
                             Spacer(),
@@ -205,16 +207,16 @@ class GooglePayScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
-                              height: 10,
+                              height: 12,
                             ),
                             Text(
                               "UPI transaction ID",
                               maxLines: 2,
                               style: TextStyle(
-                                fontSize: deviceWidth / 28,
-                                fontFamily: AssetRes.fontRobotoRegular,
-                                fontWeight: FontWeight.w600,
-                                color: ColorRes.black.withOpacity(0.7),
+                                fontSize: 13,
+                                fontFamily: AssetRes.fontRobotoMedium,
+                                fontWeight: FontWeight.w500,
+                                color: ColorRes.lightGray,
                               ),
                             ),
                             SizedBox(
@@ -224,20 +226,20 @@ class GooglePayScreen extends StatelessWidget {
                               "217685353013",
                               maxLines: 2,
                               style: TextStyle(
-                                fontSize: deviceWidth / 30,
-                                color: ColorRes.black,
+                                fontSize: 12,
+                                color: ColorRes.gray,
                               ),
                             ),
                             SizedBox(
-                              height: 10,
+                              height: 12,
                             ),
                             Text(
                               "To: JAYDEEP ISHWARBHAI MANIYA",
                               style: TextStyle(
-                                fontSize: deviceWidth / 28,
-                                fontFamily: AssetRes.fontRobotoRegular,
-                                fontWeight: FontWeight.w600,
-                                color: ColorRes.black.withOpacity(0.7),
+                                fontSize: 13,
+                                fontFamily: AssetRes.fontRobotoMedium,
+                                fontWeight: FontWeight.w500,
+                                color: ColorRes.lightGray,
                               ),
                             ),
                             SizedBox(
@@ -247,21 +249,21 @@ class GooglePayScreen extends StatelessWidget {
                               "jaydipmaniya21@okhdfcbank",
                               maxLines: 2,
                               style: TextStyle(
-                                fontSize: deviceWidth / 30,
-                                color: ColorRes.black,
+                                fontSize: 12,
+                                color: ColorRes.gray,
                               ),
                             ),
                             SizedBox(
-                              height: 10,
+                              height: 12,
                             ),
                             Text(
                               "From: RUPESH JAYESHBHAI KALKANI (Bank of Baroda)",
                               maxLines: 2,
                               style: TextStyle(
-                                fontSize: deviceWidth / 28,
-                                fontFamily: AssetRes.fontRobotoRegular,
-                                fontWeight: FontWeight.w600,
-                                color: ColorRes.black.withOpacity(0.7),
+                                fontSize: 13,
+                                fontFamily: AssetRes.fontRobotoMedium,
+                                fontWeight: FontWeight.w500,
+                                color: ColorRes.lightGray,
                               ),
                             ),
                             SizedBox(
@@ -271,21 +273,21 @@ class GooglePayScreen extends StatelessWidget {
                               "rupeshkalkani@okaxis",
                               maxLines: 2,
                               style: TextStyle(
-                                fontSize: deviceWidth / 30,
-                                color: ColorRes.black,
+                                fontSize: 12,
+                                color: ColorRes.gray,
                               ),
                             ),
                             SizedBox(
-                              height: 10,
+                              height: 12,
                             ),
                             Text(
                               "Google transaction ID",
                               maxLines: 2,
                               style: TextStyle(
-                                fontSize: deviceWidth / 28,
-                                fontFamily: AssetRes.fontRobotoRegular,
-                                fontWeight: FontWeight.w600,
-                                color: ColorRes.black.withOpacity(0.7),
+                                fontSize: 13,
+                                fontFamily: AssetRes.fontRobotoMedium,
+                                fontWeight: FontWeight.w500,
+                                color: ColorRes.lightGray,
                               ),
                             ),
                             SizedBox(
@@ -295,12 +297,12 @@ class GooglePayScreen extends StatelessWidget {
                               "CICAgODfkpvhdg",
                               maxLines: 2,
                               style: TextStyle(
-                                fontSize: deviceWidth / 30,
-                                color: ColorRes.black,
+                                fontSize: 12,
+                                color: ColorRes.gray,
                               ),
                             ),
                             SizedBox(
-                              height: 10,
+                              height: 15,
                             ),
                           ],
                         ),
