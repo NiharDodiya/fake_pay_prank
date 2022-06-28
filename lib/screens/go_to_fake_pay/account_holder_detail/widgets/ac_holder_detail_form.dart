@@ -34,6 +34,7 @@ Widget accountHolderDetails(BuildContext context) {
               hintText: "Phone No",
               prefixIcon: AssetRes.call_icon,
               textInputType: TextInputType.number,
+              iconColor: ColorRes.greyColorIcon,
             ),
             con.phoneError == ""
                 ? SizedBox(height: 15)
@@ -117,6 +118,7 @@ Widget accountHolderDetails(BuildContext context) {
               hintText: "Your Wallet Balance",
               prefixIcon: AssetRes.wallet_icon,
               textInputType: TextInputType.number,
+              iconColor: ColorRes.greyColorIcon,
             ),
             con.amountError == ""
                 ? SizedBox(height: 15)

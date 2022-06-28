@@ -24,12 +24,17 @@ class AccountHolderDetailController extends GetxController {
   String nameError = "";
   String phoneError = "";
   String amountError = "";
+  String bankError = "";
 
   bool validate() {
     nameValidation();
     phoneValidation();
     walletValidation();
-    if (nameError == "" && phoneError == "" && amountError == "") {
+    bankValidation();
+    if (nameError == "" &&
+        phoneError == "" &&
+        amountError == "" &&
+        bankError == "") {
       return true;
     } else {
       return false;
@@ -75,6 +80,15 @@ class AccountHolderDetailController extends GetxController {
     update(["forms"]);
   }
 
+  bankValidation() {
+    if (bankController.text == "") {
+      bankError = "Please Select Bank";
+    } else {
+      bankError = "";
+    }
+    update(["dropDown"]);
+  }
+
   DateTime selectedDate = DateTime.now();
   DateFormat formatter = DateFormat("dd MMMM yyyy");
 
@@ -111,12 +125,12 @@ class AccountHolderDetailController extends GetxController {
               DateTime.now().second)
           .hour,
       minute: DateTime(
-          DateTime.now().year,
-          DateTime.now().month,
-          DateTime.now().day,
-          DateTime.now().hour,
-          DateTime.now().minute,
-          DateTime.now().second)
+              DateTime.now().year,
+              DateTime.now().month,
+              DateTime.now().day,
+              DateTime.now().hour,
+              DateTime.now().minute,
+              DateTime.now().second)
           .minute);
 
   selectTime(BuildContext context) async {
@@ -177,29 +191,38 @@ class AccountHolderDetailController extends GetxController {
     if (selectMethod[0] == true) {
       Get.to(() => PaytmScreen());
     } else if (selectMethod[1] == true) {
-      Get.to(()=>PhonePayScreen());
+      Get.to(() => PhonePayScreen());
     } else if (selectMethod[2] == true) {
       Get.to(() => GooglePayScreen());
     }
   }
 
   bool showDropDown = false;
-  List<String> bank = ["HDFC", "BOB", "AXIS"];
+
+  // List<String> bank = ["HDFC", "BOB", "AXIS"];
 
   onTapDropDown() {
     showDropDown = !showDropDown;
     update(["dropDown"]);
   }
 
-  onSelectDropDownItem(String bank) {
+  String? bankLogo;
+  bool showLogo = false;
+
+  onSelectDropDownItem(String bank, String image) {
     print("SHOW DROP DOWN = $showDropDown");
     onTapDropDown();
     bankController.text = bank;
+    showLogo = true;
+    bankLogo = image;
     update(["dropDown"]);
   }
 
   BankModel bankModel = BankModel();
   bool showLoader = false;
+  String? initialValueDropDown;
+  List<String> bank = [];
+  List<String> images = [];
 
   @override
   void onInit() {
@@ -207,9 +230,22 @@ class AccountHolderDetailController extends GetxController {
     update(["loader"]);
     GetBankItem.getBankDropDown().then((value) {
       bankModel = value!;
+      bank = [];
+      images = [];
+      for (int i = 0; i < value.data!.length; i++) {
+        bank.add(value.data![i].name ?? "");
+        images.add(value.data![i].image!);
+      }
+      print("BANK FROM API $bank \n images $images");
+
       showLoader = false;
       update(["loader"]);
     });
     super.onInit();
+  }
+
+  onChangedDropDown(val) {
+    initialValueDropDown = val;
+    update(["mDropDown"]);
   }
 }

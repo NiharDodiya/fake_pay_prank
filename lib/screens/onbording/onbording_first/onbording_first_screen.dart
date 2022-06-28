@@ -15,7 +15,7 @@ class OnBoardingFirstScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final con = Get.put(OnBoardingFirstController());
     return Scaffold(
-      key: con.scaffoldKey,
+      // key: con.scaffoldKey,
       drawer: OnBoardingDrawer(),
       body: Stack(
         children: [
@@ -82,34 +82,37 @@ class OnBoardingFirstScreen extends StatelessWidget {
                       topLeft: Radius.circular(20),
                       topRight: Radius.circular(20))),
               padding: EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-                children: [
-                  Image.asset(
-                    AssetRes.money_transfer,
-                    height: 250,
-                  ),
-                  Text(Strings.fakeMoneyUpi),
-                  Spacer(),
-                  GestureDetector(
-                    onTap: ()  {
-                      SharePref.setBool(PrefKeys.open_first_getStarted, true);
-                      Get.to(OnBoardingSecondScreen());
-                    },
-                    child: Container(
-                      height: 50,
-                      // width: Get.width * 0.5,
-                      margin: EdgeInsets.only(bottom: 25, left: 15, right: 15),
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          color: ColorRes.nBlue,
-                          borderRadius: BorderRadius.all(Radius.circular(30))),
-                      child: Text(
-                        Strings.getStarted,
-                        style: TextStyle(color: ColorRes.white),
-                      ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 6),
+                child: Column(
+                  children: [
+                    Image.asset(
+                      AssetRes.money_transfer,
+                      height: 250,
                     ),
-                  )
-                ],
+                    Text(Strings.fakeMoneyUpi),
+                    Spacer(),
+                    GestureDetector(
+                      onTap: ()  {
+                        SharePref.setBool(PrefKeys.open_first_getStarted, true);
+                        Get.to(OnBoardingSecondScreen());
+                      },
+                      child: Container(
+                        height: 50,
+                        // width: Get.width * 0.5,
+                        margin: EdgeInsets.only(bottom: 25, left: 15, right: 15),
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            color: ColorRes.nBlue,
+                            borderRadius: BorderRadius.all(Radius.circular(30))),
+                        child: Text(
+                          Strings.getStarted,
+                          style: TextStyle(color: ColorRes.white),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           )

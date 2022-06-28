@@ -17,5 +17,6 @@ class ColorRes {
   static const lightGray = Color(0xff3c4043);
   static const gray = Color(0xff222222);
   static const greyColor = Color(0xff929292);
+  static const greyColorIcon = Color(0xff808080);
 
 }

@@ -6,10 +6,10 @@ import 'package:flutter/foundation.dart';
 class GetBankItem{
   static Future<BankModel?> getBankDropDown() async {
     try {
-      String url = "https://prank-pay.herokuapp.com/api/About-view";
+      String url = "https://prank-pay.herokuapp.com/api/BankList-view";
       http.Response response =
       await http.get(Uri.parse(url));
-      print("About view : $url \n ${response.statusCode} \n ${response.body}");
+      print("getBankDropDown : $url \n ${response.statusCode} \n ${response.body}");
       print(response.statusCode);
       print(response.body);
       if (jsonDecode(response.body)["data"] != null || jsonDecode(response.body)["data"].length != 0) {
