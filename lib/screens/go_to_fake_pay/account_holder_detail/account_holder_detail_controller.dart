@@ -112,10 +112,13 @@ class AccountHolderDetailController extends GetxController {
   }
 
   checkAmountValidate() {
-    if (int.parse(walletController.text.toString()) <
-        int.parse(enterAmountController.text.toString())) {
-      enterAmount = "Enter Valid Amount";
+    if(walletController.text != "" && enterAmountController.text != ""){
+      if (int.parse(walletController.text.toString()) <
+          int.parse(enterAmountController.text.toString())) {
+        enterAmount = "Enter Valid Amount";
+      }
     }
+
     update(["forms"]);
   }
 

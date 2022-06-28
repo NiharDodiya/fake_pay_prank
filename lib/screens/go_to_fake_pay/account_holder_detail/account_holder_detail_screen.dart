@@ -185,7 +185,7 @@ class AccountHolderDetailScreen extends StatelessWidget {
                                     con.phoneError == "" &&
                                     con.walletError == ""
                                 ? 407//Get.height * 0.48 //345
-                                : 407 + 13,//Get.height * 0.48 ,//+ 15,
+                                : 407 + 30,//Get.height * 0.48 ,//+ 15,
                             child: Container(
                               alignment: Alignment.topLeft,
                               // height: 200,
