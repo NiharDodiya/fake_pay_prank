@@ -238,7 +238,15 @@ class AccountHolderDetailController extends GetxController {
             time: formatTimeWithAmPm(selectedTime1, context),
           ));
     } else if (selectMethod[1] == true) {
-      Get.to(() => PhonePayScreen());
+      Get.to(() => PhonePayScreen(
+        amount:enterAmountController.text.toString(),
+        bankAcDigit:selectAcNumber! ,
+        bankLogo: bankLogo!,
+        date: formatter.format(selectedDate),
+        phoneNo: phoneController.text.toString(),
+        receiverName: nameController.text.toString(),
+        time:formatTimeWithAmPm(selectedTime1, context),
+      ));
     } else if (selectMethod[2] == true) {
       Get.to(() => GooglePayTransactionScreen(
           amount: enterAmountController.text.toString(), sender: "", receiver:nameController.text.toString(), date: "", time: ""));

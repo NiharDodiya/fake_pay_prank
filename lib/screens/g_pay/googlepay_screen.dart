@@ -213,7 +213,7 @@ class GooglePayScreen extends StatelessWidget {
                               ),*/
                                     Image.network(bankLogo)),
                             Text(
-                              "$bankName XXXXXX${bankAcDigit}",
+                              "$bankName XXXXXX$bankAcDigit",
                               style: TextStyle(
                                 color: ColorRes.lightGray,
                                 fontFamily: AssetRes.fontRobotoMedium,

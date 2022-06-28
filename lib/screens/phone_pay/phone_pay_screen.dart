@@ -1,10 +1,29 @@
+import 'package:fake_pay_prank/common/common_function.dart';
+import 'package:fake_pay_prank/common/helper.dart';
 import 'package:fake_pay_prank/utils/asset_res.dart';
 import 'package:fake_pay_prank/utils/color_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PhonePayScreen extends StatelessWidget {
-  const PhonePayScreen({Key? key}) : super(key: key);
+  final String receiverName;
+  final String phoneNo;
+  final String amount;
+  final String date;
+  final String bankLogo;
+  final String bankAcDigit;
+  final String time;
+
+  const PhonePayScreen(
+      {Key? key,
+      required this.receiverName,
+      required this.phoneNo,
+      required this.amount,
+      required this.date,
+      required this.time,
+      required this.bankLogo,
+      required this.bankAcDigit})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +55,7 @@ class PhonePayScreen extends StatelessWidget {
             ),
           ),
           subtitle: Text(
-            "01:06 PM on 27 Jun 2022",
+            "$time on $date",
             style: TextStyle(
               color: ColorRes.ofWhite,
             ),
@@ -48,6 +67,7 @@ class PhonePayScreen extends StatelessWidget {
         height: Get.height,
         width: Get.width,
         child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
           child: Column(
             children: [
               Container(
@@ -91,7 +111,7 @@ class PhonePayScreen extends StatelessWidget {
                             child: Padding(
                               padding: EdgeInsets.only(top: 5),
                               child: Text(
-                                "SP",
+                                (getInitials(receiverName)).toUpperCase(),
                                 style: TextStyle(
                                   color: ColorRes.white,
                                   fontFamily: AssetRes.fontRobotoRegular,
@@ -103,7 +123,7 @@ class PhonePayScreen extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          "SMART POINT",
+                          receiverName.toUpperCase(),
                           style: TextStyle(
                             color: ColorRes.black,
                             fontFamily: AssetRes.fontRobotoRegular,
@@ -113,7 +133,7 @@ class PhonePayScreen extends StatelessWidget {
                         ),
                         Spacer(),
                         Text(
-                          "₹ 45",
+                          "₹ $amount",
                           style: TextStyle(
                             color: ColorRes.black,
                             fontFamily: AssetRes.fontRobotoBold,
@@ -170,7 +190,7 @@ class PhonePayScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          "T2206271306316980381310",
+                          "T${generateUpiTransactionID(22)}",
                           style: TextStyle(
                             color: ColorRes.black,
                             fontFamily: AssetRes.fontRobotoRegular,
@@ -210,13 +230,15 @@ class PhonePayScreen extends StatelessWidget {
                           height: 25,
                           width: 25,
                           margin: EdgeInsets.only(right: 16),
-                          child: Image.asset(
-                            AssetRes.hdfcIcon,
-                            fit: BoxFit.fill,
-                          ),
+                          child: Image.network(bankLogo),
+
+                          // Image.asset(
+                          //   AssetRes.hdfcIcon,
+                          //   fit: BoxFit.fill,
+                          // ),
                         ),
                         Text(
-                          "********7010",
+                          "********$bankAcDigit",
                           style: TextStyle(
                             color: ColorRes.black,
                             fontFamily: AssetRes.fontRobotoRegular,
@@ -226,7 +248,7 @@ class PhonePayScreen extends StatelessWidget {
                         ),
                         Spacer(),
                         Text(
-                          "₹ 45",
+                          "₹ $amount",
                           style: TextStyle(
                             color: ColorRes.black,
                             fontFamily: AssetRes.fontRobotoRegular,
@@ -248,7 +270,7 @@ class PhonePayScreen extends StatelessWidget {
                           margin: EdgeInsets.only(right: 16),
                         ),
                         Text(
-                          "UTR: 217867843136",
+                          "UTR: ${generateUpiTransactionID(12)}",
                           style: TextStyle(
                             color: ColorRes.phoneGray,
                             fontFamily: AssetRes.fontRobotoRegular,
@@ -303,7 +325,7 @@ class PhonePayScreen extends StatelessWidget {
                             style: TextStyle(
                               color: ColorRes.black,
                               fontFamily: AssetRes.fontRobotoRegular,
-                              fontSize: 16,
+                              fontSize: deviceWidth/25,
                               height: 1,
                             ),
                           ),
@@ -331,7 +353,7 @@ class PhonePayScreen extends StatelessWidget {
                             style: TextStyle(
                               color: ColorRes.black,
                               fontFamily: AssetRes.fontRobotoRegular,
-                              fontSize: 16,
+                              fontSize: deviceWidth/25,
                               height: 1,
                             ),
                           ),
@@ -407,6 +429,9 @@ class PhonePayScreen extends StatelessWidget {
                   AssetRes.poweredByIcon,
                   fit: BoxFit.fitHeight,
                 ),
+              ),
+              SizedBox(
+                height: 16,
               ),
             ],
           ),
