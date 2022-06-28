@@ -54,107 +54,6 @@ class AccountHolderDetailScreen extends StatelessWidget {
                                 ),
                                 SizedBox(height: 15),
                                 accountHolderDetails(context),
-                                ///Drop Down button
-                                /* GetBuilder<AccountHolderDetailController>(
-                                  id: "mDropDown",
-                                    builder: (con) {
-                                  return Container(
-                                    height: 45,
-                                    width: Get.width,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                        // color: ColorRes.blue,
-                                        border: Border.all(color: ColorRes.blue),
-                                        borderRadius:
-                                            BorderRadius.all(Radius.circular(7))),
-                                    child: Row(
-                                      children: [
-                                        Container(
-                                          width: 40,
-                                          child: Image.asset(AssetRes.bank,height: 25,),
-                                        ),
-                                        Container(
-                                            // padding:const EdgeInsets.only(left: 10),
-                                            width: Get.width - 65,
-                                            child: DropdownButtonHideUnderline(
-                                              child: DropdownButton(
-                                                value: con.initialValueDropDown,
-                                                isExpanded: true,
-                                                icon: Container(
-                                                    margin: EdgeInsets.only(right: 15),
-                                                    child: Image.asset(
-                                                      AssetRes.drop_down_arrow,
-                                                      height: 10,
-                                                    )),
-                                                hint: Text("Select Bank"),
-                                                items: con.bank
-                                                    .map((item) =>
-                                                        DropdownMenuItem<String>(
-                                                          value: item,
-                                                          child: Container(
-                                                            height: 45,
-                                                            decoration: BoxDecoration(
-                                                                border: Border(
-                                                                    bottom: BorderSide(
-                                                                        color: ColorRes.blue))),
-                                                            child: Row(
-                                                              children: [
-                                                                SizedBox(width: 5),
-                                                                Image.network(
-                                                                  "https://pbs.twimg.com/profile_images/880333363982159872/lA3myMTv_400x400.jpg",
-                                                                  height: 40,
-                                                                ),
-                                                                SizedBox(width: 5),
-                                                                Text(item.toString(),
-                                                                    style: TextStyle(
-                                                                        color: ColorRes.black,
-                                                                        fontSize: 12,
-                                                                        fontWeight:
-                                                                        FontWeight.w500))
-                                                              ],
-                                                            ),
-                                                          ),
-                                                        ))
-                                                    .toList(),
-                                                onChanged: (String? value) {
-                                                  con.onChangedDropDown(value);
-                                                },
-                                                alignment: AlignmentDirectional.centerStart,
-                                                  style: TextStyle(color: ColorRes.black,fontWeight: FontWeight.w500),
-                                                // selectedItemBuilder:(val){
-                                                //   return con.bank.map<Widget>((String item) {
-                                                //     return Container(
-                                                //       height: 45,
-                                                //       decoration: BoxDecoration(
-                                                //           border: Border(
-                                                //               bottom: BorderSide(
-                                                //                   color: ColorRes.blue))),
-                                                //       child: Row(
-                                                //         children: [
-                                                //           SizedBox(width: 5),
-                                                //           Image.network(
-                                                //             "https://pbs.twimg.com/profile_images/880333363982159872/lA3myMTv_400x400.jpg",
-                                                //             height: 40,
-                                                //           ),
-                                                //           SizedBox(width: 5),
-                                                //           Text("HDFC",
-                                                //               style: TextStyle(
-                                                //                   color: ColorRes.black,
-                                                //                   fontSize: 12,
-                                                //                   fontWeight:
-                                                //                   FontWeight.w500))
-                                                //         ],
-                                                //       ),
-                                                //     );
-                                                //   }).toList();
-                                                // }
-                                              ),
-                                            )),
-                                      ],
-                                    ),
-                                  );
-                                }),*/
-                                ///true
                                 GetBuilder<AccountHolderDetailController>(
                                     id: "dropDown",
                                     builder: (con) {
@@ -271,7 +170,7 @@ class AccountHolderDetailScreen extends StatelessWidget {
 
                                 paymentMethodList(),
                                 SizedBox(height: 50),
-                                submitBtn()
+                                submitBtn(context)
                                 // Spacer(),
                               ],
                             ),
@@ -284,9 +183,9 @@ class AccountHolderDetailScreen extends StatelessWidget {
                         ? Positioned(
                             top: con.nameError == "" &&
                                     con.phoneError == "" &&
-                                    con.amountError == ""
-                                ? 287//Get.height * 0.48 //345
-                                : 287 + 13,//Get.height * 0.48 ,//+ 15,
+                                    con.walletError == ""
+                                ? 407//Get.height * 0.48 //345
+                                : 407 + 13,//Get.height * 0.48 ,//+ 15,
                             child: Container(
                               alignment: Alignment.topLeft,
                               // height: 200,
@@ -310,7 +209,9 @@ class AccountHolderDetailScreen extends StatelessWidget {
                                           onTap: () {
                                             con.onSelectDropDownItem(
                                                 con.bank[index],
-                                                con.images[index]);
+                                                con.images[index],
+                                            con.accountNum[index]
+                                            );
                                           },
                                           child: Container(
                                             margin: EdgeInsets.only(bottom: 10),

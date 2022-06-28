@@ -14,7 +14,7 @@ Widget accountHolderDetails(BuildContext context) {
             CommonTextField(
               controller: con.nameController,
               focusNode: con.nameFn,
-              hintText: "Name",
+              hintText: "Enter Name",
               prefixIcon: AssetRes.profile_icon,
             ),
             con.nameError == ""
@@ -25,6 +25,23 @@ Widget accountHolderDetails(BuildContext context) {
                     height: 25,
                     child: Text(
                       con.nameError,
+                      style: TextStyle(color: Colors.red),
+                    ),
+                  ),
+            CommonTextField(
+              controller: con.senderController,
+              focusNode: con.senderFn,
+              hintText: "Enter Sender Name",
+              prefixIcon: AssetRes.profile_icon,
+            ),
+            con.senderError == ""
+                ? SizedBox(height: 15)
+                : Container(
+                    padding: EdgeInsets.only(left: 5),
+                    alignment: Alignment.topLeft,
+                    height: 25,
+                    child: Text(
+                      con.senderError,
                       style: TextStyle(color: Colors.red),
                     ),
                   ),
@@ -44,6 +61,25 @@ Widget accountHolderDetails(BuildContext context) {
                     height: 25,
                     child: Text(
                       con.phoneError,
+                      style: TextStyle(color: Colors.red),
+                    ),
+                  ),
+            CommonTextField(
+              controller: con.enterAmountController,
+              focusNode: con.enterAmountFn,
+              hintText: "Amount",
+              prefixIcon: AssetRes.rupee_icon,
+              textInputType: TextInputType.number,
+              iconColor: ColorRes.greyColorIcon,
+            ),
+            con.enterAmount == ""
+                ? SizedBox(height: 15)
+                : Container(
+                    padding: EdgeInsets.only(left: 5),
+                    alignment: Alignment.topLeft,
+                    height: 25,
+                    child: Text(
+                      con.enterAmount,
                       style: TextStyle(color: Colors.red),
                     ),
                   ),
@@ -113,21 +149,21 @@ Widget accountHolderDetails(BuildContext context) {
               ],
             ),
             CommonTextField(
-              controller: con.amountController,
-              focusNode: con.amountFn,
+              controller: con.walletController,
+              focusNode: con.walletFn,
               hintText: "Your Wallet Balance",
               prefixIcon: AssetRes.wallet_icon,
               textInputType: TextInputType.number,
               iconColor: ColorRes.greyColorIcon,
             ),
-            con.amountError == ""
+            con.walletError == ""
                 ? SizedBox(height: 15)
                 : Container(
                     padding: EdgeInsets.only(left: 5),
                     alignment: Alignment.topLeft,
                     height: 25,
                     child: Text(
-                      con.amountError,
+                      con.walletError,
                       style: TextStyle(color: Colors.red),
                     ),
                   ),

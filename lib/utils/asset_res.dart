@@ -46,6 +46,7 @@ class AssetRes {
   static const shareIcon = '${icons}share_icon.png';
   static const supportIcon = '${icons}support_icon.png';
   static const poweredByIcon = '${icons}powerdby_icon.png';
+  static const rupee_icon = '${icons}rupee_icon.png';
 
   static const upiIcon = '${icons}upi_icon.png';
 

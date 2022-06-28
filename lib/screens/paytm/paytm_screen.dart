@@ -5,7 +5,19 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PaytmScreen extends StatelessWidget {
-  const PaytmScreen({Key? key}) : super(key: key);
+  final String receiverName;
+  final String phoneNo;
+  final String amount;
+  final String date;
+  final String time;
+
+  const PaytmScreen(
+      {Key? key,
+      required this.receiverName,
+      required this.amount,
+      required this.date,
+      required this.time, required this.phoneNo})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,11 +45,11 @@ class PaytmScreen extends StatelessWidget {
       ),
       backgroundColor: ColorRes.white,
       body: Padding(
-        padding: const EdgeInsets.only(left: 15, right: 15,top: 10),
+        padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
         child: Stack(
           children: [
             SingleChildScrollView(
-              physics: NeverScrollableScrollPhysics(),
+              physics: BouncingScrollPhysics(),
               child: Container(
                 height: deviceHeight,
                 child: Column(
@@ -87,7 +99,7 @@ class PaytmScreen extends StatelessWidget {
                                       child: Padding(
                                         padding: EdgeInsets.only(top: 5),
                                         child: Text(
-                                          "PU",
+                                          (receiverName[0]).toUpperCase(),
                                           style: TextStyle(
                                             color: ColorRes.blue,
                                             fontWeight: FontWeight.bold,
@@ -112,7 +124,7 @@ class PaytmScreen extends StatelessWidget {
                                       SizedBox(
                                         width: deviceWidth / 1.55,
                                         child: Text(
-                                          "Jaydeep Ishwerbhai Maniya",
+                                          "$receiverName",
                                           maxLines: 2,
                                           style: TextStyle(
                                             color: ColorRes.black,
@@ -134,7 +146,7 @@ class PaytmScreen extends StatelessWidget {
                                               CrossAxisAlignment.center,
                                           children: [
                                             Text(
-                                              "UPI ID: 7435970660@paytm",
+                                              "UPI ID: $phoneNo@paytm",
                                               style: TextStyle(
                                                 color: ColorRes.black,
                                                 fontSize: 14,
@@ -167,7 +179,7 @@ class PaytmScreen extends StatelessWidget {
                                     height: 100,
                                     alignment: Alignment.center,
                                     child: Text(
-                                      "₹ 1",
+                                      "₹ $amount",
                                       style: TextStyle(
                                         color: ColorRes.black,
                                         fontSize: 35,
@@ -187,7 +199,7 @@ class PaytmScreen extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "24 Jun, 03:21 PM",
+                                    "$date, $time",
                                     style: TextStyle(
                                       color: ColorRes.black,
                                       fontSize: 14,

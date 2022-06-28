@@ -53,7 +53,7 @@ class CommonTextField extends StatelessWidget {
           borderRadius: const BorderRadius.all(Radius.circular(10))),
       child: TextField(
         onTap: (){
-          onTap!();
+          // onTap!();
         },
         enabled: enable,
         style: const TextStyle(

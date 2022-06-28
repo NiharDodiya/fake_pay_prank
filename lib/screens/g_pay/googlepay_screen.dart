@@ -4,8 +4,40 @@ import 'package:fake_pay_prank/utils/color_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../common/common_function.dart';
+import 'package:intl/intl.dart' show toBeginningOfSentenceCase;
+
 class GooglePayScreen extends StatelessWidget {
-  const GooglePayScreen({Key? key}) : super(key: key);
+  final String receiverName;
+  final String senderName;
+  final String number;
+  final String amount;
+  final String date;
+  final String time;
+  final String bankLogo;
+  final String bankName;
+  // final String upiTransactionId;
+  // final String googleTransactionId;
+
+  // final String upiTranslateId;
+  final String bankAcDigit;
+
+  const GooglePayScreen(
+      {Key? key,
+      required this.receiverName,
+      required this.number,
+      required this.amount,
+      required this.date,
+      required this.time,
+      required this.bankLogo,
+      required this.bankName,
+      required this.senderName,
+      // required this.upiTranslateId,
+      required this.bankAcDigit,
+      // required this.upiTransactionId,
+      // required this.googleTransactionId
+      })
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +94,7 @@ class GooglePayScreen extends StatelessWidget {
                   radius: 28,
                   backgroundColor: ColorRes.nBlue,
                   child: Text(
-                    "J",
+                    "${receiverName[0].toUpperCase()}",
                     style: TextStyle(
                       color: ColorRes.blue,
                       fontSize: 34,
@@ -74,7 +106,7 @@ class GooglePayScreen extends StatelessWidget {
                   height: 8,
                 ),
                 Text(
-                  "To Jaydip Maniya (jd king)",
+                 "To ${toBeginningOfSentenceCase("$receiverName")}",
                   style: TextStyle(
                       color: ColorRes.black,
                       fontFamily: AssetRes.SFProTextRegular,
@@ -85,7 +117,7 @@ class GooglePayScreen extends StatelessWidget {
                   height: 3,
                 ),
                 Text(
-                  "+91 74359 70660",
+                  "+91 $number",
                   style: TextStyle(
                     color: ColorRes.black,
                     fontSize: deviceWidth / 27,
@@ -106,7 +138,7 @@ class GooglePayScreen extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        "60",
+                        "$amount",
                         style: TextStyle(
                           fontFamily: AssetRes.OxygenRegular,
                           color: ColorRes.black,
@@ -129,7 +161,7 @@ class GooglePayScreen extends StatelessWidget {
                         width: 15,
                       ),
                       Text(
-                        "  Completed • 25 June 2022 at 21:50",
+                        "  Completed • $date at $time",
                         style: TextStyle(
                           color: ColorRes.black,
                           fontSize: 11,
@@ -164,24 +196,24 @@ class GooglePayScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Container(
-                              height: 28,
-                              width: 45,
-                              margin: EdgeInsets.only(right: 15),
-                              padding: EdgeInsets.all(3),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(8),
+                                height: 28,
+                                width: 45,
+                                margin: EdgeInsets.only(right: 15),
+                                // padding: EdgeInsets.all(3),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(8),
+                                  ),
+                                  border: Border.all(
+                                    color: ColorRes.greyColor.withOpacity(0.3),
+                                  ),
                                 ),
-                                border: Border.all(
-                                  color: ColorRes.greyColor.withOpacity(0.3),
-                                ),
-                              ),
-                              child: Image.asset(
+                                child: /*Image.asset(
                                 AssetRes.bobIcon,
-                              ),
-                            ),
+                              ),*/
+                                    Image.network(bankLogo)),
                             Text(
-                              "Bank of Baroda XXXXXX3032",
+                              "$bankName XXXXXX${bankAcDigit}",
                               style: TextStyle(
                                 color: ColorRes.lightGray,
                                 fontFamily: AssetRes.fontRobotoMedium,
@@ -223,7 +255,7 @@ class GooglePayScreen extends StatelessWidget {
                               height: 4,
                             ),
                             Text(
-                              "217685353013",
+                              generateUpiTransactionID(),
                               maxLines: 2,
                               style: TextStyle(
                                 fontSize: 12,
@@ -234,7 +266,7 @@ class GooglePayScreen extends StatelessWidget {
                               height: 12,
                             ),
                             Text(
-                              "To: JAYDEEP ISHWARBHAI MANIYA",
+                              "To: $receiverName",
                               style: TextStyle(
                                 fontSize: 13,
                                 fontFamily: AssetRes.fontRobotoMedium,
@@ -246,7 +278,7 @@ class GooglePayScreen extends StatelessWidget {
                               height: 4,
                             ),
                             Text(
-                              "jaydipmaniya21@okhdfcbank",
+                              "${receiverName.removeAllWhitespace}@ok${bankName.removeAllWhitespace.toLowerCase()}",
                               maxLines: 2,
                               style: TextStyle(
                                 fontSize: 12,
@@ -257,7 +289,7 @@ class GooglePayScreen extends StatelessWidget {
                               height: 12,
                             ),
                             Text(
-                              "From: RUPESH JAYESHBHAI KALKANI (Bank of Baroda)",
+                              "From: $senderName ($bankName)",
                               maxLines: 2,
                               style: TextStyle(
                                 fontSize: 13,
@@ -270,7 +302,7 @@ class GooglePayScreen extends StatelessWidget {
                               height: 4,
                             ),
                             Text(
-                              "rupeshkalkani@okaxis",
+                              "${senderName.removeAllWhitespace}@ok${bankName.removeAllWhitespace.toLowerCase()}",
                               maxLines: 2,
                               style: TextStyle(
                                 fontSize: 12,
@@ -294,7 +326,7 @@ class GooglePayScreen extends StatelessWidget {
                               height: 4,
                             ),
                             Text(
-                              "CICAgODfkpvhdg",
+                              getRandom(12),
                               maxLines: 2,
                               style: TextStyle(
                                 fontSize: 12,
@@ -336,8 +368,9 @@ class GooglePayScreen extends StatelessWidget {
                     children: [
                       Container(
                         height: 38,
-                        width: deviceWidth/2.8,
-                        margin: EdgeInsets.only(top: 15,bottom: 15,left: 15,right: 5),
+                        width: deviceWidth / 2.8,
+                        margin: EdgeInsets.only(
+                            top: 15, bottom: 15, left: 15, right: 5),
                         decoration: BoxDecoration(
                           color: ColorRes.blue1,
                           borderRadius: BorderRadius.all(
@@ -358,8 +391,9 @@ class GooglePayScreen extends StatelessWidget {
                       ),
                       Container(
                         height: 38,
-                        width: deviceWidth/2.5,
-                        margin: EdgeInsets.only(left: 5,bottom: 15,top: 15,right: 15),
+                        width: deviceWidth / 2.5,
+                        margin: EdgeInsets.only(
+                            left: 5, bottom: 15, top: 15, right: 15),
                         decoration: BoxDecoration(
                           color: ColorRes.white,
                           borderRadius: BorderRadius.all(
@@ -378,7 +412,6 @@ class GooglePayScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-
                     ],
                   ),
                 )

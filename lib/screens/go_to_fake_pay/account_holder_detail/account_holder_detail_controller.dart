@@ -13,28 +13,39 @@ import 'package:intl/intl.dart';
 class AccountHolderDetailController extends GetxController {
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
-  TextEditingController amountController = TextEditingController();
+  TextEditingController walletController = TextEditingController();
   TextEditingController bankController = TextEditingController();
+  TextEditingController enterAmountController = TextEditingController();
+  TextEditingController senderController = TextEditingController();
 
   FocusNode nameFn = FocusNode();
   FocusNode phoneFn = FocusNode();
-  FocusNode amountFn = FocusNode();
+  FocusNode walletFn = FocusNode();
   FocusNode bankFn = FocusNode();
+  FocusNode enterAmountFn = FocusNode();
+  FocusNode senderFn = FocusNode();
 
   String nameError = "";
   String phoneError = "";
-  String amountError = "";
+  String walletError = "";
   String bankError = "";
+  String enterAmount = "";
+  String senderError = "";
 
   bool validate() {
     nameValidation();
     phoneValidation();
     walletValidation();
     bankValidation();
+    enterAmountValidate();
+    senderValidation();
+    checkAmountValidate();
     if (nameError == "" &&
         phoneError == "" &&
-        amountError == "" &&
-        bankError == "") {
+        walletError == "" &&
+        bankError == "" &&
+        enterAmount == "" &&
+        senderError == "") {
       return true;
     } else {
       return false;
@@ -48,14 +59,15 @@ class AccountHolderDetailController extends GetxController {
       nameError = "";
     }
     update(["forms"]);
-    /*else {
-      //bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(email);
-      if (RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(emailController.text)*/ /*GetUtils.isEmail(emailController.text)*/ /*) {
-        emailErrorText = '';
-      } else {
-        emailErrorText = "Enter valid email";
-      }
-    }*/
+  }
+
+  senderValidation() {
+    if (nameController.text.trim() == "") {
+      senderError = "Enter the Name";
+    } else {
+      senderError = "";
+    }
+    update(["forms"]);
   }
 
   phoneValidation() {
@@ -72,10 +84,19 @@ class AccountHolderDetailController extends GetxController {
   }
 
   walletValidation() {
-    if (amountController.text == "") {
-      amountError = "Enter Your Amount";
+    if (walletController.text == "") {
+      walletError = "Enter Your Wallet Amount";
     } else {
-      amountError = "";
+      walletError = "";
+    }
+    update(["forms"]);
+  }
+
+  enterAmountValidate() {
+    if (enterAmountController.text == "") {
+      enterAmount = "Enter Your Amount";
+    } else {
+      enterAmount = "";
     }
     update(["forms"]);
   }
@@ -89,8 +110,17 @@ class AccountHolderDetailController extends GetxController {
     update(["dropDown"]);
   }
 
+  checkAmountValidate() {
+    if (int.parse(walletController.text.toString()) <
+        int.parse(enterAmountController.text.toString())) {
+      enterAmount = "Enter Valid Amount";
+    }
+    update(["forms"]);
+  }
+
   DateTime selectedDate = DateTime.now();
   DateFormat formatter = DateFormat("dd MMMM yyyy");
+  DateFormat formatter2 = DateFormat("dd MMM");
 
   Future<void> selectDate(context) async {
     DateTime? picked = await showDatePicker(
@@ -161,6 +191,18 @@ class AccountHolderDetailController extends GetxController {
     return removeAM?.first.toString();
   }
 
+  formatTimeWithAmPm(selectedTime1, context) {
+    var displayTime = selectedTime1?.format(context).toString();
+    if (kDebugMode) {
+      print(selectedTime1?.format(context).toString());
+    } //output 10:51 PM
+    // var removeAM = displayTime?.split(" ");
+    // print("Display Time $displayTime ${removeAM?.first}");
+    return displayTime;
+  }
+
+
+
   List<bool> selectMethod = [true, false, false];
   List<String> logos = [
     AssetRes.paytm_logo,
@@ -178,22 +220,38 @@ class AccountHolderDetailController extends GetxController {
     for (int i = 0; i < logos.length; i++) {
       selectMethod.add(false);
     }
-    print("SELECT 2 $selectMethod");
+    // print("SELECT 2 $selectMethod");
     selectMethod.removeAt(index);
-    print("SELECT 1 $selectMethod");
+    // print("SELECT 1 $selectMethod");
     selectMethod.insert(index, true);
-    print("SELECT $selectMethod");
+    // print("SELECT $selectMethod");
     update(["radio"]);
   }
 
-  onSubmitTap() {
+  onSubmitTap(context) {
     print("SELECTED METHOD $selectMethod");
     if (selectMethod[0] == true) {
-      Get.to(() => PaytmScreen());
+      Get.to(() => PaytmScreen(
+        phoneNo: phoneController.text.toString(),
+            receiverName: nameController.text.toString(),
+            amount: enterAmountController.text.toString(),
+            date: formatter2.format(selectedDate),
+            time: formatTimeWithAmPm(selectedTime1, context),
+          ));
     } else if (selectMethod[1] == true) {
       Get.to(() => PhonePayScreen());
     } else if (selectMethod[2] == true) {
-      Get.to(() => GooglePayScreen());
+      Get.to(() => GooglePayScreen(
+            receiverName: nameController.text.toString(),
+            senderName: senderController.text.trim(),
+            number: phoneController.text.toString(),
+            amount: enterAmountController.text.toString(),
+            date: formatter.format(selectedDate),
+            time: formatTime(selectedTime1, context),
+            bankLogo: bankLogo!,
+            bankName: bankController.text.toString(),
+            bankAcDigit: selectAcNumber!,
+          ));
     }
   }
 
@@ -209,20 +267,26 @@ class AccountHolderDetailController extends GetxController {
   String? bankLogo;
   bool showLogo = false;
 
-  onSelectDropDownItem(String bank, String image) {
+  onSelectDropDownItem(String bank, String image, String acNum) {
     print("SHOW DROP DOWN = $showDropDown");
     onTapDropDown();
     bankController.text = bank;
     showLogo = true;
     bankLogo = image;
+    selectAcNumber = acNum;
     update(["dropDown"]);
   }
 
   BankModel bankModel = BankModel();
   bool showLoader = false;
-  String? initialValueDropDown;
+
+  // String? initialValueDropDown;
   List<String> bank = [];
   List<String> images = [];
+  List<String> accountNum = [];
+  String? selectAcNumber;
+  // String? upiTransactionId;
+  // String? googleTransactionId;
 
   @override
   void onInit() {
@@ -235,17 +299,22 @@ class AccountHolderDetailController extends GetxController {
       for (int i = 0; i < value.data!.length; i++) {
         bank.add(value.data![i].name ?? "");
         images.add(value.data![i].image!);
+        accountNum.add(value.data![i].bankAccount!);
       }
       print("BANK FROM API $bank \n images $images");
-
+      // upiTransactionId = generateUpiTransactionID();
+      // googleTransactionId = getRandom(12);
+      // print(
+      //     "\n\n upiTransactionId : $upiTransactionId \n googleTransactionId : $googleTransactionId \n\n");
       showLoader = false;
       update(["loader"]);
     });
     super.onInit();
   }
 
-  onChangedDropDown(val) {
-    initialValueDropDown = val;
-    update(["mDropDown"]);
-  }
+// onChangedDropDown(val) {
+//   initialValueDropDown = val;
+//   update(["mDropDown"]);
+// }
+
 }
