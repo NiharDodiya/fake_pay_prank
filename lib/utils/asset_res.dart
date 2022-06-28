@@ -53,6 +53,8 @@ class AssetRes {
 
   ///---------------------------------------- IMAGES ----------------------------------------///
   static const money_transfer = '${images}money_transfer.png';
+  static const layer2 = '${images}layer_2.png';
+  static const layer3 = '${images}layer_3.png';
 
   ///_________________________ fonts _________________________///
 //Bold Font

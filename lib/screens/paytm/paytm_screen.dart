@@ -17,7 +17,8 @@ class PaytmScreen extends StatelessWidget {
       required this.receiverName,
       required this.amount,
       required this.date,
-      required this.time, required this.phoneNo})
+      required this.time,
+      required this.phoneNo})
       : super(key: key);
 
   @override
@@ -52,7 +53,7 @@ class PaytmScreen extends StatelessWidget {
             SingleChildScrollView(
               physics: BouncingScrollPhysics(),
               child: Container(
-                height: deviceHeight,
+                // height: deviceHeight,
                 child: Column(
                   children: [
                     ClipPath(
@@ -100,7 +101,8 @@ class PaytmScreen extends StatelessWidget {
                                       child: Padding(
                                         padding: EdgeInsets.only(top: 5),
                                         child: Text(
-                                          (getInitials(receiverName)).toUpperCase(),
+                                          (getInitials(receiverName))
+                                              .toUpperCase(),
                                           style: TextStyle(
                                             color: ColorRes.blue,
                                             fontWeight: FontWeight.bold,
@@ -366,6 +368,20 @@ class PaytmScreen extends StatelessWidget {
                             ),
                           ),
                         ],
+                      ),
+                    ),
+                    Container(
+                      height: 168,
+                      margin: EdgeInsets.only(top: 10),
+                      width: double.infinity,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(15),
+                        ),
+                        child: Image.asset(
+                          AssetRes.layer2,
+                          fit: BoxFit.fill,
+                        ),
                       ),
                     )
                   ],
