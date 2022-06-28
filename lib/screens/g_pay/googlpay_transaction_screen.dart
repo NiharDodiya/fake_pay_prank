@@ -45,7 +45,7 @@ class GooglePayTransactionScreen extends StatelessWidget {
               height: deviceHeight / 11,
             ),
             Text(
-              "₹10.00",
+              "₹$amount.00",
               style: TextStyle(
                 fontSize: 40,
                 fontFamily: AssetRes.fontRobotoRegular,
@@ -67,7 +67,7 @@ class GooglePayTransactionScreen extends StatelessWidget {
               height: 8,
             ),
             Text(
-              "PURNA SUPER STOR",
+              receiver,
               style: TextStyle(
                 fontSize: 18,
                 fontFamily: AssetRes.ProductSansRegular,
@@ -76,7 +76,7 @@ class GooglePayTransactionScreen extends StatelessWidget {
             ),
             Spacer(),
             Text(
-              "Jun 28, 2022 10:15 AM",
+              "$date $time",
               style: TextStyle(
                 fontSize: 16,
                 fontFamily: AssetRes.ProductSansRegular,

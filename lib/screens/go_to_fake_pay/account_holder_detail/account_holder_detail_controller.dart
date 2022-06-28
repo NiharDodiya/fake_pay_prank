@@ -122,6 +122,7 @@ class AccountHolderDetailController extends GetxController {
   DateTime selectedDate = DateTime.now();
   DateFormat formatter = DateFormat("dd MMMM yyyy");
   DateFormat formatter2 = DateFormat("dd MMM");
+  DateFormat formatter3 = DateFormat("MMM dd yyyy");
 
   Future<void> selectDate(context) async {
     DateTime? picked = await showDatePicker(
@@ -249,12 +250,17 @@ class AccountHolderDetailController extends GetxController {
       ));
     } else if (selectMethod[2] == true) {
       Get.to(() => GooglePayTransactionScreen(
-          amount: enterAmountController.text.toString(), sender: "", receiver:nameController.text.toString(), date: "", time: ""));
+          amount: enterAmountController.text.toString(),
+          sender: senderController.text.trim(),
+          receiver: nameController.text.toString(),
+          date: formatter3.format(selectedDate),
+          time: formatTimeWithAmPm(selectedTime1, context)));
     }
   }
 
   void onTapGotIt(BuildContext context) {
-    Get.to(() => GooglePayScreen(
+    // Get.back();
+    Get.off(() => GooglePayScreen(
           receiverName: nameController.text.toString(),
           senderName: senderController.text.trim(),
           number: phoneController.text.toString(),
