@@ -242,19 +242,24 @@ class AccountHolderDetailController extends GetxController {
     } else if (selectMethod[1] == true) {
       Get.to(() => PhonePayScreen());
     } else if (selectMethod[2] == true) {
-      Get.to(() => GooglePayScreen(
-            receiverName: nameController.text.toString(),
-            senderName: senderController.text.trim(),
-            number: phoneController.text.toString(),
-            amount: enterAmountController.text.toString(),
-            date: formatter.format(selectedDate),
-            time: formatTime(selectedTime1, context),
-            bankLogo: bankLogo!,
-            bankName: bankController.text.toString(),
-            bankAcDigit: selectAcNumber!,
-          ));
+      Get.to(() => GooglePayTransactionScreen());
     }
   }
+
+  void onTapGotIt(BuildContext context){
+    Get.to(() => GooglePayScreen(
+      receiverName: nameController.text.toString(),
+      senderName: senderController.text.trim(),
+      number: phoneController.text.toString(),
+      amount: enterAmountController.text.toString(),
+      date: formatter.format(selectedDate),
+      time: formatTime(selectedTime1, context),
+      bankLogo: bankLogo!,
+      bankName: bankController.text.toString(),
+      bankAcDigit: selectAcNumber!,
+    ));
+  }
+
 
   bool showDropDown = false;
 
