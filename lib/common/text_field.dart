@@ -92,6 +92,7 @@ class CommonTextField extends StatelessWidget {
               padding: EdgeInsets.all(12),
               child: Image.asset(suffixIcon!, height: 5, width: 5))
         ),
+        textCapitalization: TextCapitalization.words,
       ),
     );
   }

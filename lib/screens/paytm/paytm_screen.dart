@@ -1,3 +1,4 @@
+import 'package:fake_pay_prank/common/common_function.dart';
 import 'package:fake_pay_prank/common/helper.dart';
 import 'package:fake_pay_prank/utils/asset_res.dart';
 import 'package:fake_pay_prank/utils/color_res.dart';
@@ -99,7 +100,7 @@ class PaytmScreen extends StatelessWidget {
                                       child: Padding(
                                         padding: EdgeInsets.only(top: 5),
                                         child: Text(
-                                          (receiverName[0]).toUpperCase(),
+                                          (getInitials(receiverName)).toUpperCase(),
                                           style: TextStyle(
                                             color: ColorRes.blue,
                                             fontWeight: FontWeight.bold,
@@ -124,7 +125,7 @@ class PaytmScreen extends StatelessWidget {
                                       SizedBox(
                                         width: deviceWidth / 1.55,
                                         child: Text(
-                                          "$receiverName",
+                                          capitalize(receiverName),
                                           maxLines: 2,
                                           style: TextStyle(
                                             color: ColorRes.black,
@@ -218,7 +219,7 @@ class PaytmScreen extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "UPI Ref. No: XX 2006",
+                                    "UPI Ref. No: XX ${generateUpiTransactionID(4)}",
                                     style: TextStyle(
                                       color: ColorRes.blue,
                                       fontSize: 14,

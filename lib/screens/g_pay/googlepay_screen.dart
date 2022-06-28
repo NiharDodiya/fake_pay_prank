@@ -255,7 +255,7 @@ class GooglePayScreen extends StatelessWidget {
                               height: 4,
                             ),
                             Text(
-                              generateUpiTransactionID(),
+                              generateUpiTransactionID(12),
                               maxLines: 2,
                               style: TextStyle(
                                 fontSize: 12,

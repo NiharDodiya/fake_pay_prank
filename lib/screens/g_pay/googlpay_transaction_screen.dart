@@ -6,7 +6,20 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class GooglePayTransactionScreen extends StatelessWidget {
-  const GooglePayTransactionScreen({Key? key}) : super(key: key);
+  final String amount;
+  final String sender;
+  final String receiver;
+  final String date;
+  final String time;
+
+  const GooglePayTransactionScreen(
+      {Key? key,
+      required this.amount,
+      required this.sender,
+      required this.receiver,
+      required this.date,
+      required this.time})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

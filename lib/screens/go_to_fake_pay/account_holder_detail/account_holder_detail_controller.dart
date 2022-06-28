@@ -202,8 +202,6 @@ class AccountHolderDetailController extends GetxController {
     return displayTime;
   }
 
-
-
   List<bool> selectMethod = [true, false, false];
   List<String> logos = [
     AssetRes.paytm_logo,
@@ -233,7 +231,7 @@ class AccountHolderDetailController extends GetxController {
     print("SELECTED METHOD $selectMethod");
     if (selectMethod[0] == true) {
       Get.to(() => PaytmScreen(
-        phoneNo: phoneController.text.toString(),
+            phoneNo: phoneController.text.toString(),
             receiverName: nameController.text.toString(),
             amount: enterAmountController.text.toString(),
             date: formatter2.format(selectedDate),
@@ -242,24 +240,24 @@ class AccountHolderDetailController extends GetxController {
     } else if (selectMethod[1] == true) {
       Get.to(() => PhonePayScreen());
     } else if (selectMethod[2] == true) {
-      Get.to(() => GooglePayTransactionScreen());
+      Get.to(() => GooglePayTransactionScreen(
+          amount: enterAmountController.text.toString(), sender: "", receiver:nameController.text.toString(), date: "", time: ""));
     }
   }
 
-  void onTapGotIt(BuildContext context){
+  void onTapGotIt(BuildContext context) {
     Get.to(() => GooglePayScreen(
-      receiverName: nameController.text.toString(),
-      senderName: senderController.text.trim(),
-      number: phoneController.text.toString(),
-      amount: enterAmountController.text.toString(),
-      date: formatter.format(selectedDate),
-      time: formatTime(selectedTime1, context),
-      bankLogo: bankLogo!,
-      bankName: bankController.text.toString(),
-      bankAcDigit: selectAcNumber!,
-    ));
+          receiverName: nameController.text.toString(),
+          senderName: senderController.text.trim(),
+          number: phoneController.text.toString(),
+          amount: enterAmountController.text.toString(),
+          date: formatter.format(selectedDate),
+          time: formatTime(selectedTime1, context),
+          bankLogo: bankLogo!,
+          bankName: bankController.text.toString(),
+          bankAcDigit: selectAcNumber!,
+        ));
   }
-
 
   bool showDropDown = false;
 
@@ -291,6 +289,7 @@ class AccountHolderDetailController extends GetxController {
   List<String> images = [];
   List<String> accountNum = [];
   String? selectAcNumber;
+
   // String? upiTransactionId;
   // String? googleTransactionId;
 
