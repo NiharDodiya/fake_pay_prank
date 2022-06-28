@@ -41,10 +41,15 @@ class OnBoardingFirstController extends GetxController {
     } else if (index == 4) {
       //more
       Get.to(AboutViewPage());
-    } else if (index == 5) {
+    }
+    update(["drawers"]);
+  }
+
+  onTapDrawerItem2(index) {
+     if (index == 0) {
       //rate us
       _launchUrl();
-    } else if (index == 6) {
+    } else if (index == 1) {
       //share
       Share.share(shareUrl);
     }
@@ -57,9 +62,13 @@ class OnBoardingFirstController extends GetxController {
     AssetRes.privacy,
     AssetRes.how_to_use,
     AssetRes.more,
+  ];
+
+  List<String> icons2 = [
     AssetRes.rate_us,
     AssetRes.share
   ];
+
 
   List<String> title = [
     Strings.go_to_fake_pay,
@@ -67,6 +76,8 @@ class OnBoardingFirstController extends GetxController {
     Strings.privacy,
     Strings.how_to_use,
     Strings.more,
+  ];
+  List<String> title2 = [
     Strings.rate_us,
     Strings.share
   ];

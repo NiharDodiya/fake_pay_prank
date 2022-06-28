@@ -1,6 +1,7 @@
 import 'package:fake_pay_prank/common/common_screen_background.dart';
 import 'package:fake_pay_prank/screens/guide/guide_controller.dart';
 import 'package:fake_pay_prank/screens/guide/guide_line_answer_screen.dart';
+import 'package:fake_pay_prank/utils/asset_res.dart';
 import 'package:fake_pay_prank/utils/color_res.dart';
 import 'package:fake_pay_prank/utils/strings.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,10 @@ class GuideScreen extends StatelessWidget {
         children: [
           SizedBox(height: 10),
           Text(Strings.fakePayGuide,
-              style: TextStyle(fontWeight: FontWeight.w500, fontSize: 15)),
+              style: TextStyle(
+                fontFamily: AssetRes.fontRobotoMedium,
+                fontSize: 14,
+              )),
           SizedBox(height: 10),
           GetBuilder<GuideController>(
               id: "fakeGuide",
@@ -43,17 +47,21 @@ class GuideScreen extends StatelessWidget {
                               },
                               child: Container(
                                 height: 80,
-                                padding: EdgeInsets.only(left: 10),
+                                padding: EdgeInsets.only(left: 16),
                                 alignment: Alignment.centerLeft,
                                 margin: EdgeInsets.only(bottom: 10),
                                 width: Get.width,
                                 decoration: BoxDecoration(
-                                    color: ColorRes.blue,
+                                    color: ColorRes.blue.withOpacity(0.3),
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10))),
                                 child: Text(
                                     con.guideLineModel.data![index].question ??
-                                        ""),
+                                        "",
+                                    style: TextStyle(
+                                      fontFamily: AssetRes.fontRobotoMedium,
+                                      fontSize: 14,
+                                    )),
                               ),
                             );
                           })
