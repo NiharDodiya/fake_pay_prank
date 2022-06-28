@@ -157,7 +157,7 @@ Widget chiild() {
                   onTap: () async {
                     bool opened;
                     opened = await SharePref.getBool(
-                            PrefKeys.open_first_getStarted) ??
+                            PrefKeys.open_first_agree) ??
                         false;
                     print(
                         "GET OPEN FIRST TIME OPEN AGREEMENT PAGE OR NOT $opened");

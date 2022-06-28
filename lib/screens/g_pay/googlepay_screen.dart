@@ -1,4 +1,5 @@
 import 'package:fake_pay_prank/common/helper.dart';
+import 'package:fake_pay_prank/screens/onbording/onboarding_second/onboarding_second_controller.dart';
 import 'package:fake_pay_prank/utils/asset_res.dart';
 import 'package:fake_pay_prank/utils/color_res.dart';
 import 'package:flutter/material.dart';
@@ -49,6 +50,7 @@ class GooglePayScreen extends StatelessWidget {
         leading: InkWell(
           onTap: () {
             Get.back();
+            // Get.off(OnBoardingSecondController());
           },
           child: Icon(
             Icons.arrow_back_rounded,
@@ -278,7 +280,7 @@ class GooglePayScreen extends StatelessWidget {
                               height: 4,
                             ),
                             Text(
-                              "${receiverName.removeAllWhitespace}@ok${bankName.removeAllWhitespace.toLowerCase()}",
+                              "${receiverName.removeAllWhitespace.toLowerCase()}@ok${bankName.removeAllWhitespace.toLowerCase()}",
                               maxLines: 2,
                               style: TextStyle(
                                 fontSize: 12,
@@ -302,7 +304,7 @@ class GooglePayScreen extends StatelessWidget {
                               height: 4,
                             ),
                             Text(
-                              "${senderName.removeAllWhitespace}@ok${bankName.removeAllWhitespace.toLowerCase()}",
+                              "${senderName.removeAllWhitespace.toLowerCase()}@ok${bankName.removeAllWhitespace.toLowerCase()}",
                               maxLines: 2,
                               style: TextStyle(
                                 fontSize: 12,
