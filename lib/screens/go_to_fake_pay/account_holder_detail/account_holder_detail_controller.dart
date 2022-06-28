@@ -1,6 +1,7 @@
 import 'package:fake_pay_prank/Services/get_bank_api.dart';
 import 'package:fake_pay_prank/model/bank_model.dart';
 import 'package:fake_pay_prank/screens/g_pay/googlepay_screen.dart';
+import 'package:fake_pay_prank/screens/g_pay/googlpay_transaction_screen.dart';
 import 'package:fake_pay_prank/screens/paytm/paytm_screen.dart';
 import 'package:fake_pay_prank/screens/phone_pay/phone_pay_screen.dart';
 import 'package:fake_pay_prank/utils/asset_res.dart';

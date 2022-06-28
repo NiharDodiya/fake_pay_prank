@@ -127,6 +127,9 @@ flutter:
     - family: Oxygen-Regular
       fonts:
         - asset: assets/fonts/Oxygen-Regular.ttf
+    - family: Product-Sans-Regular
+      fonts:
+        - asset: assets/fonts/Product-Sans-Regular.ttf
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

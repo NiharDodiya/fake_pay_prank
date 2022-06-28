@@ -1,5 +1,7 @@
 import 'package:fake_pay_prank/screens/splash/splash_screen.dart';
+import 'package:fake_pay_prank/utils/color_res.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -12,6 +14,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent, // status bar color
+      /* statusBarBrightness: Brightness.dark,
+      statusBarIconBrightness:  Brightness.dark*/ //font and icon color
+
+    ));
     return GetMaterialApp(
       title: 'Fake Pay : Prank',
       debugShowCheckedModeBanner: false,

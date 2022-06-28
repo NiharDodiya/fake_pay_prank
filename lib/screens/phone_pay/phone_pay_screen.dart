@@ -1,4 +1,3 @@
-
 import 'package:fake_pay_prank/utils/asset_res.dart';
 import 'package:fake_pay_prank/utils/color_res.dart';
 import 'package:flutter/material.dart';
@@ -32,11 +31,15 @@ class PhonePayScreen extends StatelessWidget {
           textColor: ColorRes.white,
           title: Text(
             "Transaction Successful",
-            style: TextStyle(color: ColorRes.white),
+            style: TextStyle(
+              color: ColorRes.white,
+            ),
           ),
           subtitle: Text(
             "01:06 PM on 27 Jun 2022",
-            style: TextStyle(color: ColorRes.ofWhite),
+            style: TextStyle(
+              color: ColorRes.ofWhite,
+            ),
           ),
         ),
       ),
@@ -81,7 +84,8 @@ class PhonePayScreen extends StatelessWidget {
                     Row(
                       children: [
                         Container(
-                          margin: EdgeInsets.only(top: 16, bottom: 16, right: 16),
+                          margin:
+                              EdgeInsets.only(top: 16, bottom: 16, right: 16),
                           child: CircleAvatar(
                             backgroundColor: ColorRes.blue,
                             child: Padding(
@@ -128,7 +132,8 @@ class PhonePayScreen extends StatelessWidget {
                         Container(
                           height: 25,
                           width: 25,
-                          margin: EdgeInsets.only(top: 16, bottom: 16, right: 16),
+                          margin:
+                              EdgeInsets.only(top: 16, bottom: 16, right: 16),
                           child: Image.asset(
                             AssetRes.listIcon,
                             fit: BoxFit.fill,
@@ -275,7 +280,8 @@ class PhonePayScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                            margin: EdgeInsets.only(bottom: 7, top: 7, right: 8),
+                            margin:
+                                EdgeInsets.only(bottom: 7, top: 7, right: 8),
                             height: 42,
                             width: 42,
                             padding: EdgeInsets.all(8),

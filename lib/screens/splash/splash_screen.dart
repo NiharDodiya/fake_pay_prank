@@ -12,6 +12,7 @@ class SplashScreen extends StatelessWidget {
     deviceHeight = MediaQuery.of(context).size.height;
     deviceWidth = MediaQuery.of(context).size.width;
     Get.put(SplashController());
+    print("transect");
     return Scaffold(
       body: Container(
         height: Get.height,

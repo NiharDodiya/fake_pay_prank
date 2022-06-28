@@ -47,6 +47,7 @@ class AssetRes {
   static const supportIcon = '${icons}support_icon.png';
   static const poweredByIcon = '${icons}powerdby_icon.png';
   static const rupee_icon = '${icons}rupee_icon.png';
+  static const approveIcon = '${icons}approve_icon.png';
 
   static const upiIcon = '${icons}upi_icon.png';
 
@@ -66,6 +67,7 @@ class AssetRes {
   static const fontRobotoRegular = 'Roboto-Regular';
   static const SFProTextRegular = 'SF-Pro-Text-Regular';
   static const OxygenRegular = 'Oxygen-Regular';
+  static const ProductSansRegular = 'Product-Sans-Regular';
 
 //SemiBold Font
   static const fontInterExtraBold = 'Inter-ExtraBold';
