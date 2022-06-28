@@ -46,7 +46,7 @@ class AgreementScreen extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(30))),
             child: Text(
               Strings.agreeAndContinue,
-              style: TextStyle(color: ColorRes.white),
+              style: TextStyle(color: ColorRes.white,fontSize: 20),
             ),
           ),
         )

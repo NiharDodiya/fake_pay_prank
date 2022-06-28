@@ -85,7 +85,7 @@ class CommonTextField extends StatelessWidget {
               height: 15,
               width: 15,
               padding: EdgeInsets.all(5),
-              child: Image.asset(prefixIcon, height: 5, width: 5,color:this.iconColor)),
+              child: Image.asset(prefixIcon, height: 5, width: 5,color:controller.text.isEmpty?this.iconColor:ColorRes.black)),
           suffixIcon: showSuffixIcon == false ? SizedBox():Container(
               height: 15,
               width: 15,

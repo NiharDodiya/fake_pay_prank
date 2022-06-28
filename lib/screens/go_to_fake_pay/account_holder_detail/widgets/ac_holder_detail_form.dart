@@ -16,6 +16,7 @@ Widget accountHolderDetails(BuildContext context) {
               focusNode: con.nameFn,
               hintText: "Enter Name",
               prefixIcon: AssetRes.profile_icon,
+              iconColor: con.nameController.text.isEmpty ? ColorRes.greyColorIcon : Colors.black,
             ),
             con.nameError == ""
                 ? SizedBox(height: 15)
@@ -33,6 +34,7 @@ Widget accountHolderDetails(BuildContext context) {
               focusNode: con.senderFn,
               hintText: "Enter Sender Name",
               prefixIcon: AssetRes.profile_icon,
+              iconColor: con.senderController.text.isEmpty ? ColorRes.greyColorIcon : Colors.black,
             ),
             con.senderError == ""
                 ? SizedBox(height: 15)
@@ -51,7 +53,7 @@ Widget accountHolderDetails(BuildContext context) {
               hintText: "Phone No",
               prefixIcon: AssetRes.call_icon,
               textInputType: TextInputType.number,
-              iconColor: ColorRes.greyColorIcon,
+              iconColor: con.phoneController.text.isEmpty ? ColorRes.greyColorIcon : Colors.black,
             ),
             con.phoneError == ""
                 ? SizedBox(height: 15)
@@ -70,7 +72,7 @@ Widget accountHolderDetails(BuildContext context) {
               hintText: "Amount",
               prefixIcon: AssetRes.rupee_icon,
               textInputType: TextInputType.number,
-              iconColor: ColorRes.greyColorIcon,
+              iconColor: con.enterAmountController.text.isEmpty ?ColorRes.greyColorIcon : Colors.black,
             ),
             con.enterAmount == ""
                 ? SizedBox(height: 15)
@@ -154,7 +156,7 @@ Widget accountHolderDetails(BuildContext context) {
               hintText: "Your Wallet Balance",
               prefixIcon: AssetRes.wallet_icon,
               textInputType: TextInputType.number,
-              iconColor: ColorRes.greyColorIcon,
+              iconColor:con.walletController.text.isEmpty? ColorRes.greyColorIcon :Colors.black,
             ),
             con.walletError == ""
                 ? SizedBox(height: 15)

@@ -22,7 +22,7 @@ Widget submitBtn(context){
             borderRadius: BorderRadius.all(Radius.circular(30))),
         child: Text(
           Strings.submit,
-          style: TextStyle(color: ColorRes.white),
+          style: TextStyle(color: ColorRes.white,fontSize: 20),
         ),
       ),
     );

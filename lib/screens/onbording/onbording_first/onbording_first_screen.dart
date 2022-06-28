@@ -107,7 +107,7 @@ class OnBoardingFirstScreen extends StatelessWidget {
                             borderRadius: BorderRadius.all(Radius.circular(30))),
                         child: Text(
                           Strings.getStarted,
-                          style: TextStyle(color: ColorRes.white),
+                          style: TextStyle(color: ColorRes.white,fontSize: 20),
                         ),
                       ),
                     )
