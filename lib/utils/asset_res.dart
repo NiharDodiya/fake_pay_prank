@@ -35,11 +35,17 @@ class AssetRes {
   static const paytmLogo = '${icons}paytm_logo.png';
   static const bank = '${icons}bank.png';
   static const drop_down_arrow = '${icons}drop_down_arrow.png';
-
   static const completeIcon = '${icons}complete_icon.png';
   static const bobIcon = '${icons}bob_icon.png';
   static const downAro = '${icons}doun_arow.png';
   static const upiIcon2 = '${icons}upi_icon_2.png';
+  static const listIcon = '${icons}list_icon.png';
+  static const copyIcon = '${icons}copy_icon.png';
+  static const hdfcIcon = '${icons}hdfc_icon.png';
+  static const swapIcon = '${icons}swap_icon.png';
+  static const shareIcon = '${icons}share_icon.png';
+  static const supportIcon = '${icons}support_icon.png';
+  static const poweredByIcon = '${icons}powerdby_icon.png';
 
   static const upiIcon = '${icons}upi_icon.png';
 

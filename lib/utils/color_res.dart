@@ -15,6 +15,7 @@ class ColorRes {
   static const green = Color(0xff20A25C);
   static const lightPink = Color(0xffF0E5F8);
   static const lightGray = Color(0xff3c4043);
+  static const phoneGray = Color(0xff767676);
   static const gray = Color(0xff222222);
   static const greyColor = Color(0xff929292);
   static const greyColorIcon = Color(0xff808080);
