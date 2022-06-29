@@ -48,6 +48,8 @@ class AssetRes {
   static const poweredByIcon = '${icons}powerdby_icon.png';
   static const rupee_icon = '${icons}rupee_icon.png';
   static const approveIcon = '${icons}approve_icon.png';
+  static const aboutUs = '${icons}info.png';
+  static const qr_code = '${icons}qr_code.png';
 
   static const upiIcon = '${icons}upi_icon.png';
 

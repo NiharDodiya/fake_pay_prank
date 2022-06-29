@@ -1,5 +1,4 @@
 import 'package:fake_pay_prank/common/helper.dart';
-import 'package:fake_pay_prank/screens/onbording/onboarding_second/onboarding_second_controller.dart';
 import 'package:fake_pay_prank/utils/asset_res.dart';
 import 'package:fake_pay_prank/utils/color_res.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +16,7 @@ class GooglePayScreen extends StatelessWidget {
   final String time;
   final String bankLogo;
   final String bankName;
+  final String upiID;
   // final String upiTransactionId;
   // final String googleTransactionId;
 
@@ -34,7 +34,7 @@ class GooglePayScreen extends StatelessWidget {
       required this.bankName,
       required this.senderName,
       // required this.upiTranslateId,
-      required this.bankAcDigit,
+      required this.bankAcDigit, required this.upiID,
       // required this.upiTransactionId,
       // required this.googleTransactionId
       })
@@ -280,7 +280,8 @@ class GooglePayScreen extends StatelessWidget {
                               height: 4,
                             ),
                             Text(
-                              "${receiverName.removeAllWhitespace.toLowerCase()}@ok${bankName.removeAllWhitespace.toLowerCase()}",
+                              upiID
+                              /*"${receiverName.removeAllWhitespace.toLowerCase()}@ok${bankName.removeAllWhitespace.toLowerCase()}"*/,
                               maxLines: 2,
                               style: TextStyle(
                                 fontSize: 12,

@@ -29,7 +29,7 @@ class OnBoardingFirstController extends GetxController {
   onTapDrawerItem(index) {
     if (index == 0) {
       //go to fake pay
-      Get.to(AccountHolderDetailScreen());
+      Get.to(AccountHolderDetailScreen(fromScannerPage: false,));
     } else if (index == 1) {
       //fake statement
     } else if (index == 2) {
@@ -61,7 +61,7 @@ class OnBoardingFirstController extends GetxController {
     AssetRes.fake_statement,
     AssetRes.privacy,
     AssetRes.how_to_use,
-    AssetRes.more,
+    AssetRes.aboutUs,
   ];
 
   List<String> icons2 = [
@@ -75,7 +75,7 @@ class OnBoardingFirstController extends GetxController {
     Strings.fake_statement,
     Strings.privacy,
     Strings.how_to_use,
-    Strings.more,
+    Strings.aboutUs,
   ];
   List<String> title2 = [
     Strings.rate_us,

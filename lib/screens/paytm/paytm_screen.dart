@@ -6,19 +6,21 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PaytmScreen extends StatelessWidget {
-  final String receiverName;
+  final String senderName;
   final String phoneNo;
   final String amount;
   final String date;
   final String time;
+  final String upiId;
+  final bool fromScannerPage;
 
   const PaytmScreen(
       {Key? key,
-      required this.receiverName,
+      required this.senderName,
       required this.amount,
       required this.date,
       required this.time,
-      required this.phoneNo})
+      required this.phoneNo, required this.upiId,required this.fromScannerPage})
       : super(key: key);
 
   @override
@@ -101,7 +103,7 @@ class PaytmScreen extends StatelessWidget {
                                       child: Padding(
                                         padding: EdgeInsets.only(top: 5),
                                         child: Text(
-                                          (getInitials(receiverName))
+                                          (getInitials(senderName))
                                               .toUpperCase(),
                                           style: TextStyle(
                                             color: ColorRes.blue,
@@ -127,7 +129,7 @@ class PaytmScreen extends StatelessWidget {
                                       SizedBox(
                                         width: deviceWidth / 1.55,
                                         child: Text(
-                                          capitalize(receiverName),
+                                          capitalize(senderName),
                                           maxLines: 2,
                                           style: TextStyle(
                                             color: ColorRes.black,
@@ -149,7 +151,7 @@ class PaytmScreen extends StatelessWidget {
                                               CrossAxisAlignment.center,
                                           children: [
                                             Text(
-                                              "UPI ID: $phoneNo@paytm",
+                                              "UPI ID: $upiId",
                                               style: TextStyle(
                                                 color: ColorRes.black,
                                                 fontSize: 14,

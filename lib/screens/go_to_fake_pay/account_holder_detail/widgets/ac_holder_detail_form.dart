@@ -5,7 +5,7 @@ import 'package:fake_pay_prank/utils/color_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-Widget accountHolderDetails(BuildContext context) {
+Widget accountHolderDetails(BuildContext context,bool fromScannerPage) {
   return GetBuilder<AccountHolderDetailController>(
       id: "forms",
       builder: (con) {
@@ -29,21 +29,21 @@ Widget accountHolderDetails(BuildContext context) {
                       style: TextStyle(color: Colors.red),
                     ),
                   ),
-            CommonTextField(
-              controller: con.senderController,
-              focusNode: con.senderFn,
-              hintText: "Enter Sender Name",
+            fromScannerPage?SizedBox(): CommonTextField(
+              controller: con.receiverController,
+              focusNode: con.receiverFn,
+              hintText: "Enter Receiver Name",
               prefixIcon: AssetRes.profile_icon,
-              iconColor: con.senderController.text.isEmpty ? ColorRes.greyColorIcon : Colors.black,
+              iconColor: con.receiverController.text.isEmpty ? ColorRes.greyColorIcon : Colors.black,
             ),
-            con.senderError == ""
+            con.receiverError == ""
                 ? SizedBox(height: 15)
                 : Container(
                     padding: EdgeInsets.only(left: 5),
                     alignment: Alignment.topLeft,
                     height: 25,
                     child: Text(
-                      con.senderError,
+                      con.receiverError,
                       style: TextStyle(color: Colors.red),
                     ),
                   ),

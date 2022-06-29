@@ -1,4 +1,3 @@
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:fake_pay_prank/common/common_screen_background.dart';
 import 'package:fake_pay_prank/screens/go_to_fake_pay/account_holder_detail/account_holder_detail_controller.dart';
 import 'package:fake_pay_prank/screens/go_to_fake_pay/account_holder_detail/widgets/ac_holder_detail_form.dart';
@@ -11,7 +10,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AccountHolderDetailScreen extends StatelessWidget {
-  const AccountHolderDetailScreen({Key? key}) : super(key: key);
+  final bool fromScannerPage;
+
+  const AccountHolderDetailScreen({Key? key, required this.fromScannerPage})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +37,8 @@ class AccountHolderDetailScreen extends StatelessWidget {
                             child: CircularProgressIndicator(),
                           )
                         : Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 6),
-                          child: Column(
+                            padding: const EdgeInsets.symmetric(horizontal: 6),
+                            child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -53,7 +55,7 @@ class AccountHolderDetailScreen extends StatelessWidget {
                                   ),
                                 ),
                                 SizedBox(height: 15),
-                                accountHolderDetails(context),
+                                accountHolderDetails(context, fromScannerPage),
                                 GetBuilder<AccountHolderDetailController>(
                                     id: "dropDown",
                                     builder: (con) {
@@ -65,8 +67,10 @@ class AccountHolderDetailScreen extends StatelessWidget {
                                                 height: 45,
                                                 width: Get.width,
                                                 alignment: Alignment.center,
-                                                padding: const EdgeInsets.symmetric(
-                                                    vertical: 5, horizontal: 1),
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        vertical: 5,
+                                                        horizontal: 1),
                                                 // margin: const EdgeInsets.only(bottom: 15),
                                                 decoration: BoxDecoration(
                                                     // color: ColorRes.offWhite,
@@ -74,7 +78,8 @@ class AccountHolderDetailScreen extends StatelessWidget {
                                                         color: ColorRes.blue),
                                                     borderRadius:
                                                         const BorderRadius.all(
-                                                            Radius.circular(10))),
+                                                            Radius.circular(
+                                                                10))),
                                                 child: Row(
                                                   children: [
                                                     SizedBox(
@@ -86,27 +91,34 @@ class AccountHolderDetailScreen extends StatelessWidget {
                                                         controller:
                                                             con.bankController,
                                                         focusNode: con.bankFn,
-                                                        decoration: InputDecoration(
+                                                        decoration:
+                                                            InputDecoration(
                                                           contentPadding:
-                                                              const EdgeInsets.only(
+                                                              const EdgeInsets
+                                                                      .only(
                                                                   left: 4.11),
                                                           border:
                                                               const OutlineInputBorder(
                                                             borderRadius:
-                                                                BorderRadius.all(
-                                                              Radius.circular(8),
+                                                                BorderRadius
+                                                                    .all(
+                                                              Radius.circular(
+                                                                  8),
                                                             ),
                                                             borderSide:
                                                                 BorderSide.none,
                                                           ),
-                                                          hintText: "Select Bank",
+                                                          hintText:
+                                                              "Select Bank",
                                                           hintStyle: TextStyle(
-                                                              color:
-                                                                  ColorRes.greyColor,
+                                                              color: ColorRes
+                                                                  .greyColor,
                                                               fontSize:
-                                                                  Get.width / 28,
+                                                                  Get.width /
+                                                                      28,
                                                               fontWeight:
-                                                                  FontWeight.w600),
+                                                                  FontWeight
+                                                                      .w600),
                                                           enabled: true,
                                                           // prefix: Container(
                                                           //     height: 20,
@@ -119,7 +131,8 @@ class AccountHolderDetailScreen extends StatelessWidget {
                                                               height: 15,
                                                               width: 15,
                                                               padding:
-                                                                  EdgeInsets.all(12),
+                                                                  EdgeInsets
+                                                                      .all(12),
                                                               child: Image.asset(
                                                                   AssetRes
                                                                       .drop_down_arrow,
@@ -132,7 +145,8 @@ class AccountHolderDetailScreen extends StatelessWidget {
                                                           con.onTapDropDown();
                                                         },
                                                         style: const TextStyle(
-                                                          fontWeight: FontWeight.w600,
+                                                          fontWeight:
+                                                              FontWeight.w600,
                                                           fontSize: 16,
                                                           color: ColorRes.black,
                                                         ),
@@ -141,14 +155,19 @@ class AccountHolderDetailScreen extends StatelessWidget {
                                                   ],
                                                 ),
                                               ),
-                                              con.bankError == ""?SizedBox(height: 15):
-                                              Container(
-                                                alignment: Alignment.centerLeft,
-                                                padding:EdgeInsets.only(left: 10),
-                                                child: Text(con.bankError,style: TextStyle(color: Colors.red)))
+                                              con.bankError == ""
+                                                  ? SizedBox(height: 15)
+                                                  : Container(
+                                                      alignment:
+                                                          Alignment.centerLeft,
+                                                      padding: EdgeInsets.only(
+                                                          left: 10),
+                                                      child: Text(con.bankError,
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.red)))
                                             ],
                                           ),
-
                                           Positioned(
                                               top: 10,
                                               left: 5,
@@ -162,19 +181,21 @@ class AccountHolderDetailScreen extends StatelessWidget {
                                                   child: con.showLogo
                                                       ? Image.network(
                                                           con.bankLogo!)
-                                                      : Image.asset(AssetRes.bank,
-                                                          height: 5, width: 5)))
+                                                      : Image.asset(
+                                                          AssetRes.bank,
+                                                          height: 5,
+                                                          width: 5)))
                                         ],
                                       );
                                     }),
 
                                 paymentMethodList(),
                                 SizedBox(height: 50),
-                                submitBtn(context)
+                                submitBtn(context, fromScannerPage)
                                 // Spacer(),
                               ],
                             ),
-                        );
+                          );
                   }),
               GetBuilder<AccountHolderDetailController>(
                   id: "dropDown",
@@ -184,8 +205,13 @@ class AccountHolderDetailScreen extends StatelessWidget {
                             top: con.nameError == "" &&
                                     con.phoneError == "" &&
                                     con.walletError == ""
-                                ? 407//Get.height * 0.48 //345
-                                : 407 + 30,//Get.height * 0.48 ,//+ 15,
+                                ? fromScannerPage
+                                    ? (407 - 60)
+                                    : 407 //Get.height * 0.48 //345
+                                : fromScannerPage
+                                    ? (407 + 30 - 75)
+                                    : 407 + 30,
+                            //Get.height * 0.48 ,//+ 15,
                             child: Container(
                               alignment: Alignment.topLeft,
                               // height: 200,
@@ -210,8 +236,7 @@ class AccountHolderDetailScreen extends StatelessWidget {
                                             con.onSelectDropDownItem(
                                                 con.bank[index],
                                                 con.images[index],
-                                            con.accountNum[index]
-                                            );
+                                                con.accountNum[index]);
                                           },
                                           child: Container(
                                             margin: EdgeInsets.only(bottom: 10),

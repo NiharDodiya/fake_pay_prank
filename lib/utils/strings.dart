@@ -8,6 +8,7 @@ class Strings {
   static const String privacy = "Privacy";
   static const String how_to_use = "How To Use";
   static const String more = "More";
+  static const String aboutUs = "About Us";
   static const String rate_us = "Rate Us";
   static const String share = "Share";
 
@@ -29,6 +30,4 @@ class Strings {
   static const String paytm_logo = "(Paytm)";
 
   static const String fakePay = "Fake Pay";
-
-
 }

@@ -4,12 +4,12 @@ import 'package:fake_pay_prank/utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-Widget submitBtn(context){
+Widget submitBtn(context,fromScannerPage){
   return GetBuilder<AccountHolderDetailController>(builder: (con) {
     return InkWell(
       onTap: () {
-        if(con.validate()){
-          con.onSubmitTap(context);
+        if(con.validate(fromScannerPage)){
+          con.onSubmitTap(context,fromScannerPage);
         }
       },
       child: Container(

@@ -11,46 +11,77 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
+import '../../../common/common_function.dart';
+
 class AccountHolderDetailController extends GetxController {
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController walletController = TextEditingController();
   TextEditingController bankController = TextEditingController();
   TextEditingController enterAmountController = TextEditingController();
-  TextEditingController senderController = TextEditingController();
+
+  TextEditingController receiverController = TextEditingController();
 
   FocusNode nameFn = FocusNode();
   FocusNode phoneFn = FocusNode();
   FocusNode walletFn = FocusNode();
   FocusNode bankFn = FocusNode();
   FocusNode enterAmountFn = FocusNode();
-  FocusNode senderFn = FocusNode();
+  FocusNode receiverFn = FocusNode();
 
   String nameError = "";
   String phoneError = "";
   String walletError = "";
   String bankError = "";
   String enterAmount = "";
-  String senderError = "";
+  String receiverError = "";
 
-  bool validate() {
+  bool validate(fromScannerPage) {
     nameValidation();
     phoneValidation();
     walletValidation();
     bankValidation();
     enterAmountValidate();
-    senderValidation();
+    if (fromScannerPage == false) {
+      senderValidation();
+    } else {
+      checkNameAndUpi();
+    }
     checkAmountValidate();
-    if (nameError == "" &&
-        phoneError == "" &&
-        walletError == "" &&
-        bankError == "" &&
-        enterAmount == "" &&
-        senderError == "") {
+
+    if (fromScannerPage
+        ? (nameError == "" &&
+            phoneError == "" &&
+            walletError == "" &&
+            bankError == "" &&
+            enterAmount == "" &&
+            /*senderError == "" &&*/
+            receiverName != "" &&
+            upiId != "")
+        : (nameError == "" &&
+            phoneError == "" &&
+            walletError == "" &&
+            bankError == "" &&
+            enterAmount == "" &&
+            receiverError ==
+                "" /* &&
+            receiverName != "" &&
+            upiId != ""*/
+        )) {
       return true;
     } else {
       return false;
     }
+  }
+
+  String receiverName = "";
+  String upiId = "";
+
+  checkNameAndUpi() {
+    upiId = qRResult.split("pa=")[1].split("&")[0];
+    receiverName =
+        qRResult.split("pn=")[1].split("&")[0].replaceAll("%20", " ");
+    update(["forms"]);
   }
 
   nameValidation() {
@@ -64,9 +95,9 @@ class AccountHolderDetailController extends GetxController {
 
   senderValidation() {
     if (nameController.text.trim() == "") {
-      senderError = "Enter the Name";
+      receiverError = "Enter the Name";
     } else {
-      senderError = "";
+      receiverError = "";
     }
     update(["forms"]);
   }
@@ -112,7 +143,7 @@ class AccountHolderDetailController extends GetxController {
   }
 
   checkAmountValidate() {
-    if(walletController.text != "" && enterAmountController.text != ""){
+    if (walletController.text != "" && enterAmountController.text != "") {
       if (int.parse(walletController.text.toString()) <
           int.parse(enterAmountController.text.toString())) {
         enterAmount = "Enter Valid Amount";
@@ -231,49 +262,80 @@ class AccountHolderDetailController extends GetxController {
     update(["radio"]);
   }
 
-  onSubmitTap(context) {
+  onSubmitTap(context, fromScannerPage) {
     print("SELECTED METHOD $selectMethod");
     if (selectMethod[0] == true) {
-      Get.to(() => PaytmScreen(
-            phoneNo: phoneController.text.toString(),
-            receiverName: nameController.text.toString(),
-            amount: enterAmountController.text.toString(),
-            date: formatter2.format(selectedDate),
-            time: formatTimeWithAmPm(selectedTime1, context),
-          ));
+      Get.to(() => fromScannerPage
+          ? PaytmScreen(
+              fromScannerPage: true,
+              upiId: upiId,
+              phoneNo: phoneController.text.toString(),
+              senderName: nameController.text.toString(),
+              amount: enterAmountController.text.toString(),
+              date: formatter2.format(selectedDate),
+              time: formatTimeWithAmPm(selectedTime1, context),
+            )
+          : PaytmScreen(
+        fromScannerPage: false,
+              upiId: "",
+              phoneNo: phoneController.text.toString(),
+              senderName: nameController.text.toString(),
+              amount: enterAmountController.text.toString(),
+              date: formatter2.format(selectedDate),
+              time: formatTimeWithAmPm(selectedTime1, context),
+            ));
     } else if (selectMethod[1] == true) {
       Get.to(() => PhonePayScreen(
-        amount:enterAmountController.text.toString(),
-        bankAcDigit:selectAcNumber! ,
-        bankLogo: bankLogo!,
-        date: formatter.format(selectedDate),
-        phoneNo: phoneController.text.toString(),
-        receiverName: nameController.text.toString(),
-        time:formatTimeWithAmPm(selectedTime1, context),
-      ));
+            amount: enterAmountController.text.toString(),
+            bankAcDigit: selectAcNumber!,
+            bankLogo: bankLogo!,
+            date: formatter.format(selectedDate),
+            phoneNo: phoneController.text.toString(),
+            receiverName: nameController.text.toString(),
+            time: formatTimeWithAmPm(selectedTime1, context),
+          ));
     } else if (selectMethod[2] == true) {
       Get.to(() => GooglePayTransactionScreen(
           amount: enterAmountController.text.toString(),
-          sender: senderController.text.trim(),
-          receiver: nameController.text.toString(),
+          sender: receiverController.text.toString(),
+          receiver: receiverName,
           date: formatter3.format(selectedDate),
           time: formatTimeWithAmPm(selectedTime1, context)));
     }
   }
 
-  void onTapGotIt(BuildContext context) {
+  void onTapGotIt(BuildContext context, fromScannerPage) {
     // Get.back();
-    Get.off(() => GooglePayScreen(
-          receiverName: nameController.text.toString(),
-          senderName: senderController.text.trim(),
-          number: phoneController.text.toString(),
-          amount: enterAmountController.text.toString(),
-          date: formatter.format(selectedDate),
-          time: formatTime(selectedTime1, context),
-          bankLogo: bankLogo!,
-          bankName: bankController.text.toString(),
-          bankAcDigit: selectAcNumber!,
-        ));
+    Get.off(() => fromScannerPage
+        ? GooglePayScreen(
+            // receiverName: nameController.text.toString(),
+            // senderName: senderController.text.trim(),
+            senderName: nameController.text.toString(),
+            receiverName: receiverName == "" ? "" : receiverName,
+            upiID: upiId == "" ? "" : upiId,
+            number: phoneController.text.toString(),
+            amount: enterAmountController.text.toString(),
+            date: formatter.format(selectedDate),
+            time: formatTime(selectedTime1, context),
+            bankLogo: bankLogo!,
+            bankName: bankController.text.toString(),
+            bankAcDigit: selectAcNumber!,
+          )
+        : GooglePayScreen(
+            // receiverName: nameController.text.toString(),
+            // senderName: senderController.text.trim(),
+            senderName: nameController.text.toString(),
+            receiverName: receiverController.text.toString(),
+            upiID: "",
+            //set name in that screen
+            number: phoneController.text.toString(),
+            amount: enterAmountController.text.toString(),
+            date: formatter.format(selectedDate),
+            time: formatTime(selectedTime1, context),
+            bankLogo: bankLogo!,
+            bankName: bankController.text.toString(),
+            bankAcDigit: selectAcNumber!,
+          ));
   }
 
   bool showDropDown = false;

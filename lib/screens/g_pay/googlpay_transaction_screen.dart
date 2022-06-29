@@ -93,7 +93,7 @@ class GooglePayTransactionScreen extends StatelessWidget {
                     ),
                     child: InkWell(
                       onTap: () {
-                        controller.onTapGotIt(context);
+                        controller.onTapGotIt(context,);
                       },
                       splashColor: ColorRes.nBlue1,
                       borderRadius: BorderRadius.all(

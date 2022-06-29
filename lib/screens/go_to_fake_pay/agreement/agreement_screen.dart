@@ -34,7 +34,7 @@ class AgreementScreen extends StatelessWidget {
         GestureDetector(
           onTap: () {
             SharePref.setBool(PrefKeys.open_first_agree, true);
-            Get.to(() => AccountHolderDetailScreen());
+            Get.to(() => AccountHolderDetailScreen(fromScannerPage: false,));
           },
           child: Container(
             height: 50,

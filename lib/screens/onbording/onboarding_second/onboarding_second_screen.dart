@@ -1,4 +1,5 @@
 import 'package:fake_pay_prank/Services/prefs_services.dart';
+import 'package:fake_pay_prank/common/common_function.dart';
 import 'package:fake_pay_prank/common/common_screen_background.dart';
 import 'package:fake_pay_prank/screens/go_to_fake_pay/account_holder_detail/account_holder_detail_screen.dart';
 import 'package:fake_pay_prank/screens/go_to_fake_pay/agreement/agreement_screen.dart';
@@ -6,6 +7,7 @@ import 'package:fake_pay_prank/screens/guide/guide_screen.dart';
 import 'package:fake_pay_prank/screens/onbording/onboarding_second/onboarding_second_controller.dart';
 import 'package:fake_pay_prank/screens/onbording/onbording_first/onboarding_first_controller.dart';
 import 'package:fake_pay_prank/screens/onbording/onbording_first/widgets/onboarding_drawer.dart';
+import 'package:fake_pay_prank/screens/qr_code_scanner/qr_code_scanner_page.dart';
 import 'package:fake_pay_prank/utils/asset_res.dart';
 import 'package:fake_pay_prank/utils/color_res.dart';
 import 'package:fake_pay_prank/utils/global_variable.dart';
@@ -92,7 +94,28 @@ class OnBoardingSecondScreen extends StatelessWidget {
               ),
             )
           ],
-        ));
+        ),
+      // bottomNavigationBar: GestureDetector(
+      //   onTap: (){
+      //     // getName(result2);
+      //     Get.to(QRViewPage());
+      //   },
+      //   child: Container(
+      //     height: 60,
+      //     decoration: BoxDecoration(
+      //       border: Border.all(color: ColorRes.green),
+      //     ),
+      //     child: Container(
+      //       margin: EdgeInsets.symmetric(horizontal: 30),
+      //       height: 40,
+      //       width: Get.width * 0.5,
+      //       color: ColorRes.blue,
+      //       child: Text("Scan Qr Code"),
+      //     ),
+      //   ),
+      // ),
+
+    );
   }
 }
 
@@ -114,7 +137,7 @@ Widget chiild() {
       SizedBox(height: 10),
       GestureDetector(
         onTap: (){
-          Get.to(AccountHolderDetailScreen());
+          Get.to(AccountHolderDetailScreen(fromScannerPage: false,));
         },
         child: Container(
           // height: 50,
@@ -164,7 +187,7 @@ Widget chiild() {
                     if (opened == false) {
                       Get.to(AgreementScreen());
                     } else {
-                      Get.to(() => AccountHolderDetailScreen());
+                      Get.to(() => AccountHolderDetailScreen(fromScannerPage: false,));
                     }
                   },
                   child: Container(
@@ -250,111 +273,33 @@ Widget chiild() {
                 }),
                 SizedBox(width: 0),
               ],
-            )
+            ),
+
           ],
+        ),
+      ),
+      SizedBox(height: 50),
+      GestureDetector(
+        onTap: (){
+          Get.to(QRViewPage());
+        },
+        child: Container(
+          height: 55,
+          width: 135,
+          decoration: BoxDecoration(
+            color: ColorRes.nBlue,
+            borderRadius: BorderRadius.all(Radius.circular(99))
+          ),
+          child: Row(
+            children: [
+              SizedBox(width: 10),
+              Image.asset(AssetRes.qr_code,height: 30,),
+              SizedBox(width: 10),
+              Text("Scan & Pay",style: TextStyle(color: ColorRes.white,fontSize: 12,fontWeight: FontWeight.w500),)
+            ],
+          ),
         ),
       )
     ],
   );
 }
-
-/*Widget iconsRow() {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-      GestureDetector(
-        onTap: () {
-          // Get.to(AgreementScreen());
-        },
-        child: Container(
-          width: 45,
-          margin: EdgeInsets.only(left: 15),
-          // decoration: BoxDecoration(border: Border.all()),
-          child: Column(
-            children: [
-              Image.asset(AssetRes.go_to_fake_pay, height: 30),
-              Text(
-                Strings.go_to_fake_pay,
-                style: TextStyle(fontSize: 10),
-              )
-            ],
-          ),
-        ),
-      ),
-      // SizedBox(width: Get.width * 0.03),
-      Container(
-        width: 45,
-        margin: EdgeInsets.only(left: 30),
-        // decoration: BoxDecoration(border: Border.all()),
-        child: Column(
-          children: [
-            Image.asset(AssetRes.how_to_use, height: 30),
-            Text(
-              Strings.how_to_use,
-              style: TextStyle(fontSize: 10),
-            )
-          ],
-        ),
-      ),
-      // SizedBox(width: Get.width * 0.03),
-      Container(
-        width: 50,
-        margin: EdgeInsets.only(left: 30),
-        // decoration: BoxDecoration(border: Border.all()),
-        child: Column(
-          children: [
-            Image.asset(AssetRes.fake_statement, height: 30),
-            Text(
-              Strings.fake_statement,
-              style: TextStyle(fontSize: 10),
-            )
-          ],
-        ),
-      ),
-      // SizedBox(width: Get.width * 0.03),
-      Container(
-        width: 45,
-        margin: EdgeInsets.only(left: 30),
-        // decoration: BoxDecoration(border: Border.all()),
-        child: Column(
-          children: [
-            Image.asset(AssetRes.rate_us, height: 30),
-            Text(
-              Strings.rate_us,
-              style: TextStyle(fontSize: 10),
-            )
-          ],
-        ),
-      ),
-    ],
-  );
-}
-
-Widget listType() {
-  return ListView.builder(
-      scrollDirection: Axis.horizontal,
-      itemCount: 4,
-      shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
-      itemBuilder: (context, index) {
-        return GestureDetector(
-          onTap: () {
-            // Get.to(AgreementScreen());
-          },
-          child: Container(
-            width: 45,
-            margin: EdgeInsets.only(left: 15),
-            // decoration: BoxDecoration(border: Border.all()),
-            child: Column(
-              children: [
-                Image.asset(AssetRes.go_to_fake_pay, height: 30),
-                Text(
-                  Strings.go_to_fake_pay,
-                  style: TextStyle(fontSize: 10),
-                )
-              ],
-            ),
-          ),
-        );
-      });
-}*/
