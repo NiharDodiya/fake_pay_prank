@@ -270,16 +270,18 @@ class AccountHolderDetailController extends GetxController {
               fromScannerPage: true,
               upiId: upiId,
               phoneNo: phoneController.text.toString(),
-              senderName: nameController.text.toString(),
+              receiverName: receiverName == ""
+                  ? receiverController.text.toString()
+                  : receiverName,
               amount: enterAmountController.text.toString(),
               date: formatter2.format(selectedDate),
               time: formatTimeWithAmPm(selectedTime1, context),
             )
           : PaytmScreen(
-        fromScannerPage: false,
+              fromScannerPage: false,
               upiId: "",
               phoneNo: phoneController.text.toString(),
-              senderName: nameController.text.toString(),
+              receiverName: receiverController.text.toString(),
               amount: enterAmountController.text.toString(),
               date: formatter2.format(selectedDate),
               time: formatTimeWithAmPm(selectedTime1, context),
@@ -291,16 +293,25 @@ class AccountHolderDetailController extends GetxController {
             bankLogo: bankLogo!,
             date: formatter.format(selectedDate),
             phoneNo: phoneController.text.toString(),
-            receiverName: nameController.text.toString(),
+            receiverName:receiverName==""? receiverController.text.toString():receiverName,
             time: formatTimeWithAmPm(selectedTime1, context),
           ));
     } else if (selectMethod[2] == true) {
-      Get.to(() => GooglePayTransactionScreen(
-          amount: enterAmountController.text.toString(),
-          sender: receiverController.text.toString(),
-          receiver: receiverName,
-          date: formatter3.format(selectedDate),
-          time: formatTimeWithAmPm(selectedTime1, context)));
+      Get.to(() => fromScannerPage
+          ? GooglePayTransactionScreen(
+              fromScannerPage: true,
+              amount: enterAmountController.text.toString(),
+              sender: receiverController.text.toString(),
+              receiver: receiverName,
+              date: formatter3.format(selectedDate),
+              time: formatTimeWithAmPm(selectedTime1, context))
+          : GooglePayTransactionScreen(
+              fromScannerPage: false,
+              amount: enterAmountController.text.toString(),
+              sender: nameController.text.toString(),
+              receiver: receiverController.text.toString(),
+              date: formatter3.format(selectedDate),
+              time: formatTimeWithAmPm(selectedTime1, context)));
     }
   }
 
@@ -308,6 +319,7 @@ class AccountHolderDetailController extends GetxController {
     // Get.back();
     Get.off(() => fromScannerPage
         ? GooglePayScreen(
+            fromScannerPage: true,
             // receiverName: nameController.text.toString(),
             // senderName: senderController.text.trim(),
             senderName: nameController.text.toString(),
@@ -322,6 +334,7 @@ class AccountHolderDetailController extends GetxController {
             bankAcDigit: selectAcNumber!,
           )
         : GooglePayScreen(
+            fromScannerPage: false,
             // receiverName: nameController.text.toString(),
             // senderName: senderController.text.trim(),
             senderName: nameController.text.toString(),

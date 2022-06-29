@@ -5,7 +5,7 @@ import 'package:fake_pay_prank/utils/color_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-Widget accountHolderDetails(BuildContext context,bool fromScannerPage) {
+Widget accountHolderDetails(BuildContext context, bool fromScannerPage) {
   return GetBuilder<AccountHolderDetailController>(
       id: "forms",
       builder: (con) {
@@ -16,7 +16,9 @@ Widget accountHolderDetails(BuildContext context,bool fromScannerPage) {
               focusNode: con.nameFn,
               hintText: "Enter Name",
               prefixIcon: AssetRes.profile_icon,
-              iconColor: con.nameController.text.isEmpty ? ColorRes.greyColorIcon : Colors.black,
+              iconColor: con.nameController.text.isEmpty
+                  ? ColorRes.greyColorIcon
+                  : Colors.black,
             ),
             con.nameError == ""
                 ? SizedBox(height: 15)
@@ -29,15 +31,19 @@ Widget accountHolderDetails(BuildContext context,bool fromScannerPage) {
                       style: TextStyle(color: Colors.red),
                     ),
                   ),
-            fromScannerPage?SizedBox(): CommonTextField(
-              controller: con.receiverController,
-              focusNode: con.receiverFn,
-              hintText: "Enter Receiver Name",
-              prefixIcon: AssetRes.profile_icon,
-              iconColor: con.receiverController.text.isEmpty ? ColorRes.greyColorIcon : Colors.black,
-            ),
+            fromScannerPage
+                ? SizedBox()
+                : CommonTextField(
+                    controller: con.receiverController,
+                    focusNode: con.receiverFn,
+                    hintText: "Enter Receiver Name",
+                    prefixIcon: AssetRes.profile_icon,
+                    iconColor: con.receiverController.text.isEmpty
+                        ? ColorRes.greyColorIcon
+                        : Colors.black,
+                  ),
             con.receiverError == ""
-                ? SizedBox(height: 15)
+                ? fromScannerPage ? SizedBox(height: 0):SizedBox(height: 15)
                 : Container(
                     padding: EdgeInsets.only(left: 5),
                     alignment: Alignment.topLeft,
@@ -53,7 +59,9 @@ Widget accountHolderDetails(BuildContext context,bool fromScannerPage) {
               hintText: "Phone No",
               prefixIcon: AssetRes.call_icon,
               textInputType: TextInputType.number,
-              iconColor: con.phoneController.text.isEmpty ? ColorRes.greyColorIcon : Colors.black,
+              iconColor: con.phoneController.text.isEmpty
+                  ? ColorRes.greyColorIcon
+                  : Colors.black,
             ),
             con.phoneError == ""
                 ? SizedBox(height: 15)
@@ -72,7 +80,9 @@ Widget accountHolderDetails(BuildContext context,bool fromScannerPage) {
               hintText: "Amount",
               prefixIcon: AssetRes.rupee_icon,
               textInputType: TextInputType.number,
-              iconColor: con.enterAmountController.text.isEmpty ?ColorRes.greyColorIcon : Colors.black,
+              iconColor: con.enterAmountController.text.isEmpty
+                  ? ColorRes.greyColorIcon
+                  : Colors.black,
             ),
             con.enterAmount == ""
                 ? SizedBox(height: 15)
@@ -156,7 +166,9 @@ Widget accountHolderDetails(BuildContext context,bool fromScannerPage) {
               hintText: "Your Wallet Balance",
               prefixIcon: AssetRes.wallet_icon,
               textInputType: TextInputType.number,
-              iconColor:con.walletController.text.isEmpty? ColorRes.greyColorIcon :Colors.black,
+              iconColor: con.walletController.text.isEmpty
+                  ? ColorRes.greyColorIcon
+                  : Colors.black,
             ),
             con.walletError == ""
                 ? SizedBox(height: 15)

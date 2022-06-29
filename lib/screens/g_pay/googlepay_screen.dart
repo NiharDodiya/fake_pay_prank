@@ -17,28 +17,31 @@ class GooglePayScreen extends StatelessWidget {
   final String bankLogo;
   final String bankName;
   final String upiID;
+
   // final String upiTransactionId;
   // final String googleTransactionId;
 
   // final String upiTranslateId;
   final String bankAcDigit;
+  final bool fromScannerPage;
 
-  const GooglePayScreen(
-      {Key? key,
-      required this.receiverName,
-      required this.number,
-      required this.amount,
-      required this.date,
-      required this.time,
-      required this.bankLogo,
-      required this.bankName,
-      required this.senderName,
-      // required this.upiTranslateId,
-      required this.bankAcDigit, required this.upiID,
-      // required this.upiTransactionId,
-      // required this.googleTransactionId
-      })
-      : super(key: key);
+  const GooglePayScreen({
+    Key? key,
+    required this.receiverName,
+    required this.number,
+    required this.amount,
+    required this.date,
+    required this.time,
+    required this.bankLogo,
+    required this.bankName,
+    required this.senderName,
+    // required this.upiTranslateId,
+    required this.bankAcDigit,
+    required this.upiID,
+    required this.fromScannerPage,
+    // required this.upiTransactionId,
+    // required this.googleTransactionId
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +111,7 @@ class GooglePayScreen extends StatelessWidget {
                   height: 8,
                 ),
                 Text(
-                 "To ${toBeginningOfSentenceCase("$receiverName")}",
+                  "To ${toBeginningOfSentenceCase("$receiverName")}",
                   style: TextStyle(
                       color: ColorRes.black,
                       fontFamily: AssetRes.SFProTextRegular,
@@ -280,8 +283,9 @@ class GooglePayScreen extends StatelessWidget {
                               height: 4,
                             ),
                             Text(
-                              upiID
-                              /*"${receiverName.removeAllWhitespace.toLowerCase()}@ok${bankName.removeAllWhitespace.toLowerCase()}"*/,
+                              fromScannerPage
+                                  ? upiID
+                                  : "${receiverName.removeAllWhitespace.toLowerCase()}@ok${bankName.removeAllWhitespace.toLowerCase()}",
                               maxLines: 2,
                               style: TextStyle(
                                 fontSize: 12,

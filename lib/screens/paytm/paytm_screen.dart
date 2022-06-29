@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PaytmScreen extends StatelessWidget {
-  final String senderName;
+  final String receiverName;
   final String phoneNo;
   final String amount;
   final String date;
@@ -16,7 +16,7 @@ class PaytmScreen extends StatelessWidget {
 
   const PaytmScreen(
       {Key? key,
-      required this.senderName,
+      required this.receiverName,
       required this.amount,
       required this.date,
       required this.time,
@@ -103,7 +103,7 @@ class PaytmScreen extends StatelessWidget {
                                       child: Padding(
                                         padding: EdgeInsets.only(top: 5),
                                         child: Text(
-                                          (getInitials(senderName))
+                                          (getInitials(receiverName))
                                               .toUpperCase(),
                                           style: TextStyle(
                                             color: ColorRes.blue,
@@ -129,7 +129,7 @@ class PaytmScreen extends StatelessWidget {
                                       SizedBox(
                                         width: deviceWidth / 1.55,
                                         child: Text(
-                                          capitalize(senderName),
+                                          capitalize(receiverName),
                                           maxLines: 2,
                                           style: TextStyle(
                                             color: ColorRes.black,
@@ -150,13 +150,24 @@ class PaytmScreen extends StatelessWidget {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.center,
                                           children: [
-                                            Text(
-                                              "UPI ID: $upiId",
-                                              style: TextStyle(
-                                                color: ColorRes.black,
-                                                fontSize: 14,
+                                           fromScannerPage? Container(
+                                             ///change this
+                                             width:Get.width / 1.54,
+                                             child: Text(
+                                                "UPI ID: $upiId",
+                                                maxLines: 2,
+                                                style: TextStyle(
+                                                  color: ColorRes.black,
+                                                  fontSize: 14,
+                                                ),
                                               ),
-                                            ),
+                                           ): Text(
+                                             "UPI ID: $phoneNo@paytm",
+                                             style: TextStyle(
+                                               color: ColorRes.black,
+                                               fontSize: 14,
+                                             ),
+                                           ),
                                             const SizedBox(
                                               width: 5,
                                             ),

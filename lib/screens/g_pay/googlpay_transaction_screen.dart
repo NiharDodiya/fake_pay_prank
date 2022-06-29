@@ -11,6 +11,7 @@ class GooglePayTransactionScreen extends StatelessWidget {
   final String receiver;
   final String date;
   final String time;
+  final bool fromScannerPage;
 
   const GooglePayTransactionScreen(
       {Key? key,
@@ -18,7 +19,7 @@ class GooglePayTransactionScreen extends StatelessWidget {
       required this.sender,
       required this.receiver,
       required this.date,
-      required this.time})
+      required this.time, required this.fromScannerPage})
       : super(key: key);
 
   @override
@@ -93,7 +94,7 @@ class GooglePayTransactionScreen extends StatelessWidget {
                     ),
                     child: InkWell(
                       onTap: () {
-                        controller.onTapGotIt(context,);
+                        controller.onTapGotIt(context,fromScannerPage);
                       },
                       splashColor: ColorRes.nBlue1,
                       borderRadius: BorderRadius.all(
