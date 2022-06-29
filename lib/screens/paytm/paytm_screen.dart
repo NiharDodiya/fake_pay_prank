@@ -151,8 +151,10 @@ class PaytmScreen extends StatelessWidget {
                                               CrossAxisAlignment.center,
                                           children: [
                                            fromScannerPage? Container(
-                                             ///change this
-                                             width:Get.width / 1.54,
+                                             // decoration: BoxDecoration(
+                                             //   border: Border.all()
+                                             // ),
+                                             width:Get.width * 0.54,
                                              child: Text(
                                                 "UPI ID: $upiId",
                                                 maxLines: 2,
