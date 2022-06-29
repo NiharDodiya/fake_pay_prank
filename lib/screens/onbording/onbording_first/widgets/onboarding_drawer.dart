@@ -55,8 +55,8 @@ class OnBoardingDrawer extends StatelessWidget {
                                   ? BoxDecoration()
                                   : BoxDecoration(
                                       border: Border(
-                                          bottom:
-                                              BorderSide(color: ColorRes.black))),
+                                          bottom: BorderSide(
+                                              color: ColorRes.black))),
                               child: Row(
                                 children: [
                                   Image.asset(con.icons[index]),
@@ -77,7 +77,11 @@ class OnBoardingDrawer extends StatelessWidget {
                     );
                   },
                 ),
-                Divider(color: ColorRes.nBlue, thickness: 2,height: 40,),
+                Divider(
+                  color: ColorRes.nBlue,
+                  thickness: 2,
+                  height: 40,
+                ),
                 GetBuilder<OnBoardingFirstController>(
                   id: "drawers",
                   builder: (con) {
@@ -104,8 +108,10 @@ class OnBoardingDrawer extends StatelessWidget {
                                   ? BoxDecoration()
                                   : BoxDecoration(
                                       border: Border(
-                                          bottom:
-                                              BorderSide(color: ColorRes.black))),
+                                        bottom:
+                                            BorderSide(color: ColorRes.black),
+                                      ),
+                                    ),
                               child: Row(
                                 children: [
                                   Image.asset(con.icons2[index]),
@@ -126,10 +132,12 @@ class OnBoardingDrawer extends StatelessWidget {
                     );
                   },
                 ),
-                SizedBox(height: deviceHeight/4.5,),
+                SizedBox(
+                  height: deviceHeight / 4.5,
+                ),
                 Text(
                   Strings.version,
-                  style: TextStyle(color: Colors.grey),
+                  style: TextStyle(color: Colors.grey,),
                 ),
                 SizedBox(height: 15),
                 Divider(
