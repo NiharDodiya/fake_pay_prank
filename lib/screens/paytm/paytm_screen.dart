@@ -25,6 +25,13 @@ class PaytmScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //double leftAlign = 0.0;
+    double centerAlign = (Get.width/2) + _textSize('₹ $amount', TextStyle(
+      color: ColorRes.black,
+      fontSize: 35,
+      fontWeight: FontWeight.w600,
+    )).width /2 - 60;
+
     return Scaffold(
       appBar: AppBar(
         leading: InkWell(
@@ -188,14 +195,16 @@ class PaytmScreen extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              Row(
+                             /* Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
+                                  ///change gif
                                   Container(
+                                    // decoration: BoxDecoration(border: Border.all()),
                                     height: 100,
-                                    alignment: Alignment.center,
+                                    alignment: Alignment.centerRight,
                                     child: Text(
                                       "₹ $amount",
                                       style: TextStyle(
@@ -205,10 +214,60 @@ class PaytmScreen extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  Image.asset(
-                                    AssetRes.completeGif,
-                                    height: 60,
-                                    width: 60,
+                                  Container(
+                                    // decoration: BoxDecoration(
+                                    //   border: Border.all()
+                                    // ),
+                                    child: Image.asset(
+                                      AssetRes.completeGif,
+                                      height: 90,
+                                      width: 90,
+                                    ),
+                                  ),
+                                ],
+                              ),*/
+                              Stack(
+                                children: [
+                                  Container(
+                                    alignment: Alignment.center,
+                                    width: Get.width,
+                                    margin: EdgeInsets.only(right:35),
+                                    child: Container(
+                                      // decoration: BoxDecoration(border: Border.all()),
+                                      height: 100,
+
+                                      // width: Get.width * 0.5,
+
+                                      child: Center(
+                                        child: Text(
+                                          "₹ $amount",
+                                          style: TextStyle(
+                                            color: ColorRes.black,
+                                            fontSize: 35,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Positioned(
+                                    left: centerAlign,
+                                    // left: _textSize('₹ $amount', TextStyle(
+                                    //   color: ColorRes.black,
+                                    //   fontSize: 35,
+                                    //   fontWeight: FontWeight.w600,
+                                    // )).width,
+                                    top: 3,
+                                    child: Container(
+                                      // decoration: BoxDecoration(
+                                      //   border: Border.all()
+                                      // ),
+                                      child: Image.asset(
+                                        AssetRes.completeGif,
+                                        height: 90,
+                                        width: 70,
+                                      ),
+                                    ),
                                   ),
                                 ],
                               ),
@@ -436,6 +495,13 @@ class PaytmScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Size _textSize(String text, TextStyle style) {
+    final TextPainter textPainter = TextPainter(
+        text: TextSpan(text: text, style: style), maxLines: 1, textDirection: TextDirection.ltr)
+      ..layout(minWidth: 0, maxWidth: double.infinity);
+    return textPainter.size;
   }
 }
 

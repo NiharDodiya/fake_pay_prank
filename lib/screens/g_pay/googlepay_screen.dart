@@ -121,13 +121,13 @@ class GooglePayScreen extends StatelessWidget {
                 SizedBox(
                   height: 3,
                 ),
-                Text(
-                  "+91 $number",
-                  style: TextStyle(
-                    color: ColorRes.black,
-                    fontSize: deviceWidth / 27,
-                  ),
-                ),
+                // Text(
+                //   "+91 $number",
+                //   style: TextStyle(
+                //     color: ColorRes.black,
+                //     fontSize: deviceWidth / 27,
+                //   ),
+                // ),
                 Container(
                   height: 80,
                   alignment: Alignment.center,

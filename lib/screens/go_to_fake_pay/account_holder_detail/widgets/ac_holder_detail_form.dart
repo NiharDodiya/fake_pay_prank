@@ -14,7 +14,7 @@ Widget accountHolderDetails(BuildContext context, bool fromScannerPage) {
             CommonTextField(
               controller: con.nameController,
               focusNode: con.nameFn,
-              hintText: "Enter Name",
+              hintText: "Enter Your Name",
               prefixIcon: AssetRes.profile_icon,
               iconColor: con.nameController.text.isEmpty
                   ? ColorRes.greyColorIcon
@@ -56,7 +56,7 @@ Widget accountHolderDetails(BuildContext context, bool fromScannerPage) {
             CommonTextField(
               controller: con.phoneController,
               focusNode: con.phoneFn,
-              hintText: "Phone No",
+              hintText: "Enter Your Phone No",
               prefixIcon: AssetRes.call_icon,
               textInputType: TextInputType.number,
               iconColor: con.phoneController.text.isEmpty

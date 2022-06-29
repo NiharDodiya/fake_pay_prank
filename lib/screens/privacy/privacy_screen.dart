@@ -14,18 +14,25 @@ class PrivacyScreen extends StatelessWidget {
         body: screenDesign(
             child: Column(
       children: [
-        SizedBox(
-          height: 20
-        ),
+        SizedBox(height: 20),
         Container(
           height: Get.height * 0.75,
           width: Get.width,
-          child: WebView(
-            initialUrl:
-                "https://prank-pay.herokuapp.com/api/PrivacyPolicy-view",
-            javascriptMode: JavascriptMode.unrestricted,
-
-          ),
+          child: con.showLoader
+              ? Center(child: CircularProgressIndicator())
+              : WebView(
+                  initialUrl:
+                      "https://prank-pay.herokuapp.com/api/PrivacyPolicy-view",
+                  javascriptMode: JavascriptMode.unrestricted,
+                  onPageStarted: (val) {
+                    con.showLoader = true;
+                    con.update();
+                  },
+                  onPageFinished: (val) {
+                    con.showLoader = false;
+                    con.update();
+                  },
+                ),
         ),
       ],
     )));

@@ -34,12 +34,14 @@ class GooglePayTransactionScreen extends StatelessWidget {
             SizedBox(
               height: deviceHeight / 4.5,
             ),
+            ///change color icon
             SizedBox(
               height: 100,
               width: 100,
               child: Image.asset(
                 AssetRes.approveIcon,
                 fit: BoxFit.fill,
+                color: Color(0xff0021DF),
               ),
             ),
             SizedBox(
