@@ -1,3 +1,4 @@
+import 'package:fake_pay_prank/Services/googleAdmob.dart';
 import 'package:fake_pay_prank/screens/about_view/about_view_screen.dart';
 import 'package:fake_pay_prank/screens/guide/guide_screen.dart';
 import 'package:fake_pay_prank/screens/privacy/privacy_screen.dart';
@@ -13,6 +14,17 @@ import '../../../utils/global_variable.dart';
 import '../../go_to_fake_pay/account_holder_detail/account_holder_detail_screen.dart';
 
 class OnBoardingFirstController extends GetxController {
+  @override
+  void onInit() {
+    AdService.showInterstitialAd(() {
+      init();
+    });
+    super.onInit();
+  }
+
+  init() {
+    print("OPEN ADS ");
+  }
   var scaffoldKey = GlobalKey<ScaffoldState>();
 
   onMenuBtnTap() {
@@ -29,7 +41,9 @@ class OnBoardingFirstController extends GetxController {
   onTapDrawerItem(index) {
     if (index == 0) {
       //go to fake pay
-      Get.to(AccountHolderDetailScreen(fromScannerPage: false,));
+      Get.to(AccountHolderDetailScreen(
+        fromScannerPage: false,
+      ));
     } else if (index == 1) {
       //fake statement
     } else if (index == 2) {
@@ -46,7 +60,7 @@ class OnBoardingFirstController extends GetxController {
   }
 
   onTapDrawerItem2(index) {
-     if (index == 0) {
+    if (index == 0) {
       //rate us
       _launchUrl();
     } else if (index == 1) {
@@ -64,11 +78,7 @@ class OnBoardingFirstController extends GetxController {
     AssetRes.aboutUs,
   ];
 
-  List<String> icons2 = [
-    AssetRes.rate_us,
-    AssetRes.share
-  ];
-
+  List<String> icons2 = [AssetRes.rate_us, AssetRes.share];
 
   List<String> title = [
     Strings.go_to_fake_pay,
@@ -77,8 +87,5 @@ class OnBoardingFirstController extends GetxController {
     Strings.how_to_use,
     Strings.aboutUs,
   ];
-  List<String> title2 = [
-    Strings.rate_us,
-    Strings.share
-  ];
+  List<String> title2 = [Strings.rate_us, Strings.share];
 }

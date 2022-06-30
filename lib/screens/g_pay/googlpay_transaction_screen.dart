@@ -1,4 +1,5 @@
 import 'package:fake_pay_prank/common/helper.dart';
+import 'package:fake_pay_prank/screens/g_pay/googlepay_controller.dart';
 import 'package:fake_pay_prank/screens/go_to_fake_pay/account_holder_detail/account_holder_detail_controller.dart';
 import 'package:fake_pay_prank/utils/asset_res.dart';
 import 'package:fake_pay_prank/utils/color_res.dart';
@@ -24,6 +25,7 @@ class GooglePayTransactionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(GooglePayController());
     return Scaffold(
       body: Container(
         height: deviceHeight,

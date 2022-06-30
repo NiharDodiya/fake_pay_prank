@@ -1,3 +1,4 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:fake_pay_prank/Services/get_bank_api.dart';
 import 'package:fake_pay_prank/model/bank_model.dart';
 import 'package:fake_pay_prank/screens/g_pay/googlepay_screen.dart';
@@ -265,91 +266,75 @@ class AccountHolderDetailController extends GetxController {
   onSubmitTap(context, fromScannerPage) {
     print("SELECTED METHOD $selectMethod");
     if (selectMethod[0] == true) {
-      Get.to(() => fromScannerPage
-          ? PaytmScreen(
-              fromScannerPage: true,
-              upiId: upiId,
+      Get.to(() => PaytmScreen(
+              fromScannerPage: fromScannerPage,
+              upiId: fromScannerPage ? upiId : "",
               phoneNo: phoneController.text.toString(),
-              receiverName: receiverName == ""
-                  ? receiverController.text.toString()
-                  : receiverName,
+              receiverName: fromScannerPage
+                  ? receiverName == ""
+                      ? receiverController.text.toString()
+                      : receiverName
+                  : receiverController.text.toString(),
               amount: enterAmountController.text.toString(),
               date: formatter2.format(selectedDate),
               time: formatTimeWithAmPm(selectedTime1, context),
             )
-          : PaytmScreen(
-              fromScannerPage: false,
-              upiId: "",
-              phoneNo: phoneController.text.toString(),
-              receiverName: receiverController.text.toString(),
-              amount: enterAmountController.text.toString(),
-              date: formatter2.format(selectedDate),
-              time: formatTimeWithAmPm(selectedTime1, context),
-            ));
+        );
     } else if (selectMethod[1] == true) {
-
       Get.to(() => PhonePayScreen(
             amount: enterAmountController.text.toString(),
             bankAcDigit: selectAcNumber!,
             bankLogo: bankLogo!,
             date: formatter.format(selectedDate),
             phoneNo: phoneController.text.toString(),
-            receiverName:receiverName==""? receiverController.text.toString():receiverName,
+            receiverName: receiverName == ""
+                ? receiverController.text.toString()
+                : receiverName,
             time: formatTimeWithAmPm(selectedTime1, context),
           ));
     } else if (selectMethod[2] == true) {
-      Get.to(() => fromScannerPage
-          ? GooglePayTransactionScreen(
-              fromScannerPage: true,
-              amount: enterAmountController.text.toString(),
-              sender: receiverController.text.toString(),
-              receiver: receiverName,
-              date: formatter3.format(selectedDate),
-              time: formatTimeWithAmPm(selectedTime1, context))
-          : GooglePayTransactionScreen(
-              fromScannerPage: false,
-              amount: enterAmountController.text.toString(),
-              sender: nameController.text.toString(),
-              receiver: receiverController.text.toString(),
-              date: formatter3.format(selectedDate),
-              time: formatTimeWithAmPm(selectedTime1, context)));
+      Get.to(() =>
+              GooglePayTransactionScreen(
+                  fromScannerPage: fromScannerPage,
+                  amount: enterAmountController.text.toString(),
+                  sender: receiverController.text.toString(),
+                  receiver: fromScannerPage
+                      ? receiverName
+                      : receiverController.text.toString(),
+                  date: formatter3.format(selectedDate),
+                  time: formatTimeWithAmPm(selectedTime1, context))
+
+          );
     }
   }
 
   void onTapGotIt(BuildContext context, fromScannerPage) {
     // Get.back();
-    Get.off(() => fromScannerPage
-        ? GooglePayScreen(
-            fromScannerPage: true,
-            // receiverName: nameController.text.toString(),
-            // senderName: senderController.text.trim(),
-            senderName: nameController.text.toString(),
-            receiverName: receiverName == "" ? "" : receiverName,
-            upiID: upiId == "" ? "" : upiId,
-            number: phoneController.text.toString(),
-            amount: enterAmountController.text.toString(),
-            date: formatter.format(selectedDate),
-            time: formatTime(selectedTime1, context),
-            bankLogo: bankLogo!,
-            bankName: bankController.text.toString(),
-            bankAcDigit: selectAcNumber!,
-          )
-        : GooglePayScreen(
-            fromScannerPage: false,
-            // receiverName: nameController.text.toString(),
-            // senderName: senderController.text.trim(),
-            senderName: nameController.text.toString(),
-            receiverName: receiverController.text.toString(),
-            upiID: "",
-            //set name in that screen
-            number: phoneController.text.toString(),
-            amount: enterAmountController.text.toString(),
-            date: formatter.format(selectedDate),
-            time: formatTime(selectedTime1, context),
-            bankLogo: bankLogo!,
-            bankName: bankController.text.toString(),
-            bankAcDigit: selectAcNumber!,
-          ));
+    ///play audio
+    // AssetsAudioPlayer.newPlayer().open(Audio("assets/audio/sound.mp3"),
+    //     showNotification: true, autoStart: true,);
+    // assetsAudioPlayer.open(Audio("assets/audio/audio.mp3"));
+    Get.off(() =>
+            GooglePayScreen(
+              fromScannerPage: fromScannerPage,
+              senderName: nameController.text.toString(),
+              receiverName: fromScannerPage
+                  ? receiverName
+                  : receiverController.text.toString(),
+              upiID: fromScannerPage
+                  ? upiId == ""
+                      ? ""
+                      : upiId
+                  : "",
+              number: phoneController.text.toString(),
+              amount: enterAmountController.text.toString(),
+              date: formatter.format(selectedDate),
+              time: formatTime(selectedTime1, context),
+              bankLogo: bankLogo!,
+              bankName: bankController.text.toString(),
+              bankAcDigit: selectAcNumber!,
+            )
+        );
   }
 
   bool showDropDown = false;

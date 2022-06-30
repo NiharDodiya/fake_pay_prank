@@ -9,7 +9,6 @@ Widget submitBtn(context,fromScannerPage){
   return GetBuilder<AccountHolderDetailController>(builder: (con) {
     return InkWell(
       onTap: () {
-
         if(con.validate(fromScannerPage)){
           AdService.showInterstitialAd(() {
             con.onSubmitTap(context,fromScannerPage);

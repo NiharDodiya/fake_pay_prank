@@ -1,3 +1,4 @@
+import 'package:fake_pay_prank/Services/googleAdmob.dart';
 import 'package:fake_pay_prank/common/helper.dart';
 import 'package:fake_pay_prank/screens/onbording/onbording_first/onboarding_first_controller.dart';
 import 'package:fake_pay_prank/utils/asset_res.dart';
@@ -42,7 +43,14 @@ class OnBoardingDrawer extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return GestureDetector(
                             onTap: () {
-                              con.onTapDrawerItem(index);
+                              if(index == 2){
+                                con.onTapDrawerItem(index);
+                              }else{
+                                AdService.showInterstitialAd(() {
+                                  con.onTapDrawerItem(index);
+                                });
+                              }
+                              // con.onTapDrawerItem(index);
                             },
                             child: Container(
                               height: 50,

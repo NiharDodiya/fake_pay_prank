@@ -8,7 +8,9 @@ class OnBoardingSecondController extends GetxController{
 
   @override
   void onInit() {
-    init(showAd: true);
+    AdService.showInterstitialAd(() {
+      init(showAd: true);
+    });
     super.onInit();
   }
   void dispose() {
@@ -54,6 +56,4 @@ class OnBoardingSecondController extends GetxController{
     );
     return bannerAd!.load();
   }
-
-
 }

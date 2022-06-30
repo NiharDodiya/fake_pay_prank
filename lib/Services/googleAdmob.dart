@@ -11,8 +11,12 @@ class AdService {
   );
 
   static String rewardAdId = RewardedAd.testAdUnitId;
-  static String interstitialAdId =InterstitialAd.testAdUnitId;
-  static String bannerAdId = BannerAd.testAdUnitId;
+  static String interstitialAdId =InterstitialAd.testAdUnitId;// change interstitialAdId from here
+  static String bannerAdId = BannerAd.testAdUnitId; // change bannerAdId from here
+
+  // rewardAdId : ca-app-pub-3940256099942544/5224354917
+  // interstitialAdId : ca-app-pub-3940256099942544/1033173712
+  // bannerAdId : ca-app-pub-3940256099942544/6300978111
 
 
 
@@ -24,6 +28,7 @@ class AdService {
 
   static Future<void> init() async {
     await MobileAds.instance.initialize();
+    print("rewardAdId : $rewardAdId \n interstitialAdId : $interstitialAdId  \n bannerAdId : $bannerAdId");
 /*    bannerAdId = Platform.isIOS ? BannerAd.testAdUnitId: BannerAd.testAdUnitId;
     interstitialAdId = Platform.isIOS?InterstitialAd.testAdUnitId:InterstitialAd.testAdUnitId;
     rewardAdId = RewardedAd.testAdUnitId;*/

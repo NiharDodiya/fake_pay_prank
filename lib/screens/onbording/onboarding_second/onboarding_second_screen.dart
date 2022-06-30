@@ -221,7 +221,9 @@ Widget homeWidget(OnBoardingSecondController conSecond) {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Get.to(GuideScreen());
+                      AdService.showInterstitialAd(() {
+                        Get.to(GuideScreen());
+                      });
                     },
                     child: Container(
                       width: 50,

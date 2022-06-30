@@ -1,3 +1,4 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:fake_pay_prank/Services/googleAdmob.dart';
 import 'package:fake_pay_prank/screens/splash/splash_screen.dart';
 import 'package:fake_pay_prank/utils/color_res.dart';
@@ -10,6 +11,9 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   MobileAds.instance.initialize();
+  AssetsAudioPlayer.setupNotificationsOpenAction((notification) {
+    return true;
+  });
   AdService.init();
   runApp(const MyApp());
 }
