@@ -287,6 +287,7 @@ class AccountHolderDetailController extends GetxController {
               time: formatTimeWithAmPm(selectedTime1, context),
             ));
     } else if (selectMethod[1] == true) {
+
       Get.to(() => PhonePayScreen(
             amount: enterAmountController.text.toString(),
             bankAcDigit: selectAcNumber!,

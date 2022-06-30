@@ -1,11 +1,16 @@
+import 'package:fake_pay_prank/Services/googleAdmob.dart';
 import 'package:fake_pay_prank/screens/splash/splash_screen.dart';
 import 'package:fake_pay_prank/utils/color_res.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  MobileAds.instance.initialize();
+  AdService.init();
   runApp(const MyApp());
 }
 

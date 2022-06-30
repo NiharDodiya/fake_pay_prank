@@ -1,3 +1,4 @@
+import 'package:fake_pay_prank/Services/googleAdmob.dart';
 import 'package:fake_pay_prank/screens/go_to_fake_pay/account_holder_detail/account_holder_detail_controller.dart';
 import 'package:fake_pay_prank/utils/color_res.dart';
 import 'package:fake_pay_prank/utils/strings.dart';
@@ -8,8 +9,11 @@ Widget submitBtn(context,fromScannerPage){
   return GetBuilder<AccountHolderDetailController>(builder: (con) {
     return InkWell(
       onTap: () {
+
         if(con.validate(fromScannerPage)){
-          con.onSubmitTap(context,fromScannerPage);
+          AdService.showInterstitialAd(() {
+            con.onSubmitTap(context,fromScannerPage);
+          });
         }
       },
       child: Container(
