@@ -4,6 +4,7 @@ class AssetRes {
 
   ///---------------------------------------- GIFs -----------------------------------------///
   static const completeGif = "${icons}complete_gif.gif";
+  static const complete_gif_2 = "${icons}complete_gif_2.gif";
 
   ///---------------------------------------- ICONS ----------------------------------------///
   static const logo = '${icons}logo.png';

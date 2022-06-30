@@ -195,7 +195,7 @@ class PaytmScreen extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                             /* Row(
+                              Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -219,14 +219,14 @@ class PaytmScreen extends StatelessWidget {
                                     //   border: Border.all()
                                     // ),
                                     child: Image.asset(
-                                      AssetRes.completeGif,
-                                      height: 90,
-                                      width: 90,
+                                      AssetRes.complete_gif_2,
+                                      height: 40,
+                                      width: 40,
                                     ),
                                   ),
                                 ],
-                              ),*/
-                              Stack(
+                              ),
+                          /*    Stack(
                                 children: [
                                   Container(
                                     alignment: Alignment.center,
@@ -270,7 +270,7 @@ class PaytmScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ],
-                              ),
+                              ),*/
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
