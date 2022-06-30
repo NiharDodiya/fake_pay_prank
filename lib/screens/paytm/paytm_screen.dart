@@ -215,6 +215,9 @@ class PaytmScreen extends StatelessWidget {
                                     ),
                                   ),
                                   Container(
+                                    height: 100,
+                                    alignment: Alignment.center,
+                                    padding: EdgeInsets.only(bottom: 5),
                                     // decoration: BoxDecoration(
                                     //   border: Border.all()
                                     // ),
@@ -223,6 +226,7 @@ class PaytmScreen extends StatelessWidget {
                                       height: 40,
                                       width: 40,
                                     ),
+
                                   ),
                                 ],
                               ),
